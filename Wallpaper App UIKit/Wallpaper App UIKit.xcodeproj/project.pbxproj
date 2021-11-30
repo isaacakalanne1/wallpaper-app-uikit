@@ -11,7 +11,7 @@
 		7F328DF0657B3B0F45357B03 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
-		BBB761D92756759500DF5B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* ViewController.swift */; };
+		BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* MainViewController.swift */; };
 		BBB761DE2756759900DF5B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBB761DD2756759900DF5B70 /* Assets.xcassets */; };
 		BBB761E12756759900DF5B70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB761DF2756759900DF5B70 /* LaunchScreen.storyboard */; };
 		BBB761EC2756759900DF5B70 /* Wallpaper_App_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761EB2756759900DF5B70 /* Wallpaper_App_UIKitTests.swift */; };
@@ -48,7 +48,7 @@
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BBB761D82756759500DF5B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BBB761D82756759500DF5B70 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BBB761DD2756759900DF5B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBB761E02756759900DF5B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBB761E22756759900DF5B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 			children = (
 				BBB761D42756759500DF5B70 /* AppDelegate.swift */,
 				BBB761D62756759500DF5B70 /* SceneDelegate.swift */,
-				BBB761D82756759500DF5B70 /* ViewController.swift */,
+				BBB76204275679C500DF5B70 /* Feature */,
 				BBB761DD2756759900DF5B70 /* Assets.xcassets */,
 				BBB761DF2756759900DF5B70 /* LaunchScreen.storyboard */,
 				BBB761E22756759900DF5B70 /* Info.plist */,
@@ -162,6 +162,46 @@
 				BBB761F72756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift */,
 			);
 			path = "Wallpaper App UIKitUITests";
+			sourceTree = "<group>";
+		};
+		BBB76204275679C500DF5B70 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BBB76205275679CD00DF5B70 /* Main Screen */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		BBB76205275679CD00DF5B70 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				BBB7620727567A0E00DF5B70 /* Views */,
+				BBB7620827567A1800DF5B70 /* Controllers */,
+				BBB7620627567A0800DF5B70 /* View Controllers */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		BBB7620627567A0800DF5B70 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBB761D82756759500DF5B70 /* MainViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BBB7620727567A0E00DF5B70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BBB7620827567A1800DF5B70 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB761D92756759500DF5B70 /* ViewController.swift in Sources */,
+				BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */,
 				BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */,
 				BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */,
 			);
