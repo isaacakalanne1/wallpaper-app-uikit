@@ -11,6 +11,14 @@ class MainViewController: UIViewController {
     
     private let margin: CGFloat = 10
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = margin
+        return stackView
+    }()
+    
     let downloadButton = Button(style: .primary, title: "Download")
     let menuButton = Button(style: .secondary, image: UIImage(systemName: "circle.hexagonpath")!)
     
@@ -22,10 +30,14 @@ class MainViewController: UIViewController {
         
         view.backgroundColor = Color.primary
         
+        insert(FilterNavigatorViewController(), into: filterNavigatorView)
+        
+        stackView.addArrangedSubview(slider)
+        stackView.addArrangedSubview(filterNavigatorView)
+        
+        view.addSubview(stackView)
         view.addSubview(downloadButton)
         view.addSubview(menuButton)
-        view.addSubview(filterNavigatorView)
-        view.addSubview(slider)
         
         NSLayoutConstraint.activate([
             menuButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
@@ -38,19 +50,12 @@ class MainViewController: UIViewController {
             downloadButton.heightAnchor.constraint(equalToConstant: 60),
             downloadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margin),
             
-            filterNavigatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            filterNavigatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            filterNavigatorView.heightAnchor.constraint(equalToConstant: 60),
-            filterNavigatorView.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: -margin - 10),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: -margin - 5),
             
-            slider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            slider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            slider.heightAnchor.constraint(equalToConstant: 20),
-            slider.bottomAnchor.constraint(equalTo: filterNavigatorView.topAnchor, constant: -margin),
-            
+            filterNavigatorView.heightAnchor.constraint(equalToConstant: 60)
         ])
-        
-        insert(FilterNavigatorViewController(), into: filterNavigatorView)
     }
 
 }
