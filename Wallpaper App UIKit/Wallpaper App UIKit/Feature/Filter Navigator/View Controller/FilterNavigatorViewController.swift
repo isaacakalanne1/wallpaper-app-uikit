@@ -12,7 +12,7 @@ class FilterNavigatorViewController: UIPageViewController {
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        view.backgroundColor = .red
+        view.backgroundColor = Color.secondary
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }

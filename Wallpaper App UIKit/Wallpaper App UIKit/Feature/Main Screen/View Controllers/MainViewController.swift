@@ -43,13 +43,19 @@ class MainViewController: UIViewController {
             
         ])
         
-//        let vc = FilterNavigatorViewController()
-//        vc.view.frame = filterNavigatorView.bounds
-//        self.addChild(vc)
-//        filterNavigatorView.addSubview(vc.view)
-//        vc.didMove(toParent: self)
+        insert(FilterNavigatorViewController(), into: filterNavigatorView)
     }
 
+}
 
+extension UIViewController {
+    
+    func insert(_ viewController: UIViewController, into view: UIView) {
+        viewController.view.frame = view.bounds
+        self.addChild(viewController)
+        view.addSubview(viewController.view)
+        viewController.didMove(toParent: self)
+    }
+    
 }
 
