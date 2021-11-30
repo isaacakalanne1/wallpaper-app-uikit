@@ -1,0 +1,755 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0ECEEAB3A7B7E4EB2B0EBA187B52E8C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		2EFA16901A1603EB156CF1EA871CBCF8 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 950E9E697D7FCF84EADE078221419AEC /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-dummy.m */; };
+		3194D60CC2F8310E5FB9F7978E91BF20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		74927FD2076A92B117BD79412A3D4A67 /* Pods-Wallpaper App UIKitTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F49C4CEE8396A37AC130ED7FFB87F0C3 /* Pods-Wallpaper App UIKitTests-dummy.m */; };
+		98702D4555BB02D4B7D7DED182C7C971 /* Pods-Wallpaper App UIKitTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E5C4DEF4FCB2A466EA29A58FE36B3351 /* Pods-Wallpaper App UIKitTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C23740281E968C56EB7AA0196D0F402B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F02E39DB013949FEBCDD9E29B308B3C /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CBADA33B990C6A864CD2911DB74FE2DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		DEE940F2C27AA9FD34AD581E850B7D09 /* Pods-Wallpaper App UIKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48465D8CF88AD46ECEA5381CEE0166A6 /* Pods-Wallpaper App UIKit-dummy.m */; };
+		F817F2EF76086CB5ACD69453ABDEBB43 /* Pods-Wallpaper App UIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B5C11E378C1AD01A77DFC11E66356BB /* Pods-Wallpaper App UIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		610227A74012BE6AFC87C33A647C4FEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1961CADA51F8846B4219217452540B9C;
+			remoteInfo = "Pods-Wallpaper App UIKit";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05910E42916E4396D1484900CA6C47EA /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0B5C11E378C1AD01A77DFC11E66356BB /* Pods-Wallpaper App UIKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wallpaper App UIKit-umbrella.h"; sourceTree = "<group>"; };
+		22DA1E3F9E4FF51DE4BEAD2AE42F1B30 /* Pods-Wallpaper App UIKitTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Wallpaper App UIKitTests"; path = Pods_Wallpaper_App_UIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27210CB535602754ECD4BC0422E6D974 /* Pods-Wallpaper App UIKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallpaper App UIKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		2F02E39DB013949FEBCDD9E29B308B3C /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-umbrella.h"; sourceTree = "<group>"; };
+		36F6361AEED4234EA8F5E055A0ABBF1F /* Pods-Wallpaper App UIKitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallpaper App UIKitTests-Info.plist"; sourceTree = "<group>"; };
+		48465D8CF88AD46ECEA5381CEE0166A6 /* Pods-Wallpaper App UIKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Wallpaper App UIKit-dummy.m"; sourceTree = "<group>"; };
+		4DDC5EAE606A06825CAA76648DFC608C /* Pods-Wallpaper App UIKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Wallpaper App UIKit"; path = Pods_Wallpaper_App_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63CC1978F07E45194FE1903B21B8D297 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests"; path = Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		888FD5B8D897DD2CDA21EB31DA1C4118 /* Pods-Wallpaper App UIKitTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Wallpaper App UIKitTests.modulemap"; sourceTree = "<group>"; };
+		8DAB249096674B85FB4AE735B6B306C6 /* Pods-Wallpaper App UIKitTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallpaper App UIKitTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		950E9E697D7FCF84EADE078221419AEC /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-dummy.m"; sourceTree = "<group>"; };
+		958C9771B8AB485557DB785577B3A051 /* Pods-Wallpaper App UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallpaper App UIKit.release.xcconfig"; sourceTree = "<group>"; };
+		980E88EC61FB703271A883C964AC31AA /* Pods-Wallpaper App UIKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallpaper App UIKit-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FB656B7B8033FBF56F9486D99AED99B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A643B433F5B01594AFA35445E5BEE620 /* Pods-Wallpaper App UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallpaper App UIKit.debug.xcconfig"; sourceTree = "<group>"; };
+		A8818AF123B574EC76B978477DCAD88D /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-Info.plist"; sourceTree = "<group>"; };
+		B9F9B2C2D7E4317318301976D82DD8D5 /* Pods-Wallpaper App UIKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Wallpaper App UIKit-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C48BEC7B31D4964CB536C31A67CEC9E4 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		C4CC83A5F8287A6D022AD36E953C3F6B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.modulemap"; sourceTree = "<group>"; };
+		CC669AA3F1ED20A40908807046077CD1 /* Pods-Wallpaper App UIKitTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Wallpaper App UIKitTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CD7E0FFE65C1EEA8012147C68949172C /* Pods-Wallpaper App UIKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallpaper App UIKit-acknowledgements.plist"; sourceTree = "<group>"; };
+		CF4D58C50E88006A0A7AFE87BC2B33F6 /* Pods-Wallpaper App UIKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Wallpaper App UIKit.modulemap"; sourceTree = "<group>"; };
+		E5C4DEF4FCB2A466EA29A58FE36B3351 /* Pods-Wallpaper App UIKitTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wallpaper App UIKitTests-umbrella.h"; sourceTree = "<group>"; };
+		EACB35A071D5EF8F7A98136F23C698F8 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F49C4CEE8396A37AC130ED7FFB87F0C3 /* Pods-Wallpaper App UIKitTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Wallpaper App UIKitTests-dummy.m"; sourceTree = "<group>"; };
+		FACF70BACF67244AB38507D3D0C8FC1B /* Pods-Wallpaper App UIKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallpaper App UIKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66E42A33E5BC110701895ED1A79E5AE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECEEAB3A7B7E4EB2B0EBA187B52E8C5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98B8B70A070C5F96992EFE016FD80A17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBADA33B990C6A864CD2911DB74FE2DE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE807028091EEA33CC7881BBF64ECA5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3194D60CC2F8310E5FB9F7978E91BF20 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4091E7ABAEA45834BA4323C99ADF959D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9516206CD186673191827DF8902FA3EA /* Pods-Wallpaper App UIKit */,
+				5143F960CDA3EE06F933D31322204D3C /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */,
+				96211868E3DAEBD0AC9EFC6B3826FFCA /* Pods-Wallpaper App UIKitTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5143F960CDA3EE06F933D31322204D3C /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C4CC83A5F8287A6D022AD36E953C3F6B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.modulemap */,
+				05910E42916E4396D1484900CA6C47EA /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-acknowledgements.markdown */,
+				C48BEC7B31D4964CB536C31A67CEC9E4 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-acknowledgements.plist */,
+				950E9E697D7FCF84EADE078221419AEC /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-dummy.m */,
+				A8818AF123B574EC76B978477DCAD88D /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-Info.plist */,
+				2F02E39DB013949FEBCDD9E29B308B3C /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-umbrella.h */,
+				EACB35A071D5EF8F7A98136F23C698F8 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig */,
+				9FB656B7B8033FBF56F9486D99AED99B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */,
+			);
+			name = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests";
+			path = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		89792B1AAF71A8AF67193F868B5B1A20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DDC5EAE606A06825CAA76648DFC608C /* Pods-Wallpaper App UIKit */,
+				63CC1978F07E45194FE1903B21B8D297 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */,
+				22DA1E3F9E4FF51DE4BEAD2AE42F1B30 /* Pods-Wallpaper App UIKitTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9516206CD186673191827DF8902FA3EA /* Pods-Wallpaper App UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CF4D58C50E88006A0A7AFE87BC2B33F6 /* Pods-Wallpaper App UIKit.modulemap */,
+				B9F9B2C2D7E4317318301976D82DD8D5 /* Pods-Wallpaper App UIKit-acknowledgements.markdown */,
+				CD7E0FFE65C1EEA8012147C68949172C /* Pods-Wallpaper App UIKit-acknowledgements.plist */,
+				48465D8CF88AD46ECEA5381CEE0166A6 /* Pods-Wallpaper App UIKit-dummy.m */,
+				980E88EC61FB703271A883C964AC31AA /* Pods-Wallpaper App UIKit-Info.plist */,
+				0B5C11E378C1AD01A77DFC11E66356BB /* Pods-Wallpaper App UIKit-umbrella.h */,
+				A643B433F5B01594AFA35445E5BEE620 /* Pods-Wallpaper App UIKit.debug.xcconfig */,
+				958C9771B8AB485557DB785577B3A051 /* Pods-Wallpaper App UIKit.release.xcconfig */,
+			);
+			name = "Pods-Wallpaper App UIKit";
+			path = "Target Support Files/Pods-Wallpaper App UIKit";
+			sourceTree = "<group>";
+		};
+		96211868E3DAEBD0AC9EFC6B3826FFCA /* Pods-Wallpaper App UIKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				888FD5B8D897DD2CDA21EB31DA1C4118 /* Pods-Wallpaper App UIKitTests.modulemap */,
+				CC669AA3F1ED20A40908807046077CD1 /* Pods-Wallpaper App UIKitTests-acknowledgements.markdown */,
+				8DAB249096674B85FB4AE735B6B306C6 /* Pods-Wallpaper App UIKitTests-acknowledgements.plist */,
+				F49C4CEE8396A37AC130ED7FFB87F0C3 /* Pods-Wallpaper App UIKitTests-dummy.m */,
+				36F6361AEED4234EA8F5E055A0ABBF1F /* Pods-Wallpaper App UIKitTests-Info.plist */,
+				E5C4DEF4FCB2A466EA29A58FE36B3351 /* Pods-Wallpaper App UIKitTests-umbrella.h */,
+				FACF70BACF67244AB38507D3D0C8FC1B /* Pods-Wallpaper App UIKitTests.debug.xcconfig */,
+				27210CB535602754ECD4BC0422E6D974 /* Pods-Wallpaper App UIKitTests.release.xcconfig */,
+			);
+			name = "Pods-Wallpaper App UIKitTests";
+			path = "Target Support Files/Pods-Wallpaper App UIKitTests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				89792B1AAF71A8AF67193F868B5B1A20 /* Products */,
+				4091E7ABAEA45834BA4323C99ADF959D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1516C3FC9A90D8E1FF993068DFAC14CC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98702D4555BB02D4B7D7DED182C7C971 /* Pods-Wallpaper App UIKitTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		379CFF715FC654F05A923952A76FE8EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F817F2EF76086CB5ACD69453ABDEBB43 /* Pods-Wallpaper App UIKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE907E912957E628AFF57EF7048D2CD4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C23740281E968C56EB7AA0196D0F402B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		159DA55F7FF3B1E6C202A66417D77476 /* Pods-Wallpaper App UIKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37E9044D546B14EFEC492E058F782546 /* Build configuration list for PBXNativeTarget "Pods-Wallpaper App UIKitTests" */;
+			buildPhases = (
+				1516C3FC9A90D8E1FF993068DFAC14CC /* Headers */,
+				386F30E8E10E2E129B9DBF737622DC0F /* Sources */,
+				EE807028091EEA33CC7881BBF64ECA5E /* Frameworks */,
+				43854D69B5B30AF8094006EE3BF72051 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22F2440D929818288C5632B9D9F14702 /* PBXTargetDependency */,
+			);
+			name = "Pods-Wallpaper App UIKitTests";
+			productName = Pods_Wallpaper_App_UIKitTests;
+			productReference = 22DA1E3F9E4FF51DE4BEAD2AE42F1B30 /* Pods-Wallpaper App UIKitTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		1961CADA51F8846B4219217452540B9C /* Pods-Wallpaper App UIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CE0E0A8C8FF63D7524BD44983B76ECC /* Build configuration list for PBXNativeTarget "Pods-Wallpaper App UIKit" */;
+			buildPhases = (
+				379CFF715FC654F05A923952A76FE8EE /* Headers */,
+				D9E75C0D99A7056432996F49F7AE4B46 /* Sources */,
+				66E42A33E5BC110701895ED1A79E5AE8 /* Frameworks */,
+				956169D00E74074DEB33DEFF5F73E607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Wallpaper App UIKit";
+			productName = Pods_Wallpaper_App_UIKit;
+			productReference = 4DDC5EAE606A06825CAA76648DFC608C /* Pods-Wallpaper App UIKit */;
+			productType = "com.apple.product-type.framework";
+		};
+		C84056849C74AD7B41E8A84EE323B9A3 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0909783453AC5C6A23F24A7003D3C3D1 /* Build configuration list for PBXNativeTarget "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests" */;
+			buildPhases = (
+				DE907E912957E628AFF57EF7048D2CD4 /* Headers */,
+				6EB6E8F9525D701723F68DCF1226E39F /* Sources */,
+				98B8B70A070C5F96992EFE016FD80A17 /* Frameworks */,
+				28D4F43D5A74A549606F951C39EF0E0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests";
+			productName = Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests;
+			productReference = 63CC1978F07E45194FE1903B21B8D297 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 89792B1AAF71A8AF67193F868B5B1A20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1961CADA51F8846B4219217452540B9C /* Pods-Wallpaper App UIKit */,
+				C84056849C74AD7B41E8A84EE323B9A3 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests */,
+				159DA55F7FF3B1E6C202A66417D77476 /* Pods-Wallpaper App UIKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28D4F43D5A74A549606F951C39EF0E0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43854D69B5B30AF8094006EE3BF72051 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		956169D00E74074DEB33DEFF5F73E607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		386F30E8E10E2E129B9DBF737622DC0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74927FD2076A92B117BD79412A3D4A67 /* Pods-Wallpaper App UIKitTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EB6E8F9525D701723F68DCF1226E39F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EFA16901A1603EB156CF1EA871CBCF8 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9E75C0D99A7056432996F49F7AE4B46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEE940F2C27AA9FD34AD581E850B7D09 /* Pods-Wallpaper App UIKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22F2440D929818288C5632B9D9F14702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Wallpaper App UIKit";
+			target = 1961CADA51F8846B4219217452540B9C /* Pods-Wallpaper App UIKit */;
+			targetProxy = 610227A74012BE6AFC87C33A647C4FEA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		11F99C991A07203C706A94A045E7FD7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EACB35A071D5EF8F7A98136F23C698F8 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		21F45A2A41C736B5EEACAC954C5354FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FACF70BACF67244AB38507D3D0C8FC1B /* Pods-Wallpaper App UIKitTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6F8BCA535A0F930A341534FC956AF58B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27210CB535602754ECD4BC0422E6D974 /* Pods-Wallpaper App UIKitTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9553C89E183877A5CB2F3C6801BEC129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		AEDDC6D5DF598A7FBE9244A945F69FAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 958C9771B8AB485557DB785577B3A051 /* Pods-Wallpaper App UIKit.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E978EECF64910BDB9E16724E4EEC0DD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FB656B7B8033FBF56F9486D99AED99B /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED7CDA04900BF3B2995BAB00690E859E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A643B433F5B01594AFA35445E5BEE620 /* Pods-Wallpaper App UIKit.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0909783453AC5C6A23F24A7003D3C3D1 /* Build configuration list for PBXNativeTarget "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11F99C991A07203C706A94A045E7FD7E /* Debug */,
+				E978EECF64910BDB9E16724E4EEC0DD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37E9044D546B14EFEC492E058F782546 /* Build configuration list for PBXNativeTarget "Pods-Wallpaper App UIKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21F45A2A41C736B5EEACAC954C5354FF /* Debug */,
+				6F8BCA535A0F930A341534FC956AF58B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */,
+				9553C89E183877A5CB2F3C6801BEC129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CE0E0A8C8FF63D7524BD44983B76ECC /* Build configuration list for PBXNativeTarget "Pods-Wallpaper App UIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7CDA04900BF3B2995BAB00690E859E /* Debug */,
+				AEDDC6D5DF598A7FBE9244A945F69FAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

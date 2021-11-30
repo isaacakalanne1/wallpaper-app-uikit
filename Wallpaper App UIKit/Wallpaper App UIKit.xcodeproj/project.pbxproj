@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A7C200FE86DFE4D64D42740 /* Pods_Wallpaper_App_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD05A70964310E0DE5EC6C4A /* Pods_Wallpaper_App_UIKit.framework */; };
+		7F328DF0657B3B0F45357B03 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
 		BBB761D92756759500DF5B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* ViewController.swift */; };
@@ -16,6 +18,7 @@
 		BBB761EC2756759900DF5B70 /* Wallpaper_App_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761EB2756759900DF5B70 /* Wallpaper_App_UIKitTests.swift */; };
 		BBB761F62756759900DF5B70 /* Wallpaper_App_UIKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761F52756759900DF5B70 /* Wallpaper_App_UIKitUITests.swift */; };
 		BBB761F82756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761F72756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift */; };
+		ED9471DA47E0841E76525ED4 /* Pods_Wallpaper_App_UIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FBC250F40DDA7406F44C32 /* Pods_Wallpaper_App_UIKitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09FBC250F40DDA7406F44C32 /* Pods_Wallpaper_App_UIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallpaper_App_UIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2471929D2A26BF3E2E5A71D8 /* Pods-Wallpaper App UIKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKitTests.release.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		67A2EFFEC61C782F368FA659 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8462374D6FF990FB55E032F2 /* Pods-Wallpaper App UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKit.debug.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit.debug.xcconfig"; sourceTree = "<group>"; };
+		8D475C261338A96EF23F491B /* Pods-Wallpaper App UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKit.release.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit.release.xcconfig"; sourceTree = "<group>"; };
+		AD05A70964310E0DE5EC6C4A /* Pods_Wallpaper_App_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallpaper_App_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B46C3C5C7A6B128F5FE38197 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		BBB761F12756759900DF5B70 /* Wallpaper App UIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wallpaper App UIKitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761F52756759900DF5B70 /* Wallpaper_App_UIKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper_App_UIKitUITests.swift; sourceTree = "<group>"; };
 		BBB761F72756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper_App_UIKitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D36DB5ADB9B8919B3C3B6A30 /* Pods-Wallpaper App UIKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKitTests.debug.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7C200FE86DFE4D64D42740 /* Pods_Wallpaper_App_UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED9471DA47E0841E76525ED4 /* Pods_Wallpaper_App_UIKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F328DF0657B3B0F45357B03 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A43AC08D6EEC495900CCBF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8462374D6FF990FB55E032F2 /* Pods-Wallpaper App UIKit.debug.xcconfig */,
+				8D475C261338A96EF23F491B /* Pods-Wallpaper App UIKit.release.xcconfig */,
+				67A2EFFEC61C782F368FA659 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig */,
+				B46C3C5C7A6B128F5FE38197 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */,
+				D36DB5ADB9B8919B3C3B6A30 /* Pods-Wallpaper App UIKitTests.debug.xcconfig */,
+				2471929D2A26BF3E2E5A71D8 /* Pods-Wallpaper App UIKitTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A946F0FC5EDF2E3076514D91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD05A70964310E0DE5EC6C4A /* Pods_Wallpaper_App_UIKit.framework */,
+				D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */,
+				09FBC250F40DDA7406F44C32 /* Pods_Wallpaper_App_UIKitTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BBB761C82756759500DF5B70 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +122,8 @@
 				BBB761EA2756759900DF5B70 /* Wallpaper App UIKitTests */,
 				BBB761F42756759900DF5B70 /* Wallpaper App UIKitUITests */,
 				BBB761D22756759500DF5B70 /* Products */,
+				5A43AC08D6EEC495900CCBF1 /* Pods */,
+				A946F0FC5EDF2E3076514D91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +175,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBB761FB2756759900DF5B70 /* Build configuration list for PBXNativeTarget "Wallpaper App UIKit" */;
 			buildPhases = (
+				C7072663AD336BE41B8F055A /* [CP] Check Pods Manifest.lock */,
 				BBB761CD2756759500DF5B70 /* Sources */,
 				BBB761CE2756759500DF5B70 /* Frameworks */,
 				BBB761CF2756759500DF5B70 /* Resources */,
@@ -151,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBB761FE2756759900DF5B70 /* Build configuration list for PBXNativeTarget "Wallpaper App UIKitTests" */;
 			buildPhases = (
+				C00978B0E85CC1DDA4CEE41B /* [CP] Check Pods Manifest.lock */,
 				BBB761E32756759900DF5B70 /* Sources */,
 				BBB761E42756759900DF5B70 /* Frameworks */,
 				BBB761E52756759900DF5B70 /* Resources */,
@@ -169,6 +212,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBB762012756759900DF5B70 /* Build configuration list for PBXNativeTarget "Wallpaper App UIKitUITests" */;
 			buildPhases = (
+				85A250704B817AE8F0C3C671 /* [CP] Check Pods Manifest.lock */,
 				BBB761ED2756759900DF5B70 /* Sources */,
 				BBB761EE2756759900DF5B70 /* Frameworks */,
 				BBB761EF2756759900DF5B70 /* Resources */,
@@ -252,6 +296,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85A250704B817AE8F0C3C671 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C00978B0E85CC1DDA4CEE41B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wallpaper App UIKitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7072663AD336BE41B8F055A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wallpaper App UIKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BBB761CD2756759500DF5B70 /* Sources */ = {
@@ -434,6 +547,7 @@
 		};
 		BBB761FC2756759900DF5B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8462374D6FF990FB55E032F2 /* Pods-Wallpaper App UIKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -461,6 +575,7 @@
 		};
 		BBB761FD2756759900DF5B70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D475C261338A96EF23F491B /* Pods-Wallpaper App UIKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,6 +603,7 @@
 		};
 		BBB761FF2756759900DF5B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D36DB5ADB9B8919B3C3B6A30 /* Pods-Wallpaper App UIKitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +628,7 @@
 		};
 		BBB762002756759900DF5B70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2471929D2A26BF3E2E5A71D8 /* Pods-Wallpaper App UIKitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -536,6 +653,7 @@
 		};
 		BBB762022756759900DF5B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67A2EFFEC61C782F368FA659 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -558,6 +676,7 @@
 		};
 		BBB762032756759900DF5B70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B46C3C5C7A6B128F5FE38197 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

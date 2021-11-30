@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests : NSObject
+@end
+@implementation PodsDummy_Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests
+@end
