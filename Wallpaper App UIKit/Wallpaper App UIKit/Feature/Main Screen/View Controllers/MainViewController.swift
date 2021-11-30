@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     
     let downloadButton = Button(style: .primary, title: "Download")
     let menuButton = Button(style: .secondary, image: UIImage(systemName: "circle.hexagonpath")!)
+    
+    let filterNavigatorView = FilterNavigatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class MainViewController: UIViewController {
         
         view.addSubview(downloadButton)
         view.addSubview(menuButton)
+        view.addSubview(filterNavigatorView)
         
         NSLayoutConstraint.activate([
             menuButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
@@ -33,8 +36,18 @@ class MainViewController: UIViewController {
             downloadButton.heightAnchor.constraint(equalToConstant: 60),
             downloadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margin),
             
+            filterNavigatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            filterNavigatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            filterNavigatorView.heightAnchor.constraint(equalToConstant: 60),
+            filterNavigatorView.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: -margin - 10),
             
         ])
+        
+//        let vc = FilterNavigatorViewController()
+//        vc.view.frame = filterNavigatorView.bounds
+//        self.addChild(vc)
+//        filterNavigatorView.addSubview(vc.view)
+//        vc.didMove(toParent: self)
     }
 
 
