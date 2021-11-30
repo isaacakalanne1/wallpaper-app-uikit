@@ -17,6 +17,7 @@
 		BBB761EC2756759900DF5B70 /* Wallpaper_App_UIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761EB2756759900DF5B70 /* Wallpaper_App_UIKitTests.swift */; };
 		BBB761F62756759900DF5B70 /* Wallpaper_App_UIKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761F52756759900DF5B70 /* Wallpaper_App_UIKitUITests.swift */; };
 		BBB761F82756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761F72756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift */; };
+		BBB7620B27567B3600DF5B70 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB7620A27567B3600DF5B70 /* Color.swift */; };
 		ED9471DA47E0841E76525ED4 /* Pods_Wallpaper_App_UIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FBC250F40DDA7406F44C32 /* Pods_Wallpaper_App_UIKitTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		BBB761F12756759900DF5B70 /* Wallpaper App UIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wallpaper App UIKitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761F52756759900DF5B70 /* Wallpaper_App_UIKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper_App_UIKitUITests.swift; sourceTree = "<group>"; };
 		BBB761F72756759900DF5B70 /* Wallpaper_App_UIKitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper_App_UIKitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BBB7620A27567B3600DF5B70 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D36DB5ADB9B8919B3C3B6A30 /* Pods-Wallpaper App UIKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKitTests.debug.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKitTests/Pods-Wallpaper App UIKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 			children = (
 				BBB761D42756759500DF5B70 /* AppDelegate.swift */,
 				BBB761D62756759500DF5B70 /* SceneDelegate.swift */,
+				BBB7620927567B2A00DF5B70 /* Constants */,
 				BBB76204275679C500DF5B70 /* Feature */,
 				BBB761DD2756759900DF5B70 /* Assets.xcassets */,
 				BBB761DF2756759900DF5B70 /* LaunchScreen.storyboard */,
@@ -202,6 +205,14 @@
 			children = (
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BBB7620927567B2A00DF5B70 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BBB7620A27567B3600DF5B70 /* Color.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */,
+				BBB7620B27567B3600DF5B70 /* Color.swift in Sources */,
 				BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */,
 				BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */,
 			);
