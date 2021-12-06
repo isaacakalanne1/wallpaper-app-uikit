@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2A7C200FE86DFE4D64D42740 /* Pods_Wallpaper_App_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD05A70964310E0DE5EC6C4A /* Pods_Wallpaper_App_UIKit.framework */; };
 		7F328DF0657B3B0F45357B03 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */; };
+		BB39589A275E2B7E0049E0E2 /* ImgurAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB395899275E2B7E0049E0E2 /* ImgurAPI.swift */; };
+		BB39589F275E2CBB0049E0E2 /* ImgurAlbumData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39589E275E2CBB0049E0E2 /* ImgurAlbumData.swift */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
 		BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* MainViewController.swift */; };
@@ -50,6 +52,8 @@
 		8D475C261338A96EF23F491B /* Pods-Wallpaper App UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKit.release.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit.release.xcconfig"; sourceTree = "<group>"; };
 		AD05A70964310E0DE5EC6C4A /* Pods_Wallpaper_App_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallpaper_App_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46C3C5C7A6B128F5FE38197 /* Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB395899275E2B7E0049E0E2 /* ImgurAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurAPI.swift; sourceTree = "<group>"; };
+		BB39589E275E2CBB0049E0E2 /* ImgurAlbumData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurAlbumData.swift; sourceTree = "<group>"; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB395898275E25F70049E0E2 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB395899275E2B7E0049E0E2 /* ImgurAPI.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		BB39589D275E2CA60049E0E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB39589E275E2CBB0049E0E2 /* ImgurAlbumData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BBB761C82756759500DF5B70 = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +207,9 @@
 		BBB76205275679CD00DF5B70 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				BB39589D275E2CA60049E0E2 /* Models */,
 				BBB7620727567A0E00DF5B70 /* Views */,
-				BBB7620827567A1800DF5B70 /* Controllers */,
+				BB395898275E25F70049E0E2 /* View Models */,
 				BBB7620627567A0800DF5B70 /* View Controllers */,
 			);
 			path = "Main Screen";
@@ -209,13 +230,6 @@
 				BBB762162756890300DF5B70 /* Slider.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BBB7620827567A1800DF5B70 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		BBB7620927567B2A00DF5B70 /* Constants */ = {
@@ -468,6 +482,8 @@
 				BBB7620B27567B3600DF5B70 /* Color.swift in Sources */,
 				BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */,
 				BBB76213275684A400DF5B70 /* FilterNavigatorView.swift in Sources */,
+				BB39589F275E2CBB0049E0E2 /* ImgurAlbumData.swift in Sources */,
+				BB39589A275E2B7E0049E0E2 /* ImgurAPI.swift in Sources */,
 				BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
