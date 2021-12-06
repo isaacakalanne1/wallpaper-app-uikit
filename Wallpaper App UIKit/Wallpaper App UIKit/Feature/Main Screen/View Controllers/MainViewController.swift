@@ -21,10 +21,10 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-    let mainButtonContainer = MainButtonContainer()
-    
-    let filterNavigatorView = FilterNavigatorView()
+    let wallpaperView = UIImageView()
     let slider = Slider()
+    let filterNavigatorView = FilterNavigatorView()
+    let mainButtonContainer = MainButtonContainer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,10 @@ class MainViewController: UIViewController {
         
         insert(FilterNavigatorViewController(), into: filterNavigatorView)
         
+        wallpaperView.translatesAutoresizingMaskIntoConstraints = false
+        wallpaperView.backgroundColor = .systemYellow
+        
+        stackView.addArrangedSubview(wallpaperView)
         stackView.addArrangedSubview(slider)
         stackView.addArrangedSubview(filterNavigatorView)
         stackView.addArrangedSubview(mainButtonContainer)
@@ -43,9 +47,15 @@ class MainViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2*margin),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: margin),
+            
+            wallpaperView.heightAnchor.constraint(equalToConstant: 100),
+            wallpaperView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            wallpaperView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
             slider.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
             slider.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
+            slider.heightAnchor.constraint(equalToConstant: 30),
             
             filterNavigatorView.heightAnchor.constraint(equalToConstant: viewHeight),
             filterNavigatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
