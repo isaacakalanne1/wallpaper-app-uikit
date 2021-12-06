@@ -13,7 +13,7 @@ class Button: UIButton {
         self.init(style: style)
         
         setTitle(title, for: .normal)
-        setTitleColor(Color.primary, for: .normal)
+        setTitleColor(style.titleColor, for: .normal)
     }
     
     convenience init(style: Button.Style, image: UIImage) {
@@ -57,6 +57,15 @@ extension Button {
                 return 0
             case .secondary:
                 return 3
+            }
+        }
+        
+        var titleColor: UIColor {
+            switch self {
+            case .primary:
+                return Color.primary
+            case .secondary:
+                return Color.accent
             }
         }
     }

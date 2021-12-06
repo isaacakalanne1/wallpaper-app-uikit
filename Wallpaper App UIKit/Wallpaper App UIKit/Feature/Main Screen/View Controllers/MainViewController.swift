@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
     
     private let margin: CGFloat = 10
     private let viewHeight:  CGFloat = 60
+    private let smallViewHeight:  CGFloat = 30
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -22,6 +23,7 @@ class MainViewController: UIViewController {
     }()
     
     let wallpaperView = UIImageView()
+    let secondaryButtonContainer = SecondaryButtonContainer()
     let slider = Slider()
     let filterNavigatorView = FilterNavigatorView()
     let mainButtonContainer = MainButtonContainer()
@@ -37,6 +39,7 @@ class MainViewController: UIViewController {
         wallpaperView.backgroundColor = .systemYellow
         
         stackView.addArrangedSubview(wallpaperView)
+        stackView.addArrangedSubview(secondaryButtonContainer)
         stackView.addArrangedSubview(slider)
         stackView.addArrangedSubview(filterNavigatorView)
         stackView.addArrangedSubview(mainButtonContainer)
@@ -49,13 +52,16 @@ class MainViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2*margin),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: margin),
             
-            wallpaperView.heightAnchor.constraint(equalToConstant: 100),
             wallpaperView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             wallpaperView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
+            secondaryButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            secondaryButtonContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            secondaryButtonContainer.heightAnchor.constraint(equalToConstant: 45),
+            
             slider.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
             slider.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
-            slider.heightAnchor.constraint(equalToConstant: 30),
+            slider.heightAnchor.constraint(equalToConstant: smallViewHeight),
             
             filterNavigatorView.heightAnchor.constraint(equalToConstant: viewHeight),
             filterNavigatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
