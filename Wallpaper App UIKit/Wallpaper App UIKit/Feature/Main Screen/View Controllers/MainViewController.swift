@@ -50,8 +50,8 @@ class MainViewController: UIViewController {
             downloadButton.heightAnchor.constraint(equalToConstant: 60),
             downloadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margin),
             
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
             stackView.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: -margin - 5),
             
             filterNavigatorView.heightAnchor.constraint(equalToConstant: 60)
