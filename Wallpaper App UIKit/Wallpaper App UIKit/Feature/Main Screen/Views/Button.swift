@@ -27,7 +27,7 @@ class Button: UIButton {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 15
+        layer.cornerRadius = 12
         backgroundColor = style.backgroundColor
         layer.borderColor = Color.accent.cgColor
         layer.borderWidth = style.borderWidth
