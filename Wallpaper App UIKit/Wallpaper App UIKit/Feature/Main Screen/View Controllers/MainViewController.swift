@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
             slider.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
             slider.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
             
-            filterNavigatorView.heightAnchor.constraint(equalToConstant: 80),
+            filterNavigatorView.heightAnchor.constraint(equalToConstant: 90),
             filterNavigatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             filterNavigatorView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
