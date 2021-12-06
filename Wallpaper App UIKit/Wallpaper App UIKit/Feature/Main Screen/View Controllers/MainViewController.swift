@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = margin
+        stackView.alignment = .leading
         return stackView
     }()
     
@@ -39,12 +40,20 @@ class MainViewController: UIViewController {
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2*margin),
             
+            slider.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
+            slider.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
+            
             filterNavigatorView.heightAnchor.constraint(equalToConstant: viewHeight),
-            mainButtonContainer.heightAnchor.constraint(equalToConstant: viewHeight)
+            filterNavigatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            filterNavigatorView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            
+            mainButtonContainer.heightAnchor.constraint(equalToConstant: viewHeight),
+            mainButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
+            mainButtonContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
     }
 
