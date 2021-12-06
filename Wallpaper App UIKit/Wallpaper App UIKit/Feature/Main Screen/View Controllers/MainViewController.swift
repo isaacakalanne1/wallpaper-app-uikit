@@ -10,8 +10,6 @@ import UIKit
 class MainViewController: UIViewController {
     
     private let margin: CGFloat = 10
-    private let viewHeight:  CGFloat = 60
-    private let smallViewHeight:  CGFloat = 30
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -49,25 +47,25 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2*margin),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -margin),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: margin),
             
             wallpaperView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             wallpaperView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
+            secondaryButtonContainer.heightAnchor.constraint(equalToConstant: 45),
             secondaryButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             secondaryButtonContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            secondaryButtonContainer.heightAnchor.constraint(equalToConstant: 45),
             
+            slider.heightAnchor.constraint(equalToConstant: 30),
             slider.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
             slider.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
-            slider.heightAnchor.constraint(equalToConstant: smallViewHeight),
             
-            filterNavigatorView.heightAnchor.constraint(equalToConstant: viewHeight),
+            filterNavigatorView.heightAnchor.constraint(equalToConstant: 80),
             filterNavigatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             filterNavigatorView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
-            mainButtonContainer.heightAnchor.constraint(equalToConstant: viewHeight),
+            mainButtonContainer.heightAnchor.constraint(equalToConstant: 60),
             mainButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
             mainButtonContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])

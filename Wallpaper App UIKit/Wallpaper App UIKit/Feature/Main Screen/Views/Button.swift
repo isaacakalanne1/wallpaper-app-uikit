@@ -14,6 +14,7 @@ class Button: UIButton {
         
         setTitle(title, for: .normal)
         setTitleColor(style.titleColor, for: .normal)
+        titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
     }
     
     convenience init(style: Button.Style, image: UIImage) {
