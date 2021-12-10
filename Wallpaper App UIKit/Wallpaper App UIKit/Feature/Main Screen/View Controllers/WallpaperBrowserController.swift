@@ -12,8 +12,8 @@ class WallpaperBrowserController: UIPageViewController {
     var listOfVCs: [UIViewController] = []
     var currentIndex: Int = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init() {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
         let vc = UIViewController()
         vc.view.backgroundColor = .systemOrange
@@ -22,8 +22,9 @@ class WallpaperBrowserController: UIPageViewController {
         delegate = self
         
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
-        
     }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
 }
 
@@ -44,6 +45,5 @@ extension WallpaperBrowserController: UIPageViewControllerDataSource {
         vc.view.backgroundColor = .systemBlue
         return vc
     }
-    
     
 }

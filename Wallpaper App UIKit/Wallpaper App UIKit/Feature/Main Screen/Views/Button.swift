@@ -57,7 +57,7 @@ extension Button {
             case .primary:
                 return 0
             case .secondary:
-                return 3
+                return 2
             }
         }
         

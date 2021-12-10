@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         filterNavigatorView.translatesAutoresizingMaskIntoConstraints = false
         
         insert(FilterNavigatorViewController(), into: filterNavigatorView)
-        insert(WallpaperBrowserController(transitionStyle: .scroll, navigationOrientation: .horizontal), into: wallpaperBrowserView)
+        insert(WallpaperBrowserController(), into: wallpaperBrowserView)
         
         stackView.addArrangedSubview(wallpaperBrowserView)
         stackView.addArrangedSubview(secondaryButtonContainer)
