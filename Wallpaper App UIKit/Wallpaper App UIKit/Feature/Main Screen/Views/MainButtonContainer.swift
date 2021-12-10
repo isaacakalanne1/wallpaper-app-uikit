@@ -10,7 +10,7 @@ import UIKit
 class MainButtonContainer: UIView {
     
     let downloadButton = Button(style: .primary, title: "Download")
-    let menuButton = Button(style: .secondary, image: UIImage(systemName: "circle.hexagonpath")!)
+    let menuButton = Button(style: .secondary, image: UIImage(systemName: "line.3.horizontal")!)
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

@@ -20,10 +20,10 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-    let wallpaperView = UIImageView()
+    let wallpaperBrowserView = UIView()
     let secondaryButtonContainer = SecondaryButtonContainer()
     let slider = Slider()
-    let filterNavigatorView = FilterNavigatorView()
+    let filterNavigatorView = UIView()
     let mainButtonContainer = MainButtonContainer()
 
     override func viewDidLoad() {
@@ -31,12 +31,13 @@ class MainViewController: UIViewController {
         
         view.backgroundColor = Color.primary
         
+        wallpaperBrowserView.translatesAutoresizingMaskIntoConstraints = false
+        filterNavigatorView.translatesAutoresizingMaskIntoConstraints = false
+        
         insert(FilterNavigatorViewController(), into: filterNavigatorView)
+        insert(WallpaperBrowserController(transitionStyle: .scroll, navigationOrientation: .horizontal), into: wallpaperBrowserView)
         
-        wallpaperView.translatesAutoresizingMaskIntoConstraints = false
-        wallpaperView.backgroundColor = .systemYellow
-        
-        stackView.addArrangedSubview(wallpaperView)
+        stackView.addArrangedSubview(wallpaperBrowserView)
         stackView.addArrangedSubview(secondaryButtonContainer)
         stackView.addArrangedSubview(slider)
         stackView.addArrangedSubview(filterNavigatorView)
@@ -50,8 +51,8 @@ class MainViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -margin),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: margin),
             
-            wallpaperView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            wallpaperView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            wallpaperBrowserView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            wallpaperBrowserView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
             secondaryButtonContainer.heightAnchor.constraint(equalToConstant: 45),
             secondaryButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
