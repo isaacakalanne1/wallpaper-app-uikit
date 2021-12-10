@@ -14,6 +14,7 @@
 		BB3958A1275E30470049E0E2 /* MainButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A0275E30470049E0E2 /* MainButtonContainer.swift */; };
 		BB3958A3275E54E10049E0E2 /* SecondaryButtonContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A2275E54E10049E0E2 /* SecondaryButtonContainer.swift */; };
 		BB3958A5276359190049E0E2 /* WallpaperBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A4276359190049E0E2 /* WallpaperBrowserController.swift */; };
+		BB3958A7276376890049E0E2 /* WallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A6276376890049E0E2 /* WallpaperViewController.swift */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
 		BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* MainViewController.swift */; };
@@ -59,6 +60,7 @@
 		BB3958A0275E30470049E0E2 /* MainButtonContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonContainer.swift; sourceTree = "<group>"; };
 		BB3958A2275E54E10049E0E2 /* SecondaryButtonContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonContainer.swift; sourceTree = "<group>"; };
 		BB3958A4276359190049E0E2 /* WallpaperBrowserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperBrowserController.swift; sourceTree = "<group>"; };
+		BB3958A6276376890049E0E2 /* WallpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperViewController.swift; sourceTree = "<group>"; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				BBB761D82756759500DF5B70 /* MainViewController.swift */,
 				BB3958A4276359190049E0E2 /* WallpaperBrowserController.swift */,
+				BB3958A6276376890049E0E2 /* WallpaperViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				BB39589F275E2CBB0049E0E2 /* ImgurAlbumData.swift in Sources */,
 				BB39589A275E2B7E0049E0E2 /* ImgurAPI.swift in Sources */,
 				BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */,
+				BB3958A7276376890049E0E2 /* WallpaperViewController.swift in Sources */,
 				BB3958A5276359190049E0E2 /* WallpaperBrowserController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
