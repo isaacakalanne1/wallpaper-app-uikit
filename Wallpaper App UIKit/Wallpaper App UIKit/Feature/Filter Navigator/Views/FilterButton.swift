@@ -20,9 +20,10 @@ class FilterButton: UIButton {
         configuration?.title = filter.type.title
         configuration?.image = image
         
-        imageView?.layer.cornerCurve = .continuous
-        imageView?.layer.borderWidth = borderWidth
         imageView?.layer.cornerRadius = cornerRadius
+        imageView?.layer.cornerCurve = .continuous
+        
+        imageView?.layer.borderWidth = borderWidth
         imageView?.layer.borderColor = Color.accent.cgColor
     }
     
