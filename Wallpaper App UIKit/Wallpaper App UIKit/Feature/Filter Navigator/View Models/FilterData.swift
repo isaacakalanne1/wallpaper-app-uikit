@@ -9,13 +9,13 @@ import Foundation
 
 struct FilterData {
     
-    static let listOfFilters: [Filter] = {
-        var _listOfFilters: [Filter] = []
+    static let allFilters: [Filter] = {
+        var listOfFilters: [Filter] = []
         
         FilterType.allCases.forEach { type in
-            _listOfFilters.append(Filter(type: type, isPreviewing: false))
+            listOfFilters.append(Filter(type: type, isPreviewing: false))
         }
         
-        return _listOfFilters
+        return listOfFilters
     }()
 }

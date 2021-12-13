@@ -10,6 +10,7 @@ import UIKit
 class FilterBrowserViewController: UIViewController {
     
     let margin: CGFloat = 10
+    var filters = FilterData.allFilters
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -24,6 +25,9 @@ class FilterBrowserViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(stackView)
+        filters.forEach { filter in
+            stackView.addArrangedSubview(UIView())
+        }
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
