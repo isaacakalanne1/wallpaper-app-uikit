@@ -18,6 +18,9 @@ class FilterButton: UIButton {
         configuration?.image = image
         
         imageView?.layer.cornerCurve = .continuous
+        imageView?.layer.borderWidth = Button.Style.secondary.borderWidth
+        imageView?.layer.cornerRadius = Button.Style.secondary.cornerRadius
+        imageView?.layer.borderColor = Color.accent.cgColor
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }

@@ -28,7 +28,7 @@ class Button: UIButton {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 12
+        layer.cornerRadius = style.cornerRadius
         backgroundColor = style.backgroundColor
         layer.borderColor = Color.accent.cgColor
         layer.borderWidth = style.borderWidth
@@ -68,6 +68,10 @@ extension Button {
             case .secondary:
                 return Color.accent
             }
+        }
+        
+        var cornerRadius: CGFloat {
+            return 12
         }
     }
     
