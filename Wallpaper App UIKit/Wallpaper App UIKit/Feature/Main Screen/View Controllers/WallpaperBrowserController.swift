@@ -46,8 +46,12 @@ class WallpaperBrowserController: UIPageViewController {
                 
                 DispatchQueue.main.async {
                     self?.spinner.isHidden = true
-                    let firstLink = data.links[0]
-                    self?.setViewControllers([WallpaperViewController(link: firstLink)], direction: .forward, animated: true, completion: nil)
+                    data.links.forEach { link in
+                        self?.listOfVCs.append(WallpaperViewController(link: link))
+                    }
+                    if let vc = self?.listOfVCs[0] {
+                        self?.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+                    }
                 }
             case .failure(let error):
                 print("Failed! Error is \(error)")
@@ -66,15 +70,23 @@ extension WallpaperBrowserController: UIPageViewControllerDelegate {
 extension WallpaperBrowserController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemGray
-        return vc
+        guard let indexOfCurrentVC = listOfVCs.firstIndex(of: viewController) else { return nil }
+        
+        if indexOfCurrentVC == 0 {
+            return listOfVCs[listOfVCs.count - 1]
+        } else {
+            return listOfVCs[indexOfCurrentVC - 1]
+        }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
-        return vc
+        guard let indexOfCurrentVC = listOfVCs.firstIndex(of: viewController) else { return nil }
+        
+        if indexOfCurrentVC == listOfVCs.count - 1 {
+            return listOfVCs[0]
+        } else {
+            return listOfVCs[indexOfCurrentVC + 1]
+        }
     }
     
 }

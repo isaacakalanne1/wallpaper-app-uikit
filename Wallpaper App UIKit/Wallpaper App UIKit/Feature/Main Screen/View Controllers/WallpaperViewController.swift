@@ -25,7 +25,11 @@ class WallpaperViewController: UIViewController {
         return imageView
     }()
     
+    let link: String
+    
     init(link: String) {
+        self.link = link
+        
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(spinner)
@@ -44,6 +48,12 @@ class WallpaperViewController: UIViewController {
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         imgurApi.downloadImage(from: link) { [weak self] result in
             switch result {
@@ -57,7 +67,5 @@ class WallpaperViewController: UIViewController {
             }
         }
     }
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
 }
