@@ -11,15 +11,18 @@ class FilterButton: UIButton {
     
     let margin: CGFloat = 5
     
-    init(filter: Filter, image: UIImage) {
+    init(filter: Filter, image: UIImage, isSelected: Bool = false) {
         super.init(frame: .zero)
+        
+        let borderWidth = isSelected ? Button.Style.secondary.borderWidth : 0
+        let cornerRadius = Button.Style.secondary.cornerRadius
         
         configuration?.title = filter.type.title
         configuration?.image = image
         
         imageView?.layer.cornerCurve = .continuous
-        imageView?.layer.borderWidth = Button.Style.secondary.borderWidth
-        imageView?.layer.cornerRadius = Button.Style.secondary.cornerRadius
+        imageView?.layer.borderWidth = borderWidth
+        imageView?.layer.cornerRadius = cornerRadius
         imageView?.layer.borderColor = Color.accent.cgColor
     }
     
