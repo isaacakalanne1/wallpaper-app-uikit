@@ -30,7 +30,7 @@ class FilterButton: UIButton {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textAlignment = .center
-        label.textColor = Color.accent
+        label.textColor = .systemGray
         return label
     }()
     
@@ -42,6 +42,11 @@ class FilterButton: UIButton {
         
         filterImageView.image = image
         filterTitleLabel.text = filter.type.title
+        
+        if isSelected {
+            filterTitleLabel.textColor = Color.accent
+            filterImageView.layer.borderColor = Color.accent.cgColor
+        }
         
         addSubview(filterImageView)
         addSubview(filterTitleLabel)

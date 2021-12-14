@@ -35,7 +35,7 @@ class FilterBrowserViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         filters.forEach { filter in
-            let button = FilterButton(filter: filter, image: self.wallpaper)
+            let button = FilterButton(filter: filter, image: self.wallpaper, isSelected: filter.type == ._super)
             stackView.addArrangedSubview(button)
             NSLayoutConstraint.activate([
                 button.widthAnchor.constraint(equalToConstant: 70),
