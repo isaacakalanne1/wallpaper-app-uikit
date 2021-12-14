@@ -28,10 +28,10 @@ class Button: UIButton {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = style.cornerRadius
+        layer.cornerRadius = Button.cornerRadius
         backgroundColor = style.backgroundColor
-        layer.borderColor = Color.accent.cgColor
-        layer.borderWidth = style.borderWidth
+        layer.borderColor = Button.borderColor.cgColor
+        layer.borderWidth = Button.borderWidth
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -39,6 +39,18 @@ class Button: UIButton {
 }
 
 extension Button {
+    
+    static var borderWidth: CGFloat {
+        return 3
+    }
+    
+    static var borderColor: UIColor {
+        return Color.accent
+    }
+    
+    static var cornerRadius: CGFloat {
+        return 12
+    }
     
     enum Style {
         case primary, secondary
@@ -52,15 +64,6 @@ extension Button {
             }
         }
         
-        var borderWidth: CGFloat {
-            switch self {
-            case .primary:
-                return 0
-            case .secondary:
-                return 3
-            }
-        }
-        
         var titleColor: UIColor {
             switch self {
             case .primary:
@@ -68,10 +71,6 @@ extension Button {
             case .secondary:
                 return Color.accent
             }
-        }
-        
-        var cornerRadius: CGFloat {
-            return 12
         }
     }
     

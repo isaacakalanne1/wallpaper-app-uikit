@@ -17,11 +17,9 @@ class FilterButton: UIButton {
         imageView.layer.borderColor = UIColor.clear.cgColor
         imageView.clipsToBounds = true
         
-        let borderWidth = Button.Style.secondary.borderWidth
-        imageView.layer.borderWidth = borderWidth
+        imageView.layer.borderWidth = Button.borderWidth
         
-        let cornerRadius = Button.Style.secondary.cornerRadius
-        imageView.layer.cornerRadius = cornerRadius
+        imageView.layer.cornerRadius = Button.cornerRadius
         
         return imageView
     }()
@@ -45,7 +43,7 @@ class FilterButton: UIButton {
         
         if isSelected {
             filterTitleLabel.textColor = Color.accent
-            filterImageView.layer.borderColor = Color.accent.cgColor
+            filterImageView.layer.borderColor = Button.borderColor.cgColor
         }
         
         addSubview(filterImageView)
