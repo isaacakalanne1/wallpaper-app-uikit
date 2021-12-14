@@ -23,7 +23,10 @@ class WallpaperBrowserController: UIPageViewController {
     var listOfURLs: [String] = []
     let imgurApi = ImgurAPI()
     
-    init() {
+    let wallpaperDelegate: WallpaperDelegate?
+    
+    init(wallpaperDelegate: WallpaperDelegate? = nil) {
+        self.wallpaperDelegate = wallpaperDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
         let vc = UIViewController()
@@ -47,7 +50,7 @@ class WallpaperBrowserController: UIPageViewController {
                 DispatchQueue.main.async {
                     self?.spinner.isHidden = true
                     data.links.forEach { link in
-                        self?.listOfVCs.append(WallpaperViewController(link: link))
+                        self?.listOfVCs.append(WallpaperViewController(link: link, delegate: self))
                     }
                     if let vc = self?.listOfVCs[0] {
                         self?.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
@@ -61,6 +64,16 @@ class WallpaperBrowserController: UIPageViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+}
+
+extension WallpaperBrowserController: WallpaperDelegate {
+    func didChange(wallpaper: UIImage) {
+        wallpaperDelegate?.didChange(wallpaper: wallpaper)
+    }
+    
+    func didApply(filter: Filter) {
+        
+    }
 }
 
 extension WallpaperBrowserController: UIPageViewControllerDelegate {

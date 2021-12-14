@@ -21,12 +21,15 @@ class FilterBrowserViewController: UIViewController {
         return stackView
     }()
     
+    var wallpaper: UIImage?
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(stackView)
         filters.forEach { filter in
-            stackView.addArrangedSubview(UIView())
+            let button = FilterButton(filter: filter, image: self.wallpaper)
+            stackView.addArrangedSubview(button)
         }
         
         NSLayoutConstraint.activate([
@@ -39,4 +42,11 @@ class FilterBrowserViewController: UIViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    func updateWallpaper(_ wallpaper: UIImage) {
+        stackView.arrangedSubviews.forEach { view in
+            if let button = view as? FilterButton {
+                button.updateWallpaper(wallpaper)
+            }
+        }
+    }
 }

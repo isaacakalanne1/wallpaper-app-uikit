@@ -7,24 +7,35 @@
 
 import UIKit
 
+protocol WallpaperDelegate: AnyObject {
+    func didChange(wallpaper: UIImage)
+    func didApply(filter: Filter)
+}
+
 class FilterNavigatorViewController: UIPageViewController {
+    
+    let filterBrowserVC = FilterBrowserViewController()
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .vertical, options: nil)
         
         view.backgroundColor = Color.secondary
         
-        let vc = UIViewController()
+        let vc = FilterBrowserViewController()
         vc.view.backgroundColor = .systemOrange
         
         dataSource = self
         delegate = self
         
-        setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+        setViewControllers([filterBrowserVC], direction: .forward, animated: true, completion: nil)
         
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    func updateWallpaper(_ wallpaper: UIImage) {
+        filterBrowserVC.updateWallpaper(wallpaper)
+    }
     
 }
 

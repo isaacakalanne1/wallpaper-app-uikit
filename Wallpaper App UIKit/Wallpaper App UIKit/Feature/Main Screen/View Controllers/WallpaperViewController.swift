@@ -26,9 +26,11 @@ class WallpaperViewController: UIViewController {
     }()
     
     let link: String
+    let delegate: WallpaperDelegate?
     
-    init(link: String) {
+    init(link: String, delegate: WallpaperDelegate? = nil) {
         self.link = link
+        self.delegate = delegate
         
         super.init(nibName: nil, bundle: nil)
         
@@ -59,6 +61,7 @@ class WallpaperViewController: UIViewController {
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
+                    self?.delegate?.didChange(wallpaper: image)
                     self?.imageView.image = image
                     self?.spinner.isHidden = true
                 }
