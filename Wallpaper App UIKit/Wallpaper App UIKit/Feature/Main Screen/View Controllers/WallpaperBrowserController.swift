@@ -20,7 +20,6 @@ class WallpaperBrowserController: UIPageViewController {
     var listOfVCs: [UIViewController] = []
     var currentIndex: Int = 0
     
-    var listOfURLs: [String] = []
     let imgurApi = ImgurAPI()
     
     let wallpaperDelegate: WallpaperDelegate?
@@ -42,13 +41,14 @@ class WallpaperBrowserController: UIPageViewController {
         imgurApi.downloadData(forHash: "zOcv3") { [weak self] result in
             switch result {
             case .success(let data):
-                self?.listOfURLs = data.links
                 
                 DispatchQueue.main.async {
                     self?.spinner.isHidden = true
+                    
                     data.links.forEach { link in
                         self?.listOfVCs.append(WallpaperViewController(link: link, delegate: self))
                     }
+                    
                     if let vc = self?.listOfVCs[0] {
                         self?.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
                     }

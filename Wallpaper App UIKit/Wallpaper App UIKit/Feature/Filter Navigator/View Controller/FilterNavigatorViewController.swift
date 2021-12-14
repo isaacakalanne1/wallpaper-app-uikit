@@ -14,7 +14,8 @@ protocol WallpaperDelegate: AnyObject {
 
 class FilterNavigatorViewController: UIPageViewController {
     
-    let filterBrowserVC = FilterBrowserViewController()
+    var listOfVCs: [FilterBrowserViewController] = []
+    var currentIndex: Int = 0
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .vertical, options: nil)
@@ -24,16 +25,32 @@ class FilterNavigatorViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        setViewControllers([filterBrowserVC], direction: .forward, animated: true, completion: nil)
+        listOfVCs = [FilterBrowserViewController(),
+                     FilterBrowserViewController(),
+                     FilterBrowserViewController()]
+        
+        setViewControllers([listOfVCs[0]], direction: .forward, animated: true, completion: nil)
         
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func updateWallpaper(_ wallpaper: UIImage) {
-        filterBrowserVC.updateWallpaper(wallpaper)
+        listOfVCs.forEach { vc in
+            vc.updateWallpaper(wallpaper)
+        }
     }
     
+}
+
+extension FilterNavigatorViewController: WallpaperDelegate {
+    func didChange(wallpaper: UIImage) {
+        
+    }
+    
+    func didApply(filter: Filter) {
+        
+    }
 }
 
 extension FilterNavigatorViewController: UIPageViewControllerDelegate { }
@@ -41,14 +58,26 @@ extension FilterNavigatorViewController: UIPageViewControllerDelegate { }
 extension FilterNavigatorViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemGray
-        return vc
+        guard let vc = viewController as? FilterBrowserViewController,
+              let indexOfCurrentVC = listOfVCs.firstIndex(of: vc) else { return nil }
+        currentIndex = indexOfCurrentVC
+        
+        if indexOfCurrentVC == 0 {
+            return nil
+        } else {
+            return listOfVCs[indexOfCurrentVC - 1]
+        }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
-        return vc
+        guard let vc = viewController as? FilterBrowserViewController,
+              let indexOfCurrentVC = listOfVCs.firstIndex(of: vc) else { return nil }
+        currentIndex = indexOfCurrentVC
+        
+        if indexOfCurrentVC == listOfVCs.count - 1 {
+            return nil
+        } else {
+            return listOfVCs[indexOfCurrentVC + 1]
+        }
     }
 }
