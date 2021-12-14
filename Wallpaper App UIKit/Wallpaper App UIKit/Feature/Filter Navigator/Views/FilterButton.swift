@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FilterDelegate: AnyObject {
+    func didSelectFilter(_ filter: Filter)
+}
+
 class FilterButton: UIButton {
     
     lazy var filterImageView: UIImageView = {
@@ -35,17 +39,20 @@ class FilterButton: UIButton {
     let margin: CGFloat = 5
     let filter: Filter
     var isButtonSelected: Bool
+    let delegate: FilterDelegate?
     
-    init(filter: Filter, image: UIImage?, isSelected: Bool = false) {
+    init(filter: Filter, image: UIImage? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
         self.filter = filter
         self.isButtonSelected = isSelected
+        self.delegate = delegate
+        
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         
         filterImageView.image = image
         filterTitleLabel.text = filter.type.title
         
-        updateFormatting()
+        updateFormatting(isSelected: isSelected)
         
         addSubview(filterImageView)
         addSubview(filterTitleLabel)
@@ -70,17 +77,19 @@ class FilterButton: UIButton {
         filterImageView.image = wallpaper
     }
     
-    func updateFormatting() {
-        if isButtonSelected {
+    func updateFormatting(isSelected: Bool) {
+        isButtonSelected = isSelected
+        if isSelected {
             filterTitleLabel.textColor = Color.accent
             filterImageView.layer.borderColor = Button.borderColor.cgColor
+        } else {
+            filterTitleLabel.textColor = .systemGray
+            filterImageView.layer.borderColor = UIColor.clear.cgColor
         }
     }
     
     @objc func didTapButton(_ sender: FilterButton) {
-        sender.isButtonSelected = true
-        updateFormatting()
-        print("Tapped mate!")
+        delegate?.didSelectFilter(filter)
     }
     
 }
