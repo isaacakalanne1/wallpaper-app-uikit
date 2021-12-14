@@ -29,9 +29,6 @@ class WallpaperBrowserController: UIPageViewController {
         self.wallpaperDelegate = wallpaperDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemOrange
-        
         view.addSubview(spinner)
         
         NSLayoutConstraint.activate([

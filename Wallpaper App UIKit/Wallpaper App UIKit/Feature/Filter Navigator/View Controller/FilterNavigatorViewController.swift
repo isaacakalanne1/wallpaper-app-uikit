@@ -21,9 +21,6 @@ class FilterNavigatorViewController: UIPageViewController {
         
         view.backgroundColor = Color.secondary
         
-        let vc = FilterBrowserViewController()
-        vc.view.backgroundColor = .systemOrange
-        
         dataSource = self
         delegate = self
         

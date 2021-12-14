@@ -12,12 +12,18 @@ class FilterBrowserViewController: UIViewController {
     let margin: CGFloat = 10
     var filters = FilterData.allFilters
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = margin
-        stackView.alignment = .leading
+        stackView.spacing = 0
+        stackView.alignment = .fill
         return stackView
     }()
     
@@ -26,17 +32,27 @@ class FilterBrowserViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        view.addSubview(stackView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
         filters.forEach { filter in
             let button = FilterButton(filter: filter, image: self.wallpaper)
             stackView.addArrangedSubview(button)
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 70),
+            ])
         }
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: view.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
     }
     
