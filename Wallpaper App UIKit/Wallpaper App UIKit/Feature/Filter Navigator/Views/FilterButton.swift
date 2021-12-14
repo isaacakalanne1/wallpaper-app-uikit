@@ -33,18 +33,19 @@ class FilterButton: UIButton {
     }()
     
     let margin: CGFloat = 5
+    let filter: Filter
+    var isButtonSelected: Bool
     
     init(filter: Filter, image: UIImage?, isSelected: Bool = false) {
+        self.filter = filter
+        self.isButtonSelected = isSelected
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         
         filterImageView.image = image
         filterTitleLabel.text = filter.type.title
         
-        if isSelected {
-            filterTitleLabel.textColor = Color.accent
-            filterImageView.layer.borderColor = Button.borderColor.cgColor
-        }
+        updateFormatting()
         
         addSubview(filterImageView)
         addSubview(filterTitleLabel)
@@ -59,12 +60,27 @@ class FilterButton: UIButton {
             filterTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             filterTitleLabel.widthAnchor.constraint(equalToConstant: 70),
         ])
+        
+        addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func updateWallpaper(_ wallpaper: UIImage) {
         filterImageView.image = wallpaper
+    }
+    
+    func updateFormatting() {
+        if isButtonSelected {
+            filterTitleLabel.textColor = Color.accent
+            filterImageView.layer.borderColor = Button.borderColor.cgColor
+        }
+    }
+    
+    @objc func didTapButton(_ sender: FilterButton) {
+        sender.isButtonSelected = true
+        updateFormatting()
+        print("Tapped mate!")
     }
     
 }
