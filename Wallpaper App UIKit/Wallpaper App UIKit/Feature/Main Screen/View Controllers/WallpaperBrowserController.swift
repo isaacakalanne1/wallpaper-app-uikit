@@ -39,7 +39,7 @@ class WallpaperBrowserController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        imgurApi.downloadData(forHash: "SqumB") { [weak self] result in
+        imgurApi.downloadData(forHash: "zOcv3") { [weak self] result in
             switch result {
             case .success(let data):
                 self?.listOfURLs = data.links
