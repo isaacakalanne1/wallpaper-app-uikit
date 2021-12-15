@@ -67,6 +67,14 @@ class FilterBrowserViewController: UIViewController {
             }
         }
     }
+    
+    func deselectButtons() {
+        stackView.arrangedSubviews.forEach { view in
+            if let button = view as? FilterButton {
+                button.updateFormatting(isSelected: false)
+            }
+        }
+    }
 }
 
 extension FilterBrowserViewController: FilterDelegate {

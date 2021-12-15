@@ -92,16 +92,24 @@ extension MainViewController: FilterDelegate {
     
     func didSelectFilter(_ filter: Filter) {
         currentFilter = filter
-        secondaryButtonContainer.displayAnnouncement("Applied \(filter.title)")
         wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
+        secondaryButtonContainer.toggleButtons(.show)
     }
     
     func applyFilter() {
+        guard let filter = currentFilter else { return }
         wallpaperBrowserVC.applyFilter()
+        secondaryButtonContainer.displayAnnouncement("Applied \(filter.title)")
+        filterNavigatorVC.deselectButtons()
+        secondaryButtonContainer.toggleButtons(.hide)
+        currentFilter = nil
     }
     
     func cancelFilter() {
         wallpaperBrowserVC.cancelFilter()
+        filterNavigatorVC.deselectButtons()
+        secondaryButtonContainer.toggleButtons(.hide)
+        currentFilter = nil
     }
 }
 

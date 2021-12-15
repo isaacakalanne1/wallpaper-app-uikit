@@ -9,6 +9,19 @@ import UIKit
 
 class SecondaryButtonContainer: UIView {
     
+    enum ButtonStatus {
+        case show, hide
+        
+        var animationAlpha: CGFloat {
+            switch self {
+            case .show:
+                return 1.0
+            case .hide:
+                return 0.0
+            }
+        }
+    }
+    
     private let margin: CGFloat = 5
     private let viewWidth: CGFloat = 100
     
@@ -27,6 +40,8 @@ class SecondaryButtonContainer: UIView {
     
     let delegate: FilterDelegate?
     
+    let animationLength: TimeInterval = 0.15
+    
     init(delegate: FilterDelegate?) {
         self.delegate = delegate
         super.init(frame: .zero)
@@ -36,6 +51,9 @@ class SecondaryButtonContainer: UIView {
         
         primaryButton.addTarget(self, action: #selector(primaryButtonPressed), for: .touchUpInside)
         secondaryButton.addTarget(self, action: #selector(secondaryButtonPressed), for: .touchUpInside)
+        
+        primaryButton.alpha = 0.0
+        secondaryButton.alpha = 0.0
         
         addSubview(primaryButton)
         addSubview(secondaryButton)
@@ -75,12 +93,19 @@ class SecondaryButtonContainer: UIView {
         
         announcementLabel.text = text
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: animationLength, animations: {
             self.announcementLabel.alpha = 1.0
         }) { _ in
-            UIView.animate(withDuration: 0.5, delay: 1.0) {
+            UIView.animate(withDuration: self.animationLength, delay: 1.0) {
                 self.announcementLabel.alpha = 0.0
             }
+        }
+    }
+    
+    func toggleButtons(_ status: ButtonStatus) {
+        UIView.animate(withDuration: animationLength) {
+            self.primaryButton.alpha = status.animationAlpha
+            self.secondaryButton.alpha = status.animationAlpha
         }
     }
     

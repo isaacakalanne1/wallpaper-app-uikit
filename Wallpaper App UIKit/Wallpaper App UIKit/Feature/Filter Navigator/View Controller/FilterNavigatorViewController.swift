@@ -38,6 +38,12 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
+    func deselectButtons() {
+        listOfVCs.forEach { vc in
+            vc.deselectButtons()
+        }
+    }
+    
 }
 
 extension FilterNavigatorViewController: FilterDelegate {
