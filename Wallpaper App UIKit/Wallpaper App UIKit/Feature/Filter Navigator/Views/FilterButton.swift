@@ -50,7 +50,7 @@ class FilterButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         
         filterImageView.image = image
-        filterTitleLabel.text = filter.type.title
+        filterTitleLabel.text = filter.title
         
         updateFormatting(isSelected: isSelected)
         
@@ -90,19 +90,6 @@ class FilterButton: UIButton {
     
     @objc func didTapButton(_ sender: FilterButton) {
         delegate?.didSelectFilter(filter)
-        
-        let imputImage = UIImage()
-        let context = CIContext(options: nil)
-        
-        let currentFilter = MaskedVariableCircularBokeh()
-        let beginImage = CIImage(image: imputImage)
-        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
-        
-        if let output = currentFilter.outputImage,
-           let cgimg = context.createCGImage(output, from: output.extent) {
-            let processedImage = UIImage(cgImage: cgimg)
-        }
     }
     
 }

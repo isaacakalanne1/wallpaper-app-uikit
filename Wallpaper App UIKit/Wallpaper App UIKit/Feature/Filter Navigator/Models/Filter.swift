@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct Filter {
-    let type: FilterType
-    let isPreviewing: Bool
+enum Filter: String, CaseIterable {
+    case _super, leet, dope, high, tight, live, epic, sure, wow, fry, moon, good, zoom, lay, whoosh
+    
+    var title: String {
+        switch self {
+        case ._super:
+            return "Super"
+        default:
+            return rawValue.prefix(1).capitalized + rawValue.dropFirst()
+        }
+    }
 }

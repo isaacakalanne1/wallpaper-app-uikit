@@ -26,7 +26,8 @@ class MainViewController: UIViewController {
     let filterNavigatorView = UIView()
     let mainButtonContainer = MainButtonContainer()
     
-    let filterNavigatorVC = FilterNavigatorViewController()
+    lazy var filterNavigatorVC = FilterNavigatorViewController(filterDelegate: self)
+    lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class MainViewController: UIViewController {
         filterNavigatorView.translatesAutoresizingMaskIntoConstraints = false
         
         insert(filterNavigatorVC, into: filterNavigatorView)
-        insert(WallpaperBrowserController(wallpaperDelegate: self), into: wallpaperBrowserView)
+        insert(wallpaperBrowserVC, into: wallpaperBrowserView)
         
         stackView.addArrangedSubview(wallpaperBrowserView)
         stackView.addArrangedSubview(secondaryButtonContainer)
@@ -83,6 +84,12 @@ extension MainViewController: WallpaperDelegate {
     
     func didApply(filter: Filter) {
         
+    }
+}
+
+extension MainViewController: FilterDelegate {
+    func didSelectFilter(_ filter: Filter) {
+        wallpaperBrowserVC.applyFilter(filter)
     }
 }
 

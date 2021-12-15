@@ -10,7 +10,7 @@ import UIKit
 class FilterBrowserViewController: UIViewController {
     
     let margin: CGFloat = 10
-    var filters = FilterData.allFilters
+    var filters = Filter.allCases
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -28,8 +28,10 @@ class FilterBrowserViewController: UIViewController {
     }()
     
     var wallpaper: UIImage?
+    let delegate: FilterDelegate?
     
-    init() {
+    init(delegate: FilterDelegate?) {
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(scrollView)
@@ -69,9 +71,10 @@ class FilterBrowserViewController: UIViewController {
 
 extension FilterBrowserViewController: FilterDelegate {
     func didSelectFilter(_ filter: Filter) {
+        delegate?.didSelectFilter(filter)
         stackView.arrangedSubviews.forEach { view in
             if let button = view as? FilterButton {
-                let isSelected = filter.type == button.filter.type
+                let isSelected = filter == button.filter
                 button.updateFormatting(isSelected: isSelected)
             }
         }

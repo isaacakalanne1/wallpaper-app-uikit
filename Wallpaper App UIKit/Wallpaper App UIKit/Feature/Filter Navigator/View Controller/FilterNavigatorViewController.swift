@@ -16,8 +16,10 @@ class FilterNavigatorViewController: UIPageViewController {
     
     var listOfVCs: [FilterBrowserViewController] = []
     var currentIndex: Int = 0
+    let filterDelegate: FilterDelegate?
     
-    init() {
+    init(filterDelegate: FilterDelegate?) {
+        self.filterDelegate = filterDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .vertical, options: nil)
         
         view.backgroundColor = Color.secondary
@@ -25,9 +27,9 @@ class FilterNavigatorViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        listOfVCs = [FilterBrowserViewController(),
-                     FilterBrowserViewController(),
-                     FilterBrowserViewController()]
+        listOfVCs = [FilterBrowserViewController(delegate: self),
+                     FilterBrowserViewController(delegate: self),
+                     FilterBrowserViewController(delegate: self)]
         
         setViewControllers([listOfVCs[0]], direction: .forward, animated: true, completion: nil)
         
@@ -50,6 +52,12 @@ extension FilterNavigatorViewController: WallpaperDelegate {
     
     func didApply(filter: Filter) {
         
+    }
+}
+
+extension FilterNavigatorViewController: FilterDelegate {
+    func didSelectFilter(_ filter: Filter) {
+        filterDelegate?.didSelectFilter(filter)
     }
 }
 

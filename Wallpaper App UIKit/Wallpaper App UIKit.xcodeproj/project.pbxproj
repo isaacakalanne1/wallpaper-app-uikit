@@ -16,9 +16,7 @@
 		BB3958A5276359190049E0E2 /* WallpaperBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A4276359190049E0E2 /* WallpaperBrowserController.swift */; };
 		BB3958A7276376890049E0E2 /* WallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A6276376890049E0E2 /* WallpaperViewController.swift */; };
 		BB3958A92767C8B20049E0E2 /* FilterBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958A82767C8B10049E0E2 /* FilterBrowserViewController.swift */; };
-		BB3958AC2767D09E0049E0E2 /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958AB2767D09E0049E0E2 /* FilterData.swift */; };
-		BB3958AE2767D1A50049E0E2 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958AD2767D1A50049E0E2 /* FilterType.swift */; };
-		BB3958B02767D2B90049E0E2 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958AF2767D2B90049E0E2 /* Filter.swift */; };
+		BB3958AE2767D1A50049E0E2 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958AD2767D1A50049E0E2 /* Filter.swift */; };
 		BB3958B42767D3870049E0E2 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3958B32767D3870049E0E2 /* FilterButton.swift */; };
 		BB7190522769F23F002193BD /* ModelIOGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190302769F23D002193BD /* ModelIOGenerators.swift */; };
 		BB7190532769F23F002193BD /* SimplePlasma.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190312769F23D002193BD /* SimplePlasma.swift */; };
@@ -101,9 +99,7 @@
 		BB3958A4276359190049E0E2 /* WallpaperBrowserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperBrowserController.swift; sourceTree = "<group>"; };
 		BB3958A6276376890049E0E2 /* WallpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperViewController.swift; sourceTree = "<group>"; };
 		BB3958A82767C8B10049E0E2 /* FilterBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBrowserViewController.swift; sourceTree = "<group>"; };
-		BB3958AB2767D09E0049E0E2 /* FilterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterData.swift; sourceTree = "<group>"; };
-		BB3958AD2767D1A50049E0E2 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
-		BB3958AF2767D2B90049E0E2 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		BB3958AD2767D1A50049E0E2 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		BB3958B32767D3870049E0E2 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		BB7190302769F23D002193BD /* ModelIOGenerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelIOGenerators.swift; sourceTree = "<group>"; };
 		BB7190312769F23D002193BD /* SimplePlasma.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePlasma.swift; sourceTree = "<group>"; };
@@ -229,8 +225,7 @@
 		BB3958AA2767D0850049E0E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB3958AF2767D2B90049E0E2 /* Filter.swift */,
-				BB3958AD2767D1A50049E0E2 /* FilterType.swift */,
+				BB3958AD2767D1A50049E0E2 /* Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,7 +241,6 @@
 		BB3958B22767D3730049E0E2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB3958AB2767D09E0049E0E2 /* FilterData.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -639,9 +633,8 @@
 			files = (
 				BB7190582769F23F002193BD /* Bokeh.swift in Sources */,
 				BB3958A3275E54E10049E0E2 /* SecondaryButtonContainer.swift in Sources */,
-				BB3958AC2767D09E0049E0E2 /* FilterData.swift in Sources */,
 				BBB7620D27567E9200DF5B70 /* Button.swift in Sources */,
-				BB3958AE2767D1A50049E0E2 /* FilterType.swift in Sources */,
+				BB3958AE2767D1A50049E0E2 /* Filter.swift in Sources */,
 				BB7190652769F23F002193BD /* VImageFilters.swift in Sources */,
 				BB7190752769F27F002193BD /* FilterExtensions.swift in Sources */,
 				BB71906F2769F23F002193BD /* CustomFilters.swift in Sources */,
@@ -682,7 +675,6 @@
 				BB3958A7276376890049E0E2 /* WallpaperViewController.swift in Sources */,
 				BB3958A5276359190049E0E2 /* WallpaperBrowserController.swift in Sources */,
 				BB7190642769F23F002193BD /* SobelEdgeDetection.swift in Sources */,
-				BB3958B02767D2B90049E0E2 /* Filter.swift in Sources */,
 				BB7190562769F23F002193BD /* MultiBandHSV.swift in Sources */,
 				BB71905D2769F23F002193BD /* CRTFilter.swift in Sources */,
 			);
