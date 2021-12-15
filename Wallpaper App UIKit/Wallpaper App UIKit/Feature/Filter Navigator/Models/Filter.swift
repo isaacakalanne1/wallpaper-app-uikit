@@ -24,7 +24,9 @@ enum Filter: String, CaseIterable {
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter {
         switch self {
         case ._super:
-            let filter = CMYKLevels()
+            let filter = TransverseChromaticAberration()
+            filter.inputBlur = CGFloat(20*sliderValue)
+            filter.inputFalloff = CGFloat(0.4*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .leet:
@@ -49,10 +51,13 @@ enum Filter: String, CaseIterable {
             return filter
         case .live:
             let filter = Scatter()
+            filter.inputScatterRadius = CGFloat(50*sliderValue)
+            filter.inputScatterSmoothness = CGFloat(2*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .epic:
             let filter = ScatterWarp()
+            filter.inputScatterRadius = CGFloat(35*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .sure:
@@ -60,15 +65,22 @@ enum Filter: String, CaseIterable {
             filter.inputImage = inputImage
             return filter
         case .wow:
-            let filter = TransverseChromaticAberration()
+            let filter = VHSTrackingLines()
+            filter.inputTime = CGFloat(10*sliderValue)
+            filter.inputSpacing = CGFloat(50*sliderValue)
+            filter.inputStripeHeight = CGFloat(0.5*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .fry:
             let filter = HomogeneousColorBlur()
+            filter.inputColorThreshold = CGFloat(0.4*sliderValue)
+            filter.inputRadius = CGFloat(20*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .moon:
             let filter = PolarPixellate()
+            filter.inputPixelArc = CGFloat((Float.pi / 15)*sliderValue)
+            filter.inputPixelLength = CGFloat(50*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .good:
