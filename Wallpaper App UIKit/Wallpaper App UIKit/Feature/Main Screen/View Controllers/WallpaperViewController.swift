@@ -56,20 +56,25 @@ class WallpaperViewController: UIViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        imgurApi.downloadImage(from: link) { [weak self] result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self?.delegate?.didChange(wallpaper: image)
-                    self?.originalImage = image
-                    self?.imageView.image = image
-                    self?.spinner.isHidden = true
+        if let image = originalImage {
+            delegate?.didChange(wallpaper: image)
+        } else {
+            imgurApi.downloadImage(from: link) { [weak self] result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self?.delegate?.didChange(wallpaper: image)
+                        self?.originalImage = image
+                        self?.imageView.image = image
+                        self?.spinner.isHidden = true
+                    }
+                case .failure(let error):
+                    print("Downloading image error! Error is \(error)")
                 }
-            case .failure(let error):
-                print("Downloading image error! Error is \(error)")
             }
         }
     }
