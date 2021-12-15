@@ -61,7 +61,8 @@ enum Filter: String, CaseIterable {
             filter.inputImage = inputImage
             return filter
         case .sure:
-            let filter = ContrastStretch()
+            let filter = TechnicolorFilter()
+            filter.inputAmount = CGFloat(5*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .wow:
@@ -84,19 +85,28 @@ enum Filter: String, CaseIterable {
             filter.inputImage = inputImage
             return filter
         case .good:
-            let filter = MultiBandHSV()
+            let filter = StarBurstFilter()
+            filter.inputRadius = CGFloat(25*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .zoom:
             let filter = CompoundEye()
+            filter.inputWidth = CGFloat(32*sliderValue)
+            filter.inputBend = CGFloat(4*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .lay:
-            let filter = BayerDitherFilter()
+            let filter = EightBit()
+            filter.inputPaletteIndex = CGFloat(4*sliderValue)
+            filter.inputScale = CGFloat(8*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .whoosh:
             let filter = CarnivalMirror()
+            filter.inputHorizontalWavelength = CGFloat(10*sliderValue)
+            filter.inputHorizontalAmount = CGFloat(20*sliderValue)
+            filter.inputVerticalWavelength = CGFloat(10*sliderValue)
+            filter.inputVerticalAmount = CGFloat(20*sliderValue)
             filter.inputImage = inputImage
             return filter
         }
