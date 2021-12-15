@@ -35,9 +35,9 @@ class Slider: UISlider {
             case .began:
                 break
             case .moved:
-                break
-            case .ended:
                 delegate?.didChangeValue(value)
+            case .ended:
+                break
             default:
                 break
             }
