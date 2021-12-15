@@ -89,6 +89,8 @@ class WallpaperViewController: UIViewController {
     
     func applyFilter() {
         wallpaperToEdit = imageView.image
+        guard let wallpaper = wallpaperToEdit else { return }
+        delegate?.didChange(wallpaper: wallpaper)
     }
     
     func cancelFilter() {
@@ -109,7 +111,6 @@ class WallpaperViewController: UIViewController {
         
         let processedImage = UIImage(cgImage: cgimg)
         imageView.image = processedImage
-        delegate?.didChange(wallpaper: processedImage)
     }
     
 }
