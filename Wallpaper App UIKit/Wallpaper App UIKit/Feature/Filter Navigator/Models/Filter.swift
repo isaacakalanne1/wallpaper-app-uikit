@@ -10,7 +10,7 @@ import CoreImage
 import UIKit
 
 enum Filter: String, CaseIterable {
-    case _super, leet, dope, high, tight, live, epic, sure, wow, fry, moon, good, zoom, lay, whoosh
+    case _super, leet, dope, yoyo, tight, live, epic, sure, wow, fry, moon, good, zoom, lay, whoosh
     
     var title: String {
         switch self {
@@ -29,6 +29,7 @@ enum Filter: String, CaseIterable {
             return filter
         case .leet:
             let filter = KuwaharaFilter()
+            filter.inputRadius = CGFloat(20*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .dope:
@@ -36,12 +37,14 @@ enum Filter: String, CaseIterable {
             filter.inputBokehRadius = CGFloat(30*sliderValue)
             filter.inputImage = inputImage
             return filter
-        case .high:
+        case .yoyo:
             let filter = PseudoColor()
+            filter.inputSmoothness = CGFloat(3*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .tight:
             let filter = AdvancedMonochrome()
+            filter.inputClamp = CGFloat(2*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .live:
