@@ -91,21 +91,17 @@ extension WallpaperBrowserController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let indexOfCurrentVC = listOfVCs.firstIndex(of: viewController) else { return nil }
         
-        if indexOfCurrentVC == 0 {
-            return listOfVCs[listOfVCs.count - 1]
-        } else {
-            return listOfVCs[indexOfCurrentVC - 1]
-        }
+        let indexOfPreviousVC = indexOfCurrentVC == 0 ? listOfVCs.count - 1 : indexOfCurrentVC - 1
+        
+        return listOfVCs[indexOfPreviousVC]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let indexOfCurrentVC = listOfVCs.firstIndex(of: viewController) else { return nil }
         
-        if indexOfCurrentVC == listOfVCs.count - 1 {
-            return listOfVCs[0]
-        } else {
-            return listOfVCs[indexOfCurrentVC + 1]
-        }
+        let indexOfNextVC = indexOfCurrentVC == listOfVCs.count - 1 ? 0 : indexOfCurrentVC + 1
+        
+        return listOfVCs[indexOfNextVC]
     }
     
 }
