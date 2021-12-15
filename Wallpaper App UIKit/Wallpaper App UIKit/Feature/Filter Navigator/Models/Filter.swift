@@ -21,7 +21,7 @@ enum Filter: String, CaseIterable {
         }
     }
     
-    func createCIFilter(inputImage: CIImage) -> CIFilter {
+    func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter {
         switch self {
         case ._super:
             let filter = CMYKLevels()

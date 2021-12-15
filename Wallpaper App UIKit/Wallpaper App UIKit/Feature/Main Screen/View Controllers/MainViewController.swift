@@ -22,7 +22,12 @@ class MainViewController: UIViewController {
     
     let wallpaperBrowserView = UIView()
     let secondaryButtonContainer = SecondaryButtonContainer()
-    let slider = Slider()
+    
+    var sliderValue: Float = 0.75
+    lazy var slider = Slider(delegate: self, initialValue: sliderValue)
+    
+    var currentFilter: Filter?
+    
     let filterNavigatorView = UIView()
     let mainButtonContainer = MainButtonContainer()
     
@@ -89,7 +94,17 @@ extension MainViewController: WallpaperDelegate {
 
 extension MainViewController: FilterDelegate {
     func didSelectFilter(_ filter: Filter) {
-        wallpaperBrowserVC.applyFilter(filter)
+        currentFilter = filter
+        wallpaperBrowserVC.applyFilter(filter, sliderValue: sliderValue)
+    }
+}
+
+extension MainViewController: SliderDelegate {
+    func didChangeValue(_ value: Float) {
+        sliderValue = value
+        guard let filter = currentFilter else { return }
+        
+        wallpaperBrowserVC.applyFilter(filter, sliderValue: value)
     }
 }
 

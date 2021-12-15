@@ -71,13 +71,14 @@ class WallpaperViewController: UIViewController {
         }
     }
     
-    func applyFilter(_ filter: Filter) {
+    func applyFilter(_ filter: Filter, sliderValue: Float) {
         let context = CIContext(options: nil)
         
         guard let imputImage = imageView.image,
               let beginImage = CIImage(image: imputImage) else { return }
         
-        let currentFilter = filter.createCIFilter(inputImage: beginImage)
+        let currentFilter = filter.createCIFilter(inputImage: beginImage,
+                                                  sliderValue: sliderValue)
         
         guard let output = currentFilter.outputImage,
               let cgimg = context.createCGImage(output, from: output.extent) else { return }

@@ -61,14 +61,19 @@ extension FilterNavigatorViewController: FilterDelegate {
     }
 }
 
-extension FilterNavigatorViewController: UIPageViewControllerDelegate { }
+extension FilterNavigatorViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let pendingVC = pendingViewControllers.first as? FilterBrowserViewController,
+              let indexOfCurrentVC = listOfVCs.firstIndex(of: pendingVC) else { return }
+        currentIndex = indexOfCurrentVC
+    }
+}
 
 extension FilterNavigatorViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vc = viewController as? FilterBrowserViewController,
               let indexOfCurrentVC = listOfVCs.firstIndex(of: vc) else { return nil }
-        currentIndex = indexOfCurrentVC
         
         if indexOfCurrentVC == 0 {
             return nil
@@ -80,7 +85,6 @@ extension FilterNavigatorViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vc = viewController as? FilterBrowserViewController,
               let indexOfCurrentVC = listOfVCs.firstIndex(of: vc) else { return nil }
-        currentIndex = indexOfCurrentVC
         
         if indexOfCurrentVC == listOfVCs.count - 1 {
             return nil
