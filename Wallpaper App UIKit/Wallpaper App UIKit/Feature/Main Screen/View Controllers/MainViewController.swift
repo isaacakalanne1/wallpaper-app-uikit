@@ -86,10 +86,6 @@ extension MainViewController: WallpaperDelegate {
     func didChange(wallpaper: UIImage) {
         filterNavigatorVC.updateWallpaper(wallpaper)
     }
-    
-    func didApply(filter: Filter) {
-        
-    }
 }
 
 extension MainViewController: FilterDelegate {

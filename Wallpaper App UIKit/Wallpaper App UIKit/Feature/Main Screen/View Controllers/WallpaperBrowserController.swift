@@ -72,10 +72,6 @@ extension WallpaperBrowserController: WallpaperDelegate {
     func didChange(wallpaper: UIImage) {
         wallpaperDelegate?.didChange(wallpaper: wallpaper)
     }
-    
-    func didApply(filter: Filter) {
-        
-    }
 }
 
 extension WallpaperBrowserController: UIPageViewControllerDelegate {

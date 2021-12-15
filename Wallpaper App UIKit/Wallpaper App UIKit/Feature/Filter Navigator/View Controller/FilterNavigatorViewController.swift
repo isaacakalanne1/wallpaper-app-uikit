@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol WallpaperDelegate: AnyObject {
-    func didChange(wallpaper: UIImage)
-    func didApply(filter: Filter)
-}
-
 class FilterNavigatorViewController: UIPageViewController {
     
     var listOfVCs: [FilterBrowserViewController] = []
@@ -43,16 +38,6 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
-}
-
-extension FilterNavigatorViewController: WallpaperDelegate {
-    func didChange(wallpaper: UIImage) {
-        
-    }
-    
-    func didApply(filter: Filter) {
-        
-    }
 }
 
 extension FilterNavigatorViewController: FilterDelegate {

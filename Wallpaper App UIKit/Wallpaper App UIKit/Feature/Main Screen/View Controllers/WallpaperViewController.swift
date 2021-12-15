@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WallpaperDelegate: AnyObject {
+    func didChange(wallpaper: UIImage)
+}
+
 class WallpaperViewController: UIViewController {
     
     private let spinner: UIActivityIndicatorView = {
