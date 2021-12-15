@@ -72,17 +72,16 @@ class WallpaperViewController: UIViewController {
     }
     
     func applyFilter(_ filter: Filter) {
-        guard let imputImage = imageView.image else { return }
         let context = CIContext(options: nil)
         
-        let currentFilter = CircularBokeh()
-        let beginImage = CIImage(image: imputImage)
-        currentFilter.inputImage = beginImage
-//        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-//        currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
+        guard let imputImage = imageView.image,
+              let beginImage = CIImage(image: imputImage) else { return }
+        
+        let currentFilter = filter.createCIFilter(inputImage: beginImage)
         
         guard let output = currentFilter.outputImage,
               let cgimg = context.createCGImage(output, from: output.extent) else { return }
+        
         let processedImage = UIImage(cgImage: cgimg)
         imageView.image = processedImage
         delegate?.didChange(wallpaper: processedImage)

@@ -79,14 +79,17 @@ extension WallpaperBrowserController: WallpaperDelegate {
 }
 
 extension WallpaperBrowserController: UIPageViewControllerDelegate {
-    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let pendingVC = pendingViewControllers.first,
+              let indexOfCurrentVC = listOfVCs.firstIndex(of: pendingVC) else { return }
+        currentIndex = indexOfCurrentVC
+    }
 }
 
 extension WallpaperBrowserController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let indexOfCurrentVC = listOfVCs.firstIndex(of: viewController) else { return nil }
-        currentIndex = indexOfCurrentVC
         
         if indexOfCurrentVC == 0 {
             return listOfVCs[listOfVCs.count - 1]
@@ -97,7 +100,6 @@ extension WallpaperBrowserController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let indexOfCurrentVC = listOfVCs.firstIndex(of: viewController) else { return nil }
-        currentIndex = indexOfCurrentVC
         
         if indexOfCurrentVC == listOfVCs.count - 1 {
             return listOfVCs[0]
