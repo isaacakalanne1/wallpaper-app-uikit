@@ -29,7 +29,8 @@ class WallpaperViewController: UIViewController {
         return imageView
     }()
     
-    var originalImage: UIImage?
+    var originalWallpaper: UIImage?
+    var wallpaperToEdit: UIImage?
     
     let link: String
     let delegate: WallpaperDelegate?
@@ -64,7 +65,7 @@ class WallpaperViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let image = originalImage {
+        if let image = originalWallpaper {
             delegate?.didChange(wallpaper: image)
         } else {
             imgurApi.downloadImage(from: link) { [weak self] result in
@@ -72,8 +73,11 @@ class WallpaperViewController: UIViewController {
                 case .success(let image):
                     DispatchQueue.main.async {
                         self?.delegate?.didChange(wallpaper: image)
-                        self?.originalImage = image
+                        
+                        self?.originalWallpaper = image
+                        self?.wallpaperToEdit = image
                         self?.imageView.image = image
+                        
                         self?.spinner.isHidden = true
                     }
                 case .failure(let error):
@@ -83,10 +87,18 @@ class WallpaperViewController: UIViewController {
         }
     }
     
-    func applyFilter(_ filter: Filter, sliderValue: Float) {
+    func applyFilter() {
+        wallpaperToEdit = imageView.image
+    }
+    
+    func cancelFilter() {
+        imageView.image = wallpaperToEdit
+    }
+    
+    func previewFilter(_ filter: Filter, sliderValue: Float) {
         let context = CIContext(options: nil)
         
-        guard let imputImage = originalImage,
+        guard let imputImage = wallpaperToEdit,
               let beginImage = CIImage(image: imputImage) else { return }
         
         let currentFilter = filter.createCIFilter(inputImage: beginImage,

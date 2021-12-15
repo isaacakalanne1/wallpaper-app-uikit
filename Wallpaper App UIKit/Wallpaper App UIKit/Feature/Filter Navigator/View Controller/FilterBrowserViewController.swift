@@ -70,6 +70,7 @@ class FilterBrowserViewController: UIViewController {
 }
 
 extension FilterBrowserViewController: FilterDelegate {
+    
     func didSelectFilter(_ filter: Filter) {
         delegate?.didSelectFilter(filter)
         stackView.arrangedSubviews.forEach { view in
@@ -78,5 +79,13 @@ extension FilterBrowserViewController: FilterDelegate {
                 button.updateFormatting(isSelected: isSelected)
             }
         }
+    }
+    
+    func applyFilter() {
+        
+    }
+    
+    func cancelFilter() {
+        
     }
 }

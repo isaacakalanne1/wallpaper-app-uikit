@@ -41,8 +41,17 @@ class FilterNavigatorViewController: UIPageViewController {
 }
 
 extension FilterNavigatorViewController: FilterDelegate {
+    
     func didSelectFilter(_ filter: Filter) {
         filterDelegate?.didSelectFilter(filter)
+    }
+    
+    func applyFilter() {
+        
+    }
+    
+    func cancelFilter() {
+        
     }
 }
 

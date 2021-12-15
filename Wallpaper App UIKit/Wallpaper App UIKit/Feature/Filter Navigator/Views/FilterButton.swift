@@ -9,6 +9,8 @@ import UIKit
 
 protocol FilterDelegate: AnyObject {
     func didSelectFilter(_ filter: Filter)
+    func applyFilter()
+    func cancelFilter()
 }
 
 class FilterButton: UIButton {
