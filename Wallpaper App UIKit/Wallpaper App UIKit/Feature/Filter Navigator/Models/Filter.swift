@@ -33,7 +33,7 @@ enum Filter: String, CaseIterable {
             return filter
         case .dope:
             let filter = CircularBokeh()
-            filter.inputBlurRadius = CGFloat(5*sliderValue)
+            filter.inputBokehRadius = CGFloat(30*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .high:
