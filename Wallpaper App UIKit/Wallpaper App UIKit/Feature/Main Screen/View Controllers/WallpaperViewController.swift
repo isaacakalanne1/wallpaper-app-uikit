@@ -25,6 +25,8 @@ class WallpaperViewController: UIViewController {
         return imageView
     }()
     
+    var originalImage: UIImage?
+    
     let link: String
     let delegate: WallpaperDelegate?
     
@@ -62,6 +64,7 @@ class WallpaperViewController: UIViewController {
             case .success(let image):
                 DispatchQueue.main.async {
                     self?.delegate?.didChange(wallpaper: image)
+                    self?.originalImage = image
                     self?.imageView.image = image
                     self?.spinner.isHidden = true
                 }
@@ -74,7 +77,7 @@ class WallpaperViewController: UIViewController {
     func applyFilter(_ filter: Filter, sliderValue: Float) {
         let context = CIContext(options: nil)
         
-        guard let imputImage = imageView.image,
+        guard let imputImage = originalImage,
               let beginImage = CIImage(image: imputImage) else { return }
         
         let currentFilter = filter.createCIFilter(inputImage: beginImage,
