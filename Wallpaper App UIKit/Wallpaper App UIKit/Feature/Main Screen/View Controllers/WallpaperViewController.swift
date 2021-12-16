@@ -126,9 +126,9 @@ class WallpaperViewController: UIViewController {
         } else {
             
             DispatchQueue.global(qos: .userInitiated).async {
-                let editedImage = self.filterImage(self.wallpaperToEdit,
-                                                   with: filter,
-                                                   sliderValue: sliderValue)
+                let editedImage = ImageEditor.filterImage(self.wallpaperToEdit,
+                                                          with: filter,
+                                                          sliderValue: sliderValue)
 
                 DispatchQueue.main.async {
                     if let image = editedImage {
@@ -139,23 +139,6 @@ class WallpaperViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    func filterImage(_ image: UIImage?, with filter: Filter, sliderValue: Float) -> UIImage? {
-        let context = CIContext(options: nil)
-        
-        guard let imputImage = image,
-              let beginImage = CIImage(image: imputImage) else { return nil }
-        
-        let currentFilter = filter.createCIFilter(inputImage: beginImage,
-                                                  sliderValue: sliderValue)
-        
-        guard let output = currentFilter?.outputImage,
-              let cgimg = context.createCGImage(output, from: output.extent) else { return nil }
-        
-        let processedImage = UIImage(cgImage: cgimg)
-        
-        return processedImage
     }
     
     func saveWallpaperToPhotos() {
