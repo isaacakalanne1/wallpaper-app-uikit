@@ -139,8 +139,8 @@ class WallpaperViewController: UIViewController {
                                                           sliderValue: sliderValue)
 
                 DispatchQueue.main.async {
+                    self.filterDelegate?.finishedFilteringWallpaper()
                     if let image = editedImage {
-                        self.filterDelegate?.finishedFilteringWallpaper()
                         self.imageView.image = image
                     } else {
                         self.announcementDelegate?.displayAnnouncement("Couldn't apply filter")
