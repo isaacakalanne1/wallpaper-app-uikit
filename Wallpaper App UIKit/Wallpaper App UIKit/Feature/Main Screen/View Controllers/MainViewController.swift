@@ -101,7 +101,7 @@ extension MainViewController: FilterDelegate {
     
     func applyFilter() {
         guard let filter = currentFilter else { return }
-        secondaryButtonContainer.displayAnnouncement("Applied \(filter.title)")
+        secondaryButtonContainer.displayAnnouncement(filter.applyFilterAnnouncement)
         
         wallpaperBrowserVC.applyFilter(filter)
         

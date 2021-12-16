@@ -21,6 +21,15 @@ enum Filter: String, CaseIterable {
         }
     }
     
+    var applyFilterAnnouncement: String {
+        switch self {
+        case .clear:
+            return "Cleared filters"
+        default:
+            return "Applied \(title)"
+        }
+    }
+    
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
         switch self {
         case .clear:
