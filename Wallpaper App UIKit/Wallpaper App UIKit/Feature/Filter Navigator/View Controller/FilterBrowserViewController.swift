@@ -41,6 +41,7 @@ class FilterBrowserViewController: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
+        
         filters.forEach { filter in
             if filter != .clear {
                 let button = FilterButton(filter: filter, delegate: self)
