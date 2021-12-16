@@ -89,10 +89,14 @@ class WallpaperViewController: UIViewController {
         }
     }
     
-    func applyFilter() {
-        wallpaperToEdit = imageView.image
-        guard let wallpaper = wallpaperToEdit else { return }
-        wallpaperDelegate?.didChange(wallpaper: wallpaper)
+    func applyFilter(_ filter: Filter) {
+        if filter == .clear {
+            clearAllFilters()
+        } else {
+            wallpaperToEdit = imageView.image
+            guard let wallpaper = wallpaperToEdit else { return }
+            wallpaperDelegate?.didChange(wallpaper: wallpaper)
+        }
     }
     
     func cancelFilter() {
@@ -107,19 +111,24 @@ class WallpaperViewController: UIViewController {
     }
     
     func previewFilter(_ filter: Filter, sliderValue: Float) {
-        let context = CIContext(options: nil)
         
-        guard let imputImage = wallpaperToEdit,
-              let beginImage = CIImage(image: imputImage) else { return }
-        
-        let currentFilter = filter.createCIFilter(inputImage: beginImage,
-                                                  sliderValue: sliderValue)
-        
-        guard let output = currentFilter?.outputImage,
-              let cgimg = context.createCGImage(output, from: output.extent) else { return }
-        
-        let processedImage = UIImage(cgImage: cgimg)
-        imageView.image = processedImage
+        if filter == .clear {
+            imageView.image = originalWallpaper
+        } else {
+            let context = CIContext(options: nil)
+            
+            guard let imputImage = wallpaperToEdit,
+                  let beginImage = CIImage(image: imputImage) else { return }
+            
+            let currentFilter = filter.createCIFilter(inputImage: beginImage,
+                                                      sliderValue: sliderValue)
+            
+            guard let output = currentFilter?.outputImage,
+                  let cgimg = context.createCGImage(output, from: output.extent) else { return }
+            
+            let processedImage = UIImage(cgImage: cgimg)
+            imageView.image = processedImage
+        }
     }
     
     func saveWallpaperToPhotos() {

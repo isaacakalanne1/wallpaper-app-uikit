@@ -42,9 +42,9 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
-    func addClearFiltersButton() {
+    func updateButtonVisibility(appliedFilter filter: Filter) {
         listOfVCs.forEach { vc in
-            vc.addClearFiltersButton()
+            vc.updateClearFiltersButtonVisibility(appliedFilter: filter)
         }
     }
     

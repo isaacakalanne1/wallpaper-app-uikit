@@ -68,9 +68,9 @@ class WallpaperBrowserController: UIPageViewController {
         vc.previewFilter(filter, sliderValue: sliderValue)
     }
     
-    func applyFilter() {
+    func applyFilter(_ filter: Filter) {
         guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
-        vc.applyFilter()
+        vc.applyFilter(filter)
     }
     
     func cancelFilter() {

@@ -99,9 +99,9 @@ extension MainViewController: FilterDelegate {
     func applyFilter() {
         guard let filter = currentFilter else { return }
         secondaryButtonContainer.displayAnnouncement("Applied \(filter.title)")
-        filterNavigatorVC.addClearFiltersButton()
+        filterNavigatorVC.updateButtonVisibility(appliedFilter: filter)
         
-        wallpaperBrowserVC.applyFilter()
+        wallpaperBrowserVC.applyFilter(filter)
         
         filterNavigatorVC.deselectButtons()
         secondaryButtonContainer.toggleButtons(.hide)

@@ -80,6 +80,14 @@ class FilterBrowserViewController: UIViewController {
         }
     }
     
+    func updateClearFiltersButtonVisibility(appliedFilter filter: Filter) {
+        if filter == .clear {
+            removeClearFiltersButton()
+        } else {
+            addClearFiltersButton()
+        }
+    }
+    
     func addClearFiltersButton() {
         let button = FilterButton(filter: .clear, image: currentWallpaper, isSelected: false, delegate: self)
         stackView.insertArrangedSubview(button, at: 0)

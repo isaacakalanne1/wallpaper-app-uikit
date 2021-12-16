@@ -92,11 +92,7 @@ class FilterButton: UIButton {
     }
     
     @objc func didTapButton(_ sender: FilterButton) {
-        if sender.filter == .clear {
-            delegate?.clearAllFilters()
-        } else {
-            delegate?.didSelectFilter(filter)
-        }
+        delegate?.didSelectFilter(filter)
     }
     
 }
