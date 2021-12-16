@@ -65,7 +65,7 @@ class FilterButton: UIButton {
         
         NSLayoutConstraint.activate([
             filterImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            filterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            filterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             filterImageView.widthAnchor.constraint(equalToConstant: 57),
             filterImageView.heightAnchor.constraint(equalToConstant: 57),
             

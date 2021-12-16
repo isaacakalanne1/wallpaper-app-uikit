@@ -23,7 +23,9 @@ class MainViewController: UIViewController {
     let wallpaperBrowserView = UIView()
     lazy var secondaryButtonContainer = SecondaryButtonContainer(delegate: self)
     
-    var sliderValue: Float = 0.75
+    let initialSliderValue: Float = 0.75
+    lazy var sliderValue: Float = initialSliderValue
+    
     lazy var slider = Slider(delegate: self, initialValue: sliderValue)
     
     var currentFilter: Filter?
@@ -96,7 +98,7 @@ extension MainViewController: FilterDelegate {
     
     func didSelectFilter(_ filter: Filter) {
         currentFilter = filter
-        sliderValue = 0.75
+        sliderValue = initialSliderValue
         slider.value = sliderValue
         wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
         secondaryButtonContainer.toggleButtons(.show)
