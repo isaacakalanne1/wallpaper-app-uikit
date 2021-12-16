@@ -87,9 +87,6 @@ class FilterButton: UIButton {
                 self.filterImageView.image = self.originalWallpaper
             }
         } else {
-            UIView.transition(with: filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
-                self.filterImageView.image = wallpaper
-            }
             
             DispatchQueue.global(qos: .userInitiated).async {
                 let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: 0.75)
