@@ -80,11 +80,15 @@ class FilterBrowserViewController: UIViewController {
         }
     }
     
-    func updateClearFiltersButtonVisibility(appliedFilter filter: Filter) {
-        if filter == .clear {
-            removeClearFiltersButton()
+    func updateClearFiltersButtonVisibility(isWallpaperEdited: Bool) {
+        let containsClearButton = stackView.arrangedSubviews.contains(where: { ($0 as? FilterButton)?.filter == .clear})
+        
+        if isWallpaperEdited {
+            if !containsClearButton {
+                addClearFiltersButton()
+            }
         } else {
-            addClearFiltersButton()
+            removeClearFiltersButton()
         }
     }
     

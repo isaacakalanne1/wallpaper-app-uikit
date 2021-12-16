@@ -91,8 +91,8 @@ class WallpaperBrowserController: UIPageViewController {
 }
 
 extension WallpaperBrowserController: WallpaperDelegate {
-    func didChange(wallpaper: UIImage) {
-        wallpaperDelegate?.didChange(wallpaper: wallpaper)
+    func didChange(wallpaper: UIImage, isWallpaperEdited: Bool) {
+        wallpaperDelegate?.didChange(wallpaper: wallpaper, isWallpaperEdited: isWallpaperEdited)
     }
 }
 

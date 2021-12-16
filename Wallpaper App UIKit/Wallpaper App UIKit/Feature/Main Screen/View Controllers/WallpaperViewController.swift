@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WallpaperDelegate: AnyObject {
-    func didChange(wallpaper: UIImage)
+    func didChange(wallpaper: UIImage, isWallpaperEdited: Bool)
 }
 
 class WallpaperViewController: UIViewController {
@@ -68,13 +68,14 @@ class WallpaperViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if let image = originalWallpaper {
-            wallpaperDelegate?.didChange(wallpaper: image)
+            let isWallpaperEdited = originalWallpaper != wallpaperToEdit
+            wallpaperDelegate?.didChange(wallpaper: image, isWallpaperEdited: isWallpaperEdited)
         } else {
             imgurApi.downloadImage(from: link) { [weak self] result in
                 switch result {
                 case .success(let image):
                     DispatchQueue.main.async {
-                        self?.wallpaperDelegate?.didChange(wallpaper: image)
+                        self?.wallpaperDelegate?.didChange(wallpaper: image, isWallpaperEdited: false)
                         
                         self?.originalWallpaper = image
                         self?.wallpaperToEdit = image
@@ -95,7 +96,7 @@ class WallpaperViewController: UIViewController {
         } else {
             wallpaperToEdit = imageView.image
             guard let wallpaper = wallpaperToEdit else { return }
-            wallpaperDelegate?.didChange(wallpaper: wallpaper)
+            wallpaperDelegate?.didChange(wallpaper: wallpaper, isWallpaperEdited: true)
         }
     }
     
@@ -107,7 +108,7 @@ class WallpaperViewController: UIViewController {
         wallpaperToEdit = originalWallpaper
         imageView.image = originalWallpaper
         guard let wallpaper = originalWallpaper else { return }
-        wallpaperDelegate?.didChange(wallpaper: wallpaper)
+        wallpaperDelegate?.didChange(wallpaper: wallpaper, isWallpaperEdited: false)
     }
     
     func previewFilter(_ filter: Filter, sliderValue: Float) {

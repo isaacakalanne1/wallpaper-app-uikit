@@ -42,9 +42,9 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
-    func updateButtonVisibility(appliedFilter filter: Filter) {
+    func updateButtonVisibility(isWallpaperEdited: Bool) {
         listOfVCs.forEach { vc in
-            vc.updateClearFiltersButtonVisibility(appliedFilter: filter)
+            vc.updateClearFiltersButtonVisibility(isWallpaperEdited: isWallpaperEdited)
         }
     }
     

@@ -83,8 +83,9 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: WallpaperDelegate {
-    func didChange(wallpaper: UIImage) {
+    func didChange(wallpaper: UIImage, isWallpaperEdited: Bool) {
         filterNavigatorVC.updateWallpaper(wallpaper)
+        filterNavigatorVC.updateButtonVisibility(isWallpaperEdited: isWallpaperEdited)
     }
 }
 
@@ -99,7 +100,6 @@ extension MainViewController: FilterDelegate {
     func applyFilter() {
         guard let filter = currentFilter else { return }
         secondaryButtonContainer.displayAnnouncement("Applied \(filter.title)")
-        filterNavigatorVC.updateButtonVisibility(appliedFilter: filter)
         
         wallpaperBrowserVC.applyFilter(filter)
         
