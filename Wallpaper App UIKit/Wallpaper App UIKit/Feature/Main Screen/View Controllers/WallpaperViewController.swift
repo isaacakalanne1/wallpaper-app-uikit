@@ -34,11 +34,13 @@ class WallpaperViewController: UIViewController {
     
     let link: String
     let wallpaperDelegate: WallpaperDelegate?
+    let filterDelegate: FilterDelegate?
     let announcementDelegate: AnnouncementDelegate?
     
-    init(link: String, wallpaperDelegate: WallpaperDelegate?, announcementDelegate: AnnouncementDelegate?) {
+    init(link: String, wallpaperDelegate: WallpaperDelegate?, filterDelegate: FilterDelegate?, announcementDelegate: AnnouncementDelegate?) {
         self.link = link
         self.wallpaperDelegate = wallpaperDelegate
+        self.filterDelegate = filterDelegate
         self.announcementDelegate = announcementDelegate
         
         super.init(nibName: nil, bundle: nil)
@@ -62,7 +64,6 @@ class WallpaperViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -88,6 +89,12 @@ class WallpaperViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        filterDelegate?.cancelFilter()
+        imageView.image = wallpaperToEdit
     }
     
     func applyFilter(_ filter: Filter) {

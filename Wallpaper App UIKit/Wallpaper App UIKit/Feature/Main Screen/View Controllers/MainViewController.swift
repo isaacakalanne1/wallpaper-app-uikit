@@ -32,7 +32,9 @@ class MainViewController: UIViewController {
     lazy var mainButtonContainer = MainButtonContainer(downloadDelegate: self, announcementDelegate: self)
     
     lazy var filterNavigatorVC = FilterNavigatorViewController(filterDelegate: self)
-    lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self, announcementDelegate: self)
+    lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self,
+                                                             filterDelegate: self,
+                                                             announcementDelegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +111,7 @@ extension MainViewController: FilterDelegate {
     }
     
     func cancelFilter() {
-        wallpaperBrowserVC.cancelFilter()
+        wallpaperBrowserVC.cancelPreviewedFilter()
         
         filterNavigatorVC.deselectButtons()
         secondaryButtonContainer.toggleButtons(.hide)

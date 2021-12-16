@@ -23,10 +23,12 @@ class WallpaperBrowserController: UIPageViewController {
     let imgurApi = ImgurAPI()
     
     let wallpaperDelegate: WallpaperDelegate?
+    let filterDelegate: FilterDelegate?
     let announcementDelegate: AnnouncementDelegate?
     
-    init(wallpaperDelegate: WallpaperDelegate?, announcementDelegate: AnnouncementDelegate?) {
+    init(wallpaperDelegate: WallpaperDelegate?, filterDelegate: FilterDelegate?, announcementDelegate: AnnouncementDelegate?) {
         self.wallpaperDelegate = wallpaperDelegate
+        self.filterDelegate = filterDelegate
         self.announcementDelegate = announcementDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
@@ -48,7 +50,10 @@ class WallpaperBrowserController: UIPageViewController {
                     self?.spinner.isHidden = true
                     
                     data.links.forEach { link in
-                        self?.listOfVCs.append(WallpaperViewController(link: link, wallpaperDelegate: self, announcementDelegate: self))
+                        self?.listOfVCs.append(WallpaperViewController(link: link,
+                                                                       wallpaperDelegate: self,
+                                                                       filterDelegate: self,
+                                                                       announcementDelegate: self))
                     }
                     
                     if let vc = self?.listOfVCs[0] {
@@ -73,7 +78,7 @@ class WallpaperBrowserController: UIPageViewController {
         vc.applyFilter(filter)
     }
     
-    func cancelFilter() {
+    func cancelPreviewedFilter() {
         guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.cancelFilter()
     }
@@ -93,6 +98,20 @@ class WallpaperBrowserController: UIPageViewController {
 extension WallpaperBrowserController: WallpaperDelegate {
     func didChange(wallpaper: UIImage, isWallpaperEdited: Bool) {
         wallpaperDelegate?.didChange(wallpaper: wallpaper, isWallpaperEdited: isWallpaperEdited)
+    }
+}
+
+extension WallpaperBrowserController: FilterDelegate {
+    func didSelectFilter(_ filter: Filter) {
+        
+    }
+    
+    func applyFilter() {
+        
+    }
+    
+    func cancelFilter() {
+        filterDelegate?.cancelFilter()
     }
 }
 
