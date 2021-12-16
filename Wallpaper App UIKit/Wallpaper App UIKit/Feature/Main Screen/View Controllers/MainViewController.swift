@@ -98,8 +98,10 @@ extension MainViewController: FilterDelegate {
     
     func didSelectFilter(_ filter: Filter) {
         currentFilter = filter
-        sliderValue = initialSliderValue
-        slider.value = sliderValue
+        if filter != .clear {
+            sliderValue = initialSliderValue
+            slider.value = sliderValue
+        }
         wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
         secondaryButtonContainer.toggleButtons(.show)
         secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: filter == .clear)
@@ -139,6 +141,8 @@ extension MainViewController: SliderDelegate {
         guard let filter = currentFilter else { return }
         
         wallpaperBrowserVC.previewFilter(filter, sliderValue: value)
+        secondaryButtonContainer.toggleButtons(.show)
+        secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: filter == .clear)
     }
 }
 
