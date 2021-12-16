@@ -115,6 +115,7 @@ class SecondaryButtonContainer: UIView {
     
     func updatePrimaryButtonInteraction(canInteract: Bool) {
         primaryButton.isUserInteractionEnabled = canInteract
+        self.primaryButton.alpha = canInteract ? 1.0 : 0.5
     }
     
 }
