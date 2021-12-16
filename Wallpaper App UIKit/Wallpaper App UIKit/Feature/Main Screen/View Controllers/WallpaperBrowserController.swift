@@ -23,9 +23,11 @@ class WallpaperBrowserController: UIPageViewController {
     let imgurApi = ImgurAPI()
     
     let wallpaperDelegate: WallpaperDelegate?
+    let announcementDelegate: AnnouncementDelegate?
     
-    init(wallpaperDelegate: WallpaperDelegate? = nil) {
+    init(wallpaperDelegate: WallpaperDelegate?, announcementDelegate: AnnouncementDelegate?) {
         self.wallpaperDelegate = wallpaperDelegate
+        self.announcementDelegate = announcementDelegate
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
         view.addSubview(spinner)
@@ -46,7 +48,7 @@ class WallpaperBrowserController: UIPageViewController {
                     self?.spinner.isHidden = true
                     
                     data.links.forEach { link in
-                        self?.listOfVCs.append(WallpaperViewController(link: link, delegate: self))
+                        self?.listOfVCs.append(WallpaperViewController(link: link, wallpaperDelegate: self, announcementDelegate: self))
                     }
                     
                     if let vc = self?.listOfVCs[0] {
@@ -86,6 +88,12 @@ class WallpaperBrowserController: UIPageViewController {
 extension WallpaperBrowserController: WallpaperDelegate {
     func didChange(wallpaper: UIImage) {
         wallpaperDelegate?.didChange(wallpaper: wallpaper)
+    }
+}
+
+extension WallpaperBrowserController: AnnouncementDelegate {
+    func displayAnnouncement(_ text: String) {
+        announcementDelegate?.displayAnnouncement(text)
     }
 }
 

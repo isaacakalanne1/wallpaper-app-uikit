@@ -48,6 +48,5 @@ class MainButtonContainer: UIView {
     
     @objc func downloadButtonPressed() {
         downloadDelegate?.saveWallpaperToPhotos()
-        announcementDelegate?.displayAnnouncement("Downloaded wallpaper")
     }
 }

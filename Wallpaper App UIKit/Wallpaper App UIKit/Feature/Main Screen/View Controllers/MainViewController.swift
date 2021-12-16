@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
     lazy var mainButtonContainer = MainButtonContainer(downloadDelegate: self, announcementDelegate: self)
     
     lazy var filterNavigatorVC = FilterNavigatorViewController(filterDelegate: self)
-    lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self)
+    lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self, announcementDelegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -33,11 +33,13 @@ class WallpaperViewController: UIViewController {
     var wallpaperToEdit: UIImage?
     
     let link: String
-    let delegate: WallpaperDelegate?
+    let wallpaperDelegate: WallpaperDelegate?
+    let announcementDelegate: AnnouncementDelegate?
     
-    init(link: String, delegate: WallpaperDelegate? = nil) {
+    init(link: String, wallpaperDelegate: WallpaperDelegate?, announcementDelegate: AnnouncementDelegate?) {
         self.link = link
-        self.delegate = delegate
+        self.wallpaperDelegate = wallpaperDelegate
+        self.announcementDelegate = announcementDelegate
         
         super.init(nibName: nil, bundle: nil)
         
@@ -66,13 +68,13 @@ class WallpaperViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if let image = originalWallpaper {
-            delegate?.didChange(wallpaper: image)
+            wallpaperDelegate?.didChange(wallpaper: image)
         } else {
             imgurApi.downloadImage(from: link) { [weak self] result in
                 switch result {
                 case .success(let image):
                     DispatchQueue.main.async {
-                        self?.delegate?.didChange(wallpaper: image)
+                        self?.wallpaperDelegate?.didChange(wallpaper: image)
                         
                         self?.originalWallpaper = image
                         self?.wallpaperToEdit = image
@@ -90,7 +92,7 @@ class WallpaperViewController: UIViewController {
     func applyFilter() {
         wallpaperToEdit = imageView.image
         guard let wallpaper = wallpaperToEdit else { return }
-        delegate?.didChange(wallpaper: wallpaper)
+        wallpaperDelegate?.didChange(wallpaper: wallpaper)
     }
     
     func cancelFilter() {
@@ -115,7 +117,14 @@ class WallpaperViewController: UIViewController {
     
     func saveWallpaperToPhotos() {
         guard let image = wallpaperToEdit else { return }
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        let imageSaver = ImageSaver(delegate: self)
+        imageSaver.saveWallpaperToPhotos(image: image)
     }
     
+}
+
+extension WallpaperViewController: AnnouncementDelegate {
+    func displayAnnouncement(_ text: String) {
+        announcementDelegate?.displayAnnouncement(text)
+    }
 }
