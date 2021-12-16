@@ -84,7 +84,7 @@ class FilterButton: UIButton {
         
         if filter == .clear {
             UIView.transition(with: filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
-                self.filterImageView.image = self.originalWallpaper
+                self.filterImageView.image = wallpaper
             }
         } else {
             
