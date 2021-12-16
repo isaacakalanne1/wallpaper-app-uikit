@@ -33,6 +33,7 @@ class FilterBrowserViewController: UIViewController {
     }()
     
     let delegate: FilterDelegate?
+    var currentFilter: Filter?
     
     init(delegate: FilterDelegate?) {
         self.delegate = delegate
@@ -88,6 +89,7 @@ class FilterBrowserViewController: UIViewController {
     }
     
     func deselectButtons() {
+        currentFilter = nil
         stackView.arrangedSubviews.forEach { view in
             if let button = view as? FilterButton {
                 button.updateFormatting(isSelected: false)
@@ -132,11 +134,14 @@ class FilterBrowserViewController: UIViewController {
 extension FilterBrowserViewController: FilterDelegate {
     
     func didSelectFilter(_ filter: Filter) {
-        delegate?.didSelectFilter(filter)
-        stackView.arrangedSubviews.forEach { view in
-            if let button = view as? FilterButton {
-                let isSelected = filter == button.filter
-                button.updateFormatting(isSelected: isSelected)
+        if currentFilter != filter {
+            currentFilter = filter
+            delegate?.didSelectFilter(filter)
+            stackView.arrangedSubviews.forEach { view in
+                if let button = view as? FilterButton {
+                    let isSelected = filter == button.filter
+                    button.updateFormatting(isSelected: isSelected)
+                }
             }
         }
     }
@@ -150,7 +155,7 @@ extension FilterBrowserViewController: FilterDelegate {
     }
     
     func cancelFilter() {
-        
+        currentFilter = nil
     }
     
     func clearAllFilters() {
