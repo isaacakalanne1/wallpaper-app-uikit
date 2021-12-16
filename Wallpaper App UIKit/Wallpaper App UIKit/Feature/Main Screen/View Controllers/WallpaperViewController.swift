@@ -113,4 +113,9 @@ class WallpaperViewController: UIViewController {
         imageView.image = processedImage
     }
     
+    func saveWallpaperToPhotos() {
+        guard let image = wallpaperToEdit else { return }
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+    
 }

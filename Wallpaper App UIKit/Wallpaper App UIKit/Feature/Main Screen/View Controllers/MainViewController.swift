@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     var currentFilter: Filter?
     
     let filterNavigatorView = UIView()
-    let mainButtonContainer = MainButtonContainer()
+    lazy var mainButtonContainer = MainButtonContainer(downloadDelegate: self, announcementDelegate: self)
     
     lazy var filterNavigatorVC = FilterNavigatorViewController(filterDelegate: self)
     lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self)
@@ -119,6 +119,18 @@ extension MainViewController: SliderDelegate {
         guard let filter = currentFilter else { return }
         
         wallpaperBrowserVC.previewFilter(filter, sliderValue: value)
+    }
+}
+
+extension MainViewController: DownloadDelegate {
+    func saveWallpaperToPhotos() {
+        wallpaperBrowserVC.saveWallpaperToPhotos()
+    }
+}
+
+extension MainViewController: AnnouncementDelegate {
+    func displayAnnouncement(_ text: String) {
+        secondaryButtonContainer.displayAnnouncement(text)
     }
 }
 

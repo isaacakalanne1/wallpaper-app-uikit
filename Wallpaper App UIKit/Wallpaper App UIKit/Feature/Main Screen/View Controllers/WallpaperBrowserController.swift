@@ -76,6 +76,11 @@ class WallpaperBrowserController: UIPageViewController {
         vc.cancelFilter()
     }
     
+    func saveWallpaperToPhotos() {
+        guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        vc.saveWallpaperToPhotos()
+    }
+    
 }
 
 extension WallpaperBrowserController: WallpaperDelegate {

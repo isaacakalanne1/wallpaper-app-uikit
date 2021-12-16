@@ -7,15 +7,26 @@
 
 import UIKit
 
+protocol DownloadDelegate: AnyObject {
+    func saveWallpaperToPhotos()
+}
+
 class MainButtonContainer: UIView {
     
     let downloadButton = Button(style: .primary, title: "Download")
     let menuButton = Button(style: .secondary, image: UIImage(systemName: "line.3.horizontal")!)
     
-    override init(frame: CGRect) {
+    let downloadDelegate: DownloadDelegate?
+    let announcementDelegate: AnnouncementDelegate?
+    
+    init(downloadDelegate: DownloadDelegate?, announcementDelegate: AnnouncementDelegate?) {
+        self.downloadDelegate = downloadDelegate
+        self.announcementDelegate = announcementDelegate
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
+        
+        downloadButton.addTarget(self, action: #selector(downloadButtonPressed), for: .touchUpInside)
         
         addSubview(menuButton)
         addSubview(downloadButton)
@@ -34,4 +45,9 @@ class MainButtonContainer: UIView {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    @objc func downloadButtonPressed() {
+        downloadDelegate?.saveWallpaperToPhotos()
+        announcementDelegate?.displayAnnouncement("Downloaded wallpaper")
+    }
 }

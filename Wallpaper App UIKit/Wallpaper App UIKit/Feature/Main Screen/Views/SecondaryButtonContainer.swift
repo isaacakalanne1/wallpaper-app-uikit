@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AnnouncementDelegate: AnyObject {
+    func displayAnnouncement(_ text: String)
+}
+
 class SecondaryButtonContainer: UIView {
     
     enum ButtonStatus {
