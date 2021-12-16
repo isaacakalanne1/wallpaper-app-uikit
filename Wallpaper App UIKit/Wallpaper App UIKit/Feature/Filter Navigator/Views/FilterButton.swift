@@ -88,7 +88,7 @@ class FilterButton: UIButton {
         } else {
             
             DispatchQueue.global(qos: .userInitiated).async {
-                let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: 0.75)
+                let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: self.filter.filterButtonPreviewSliderValue)
 
                 DispatchQueue.main.async {
                     UIView.transition(with: self.filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {

@@ -30,6 +30,15 @@ enum Filter: String, CaseIterable {
         }
     }
     
+    var filterButtonPreviewSliderValue: Float {
+        switch self {
+        case ._super, .zoom, .wow, .whoosh:
+            return 0.3
+        default:
+            return 0.75
+        }
+    }
+    
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
         switch self {
         case .clear:
