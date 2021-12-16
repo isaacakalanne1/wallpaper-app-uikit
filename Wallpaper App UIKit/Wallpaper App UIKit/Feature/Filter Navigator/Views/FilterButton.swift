@@ -43,13 +43,11 @@ class FilterButton: UIButton {
     let filter: Filter
     var isButtonSelected: Bool
     let delegate: FilterDelegate?
-    var originalWallpaper: UIImage?
     
     init(filter: Filter, image: UIImage? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
         self.filter = filter
         self.isButtonSelected = isSelected
         self.delegate = delegate
-        self.originalWallpaper = image
         
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false

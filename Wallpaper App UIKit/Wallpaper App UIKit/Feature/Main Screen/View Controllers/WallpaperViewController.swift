@@ -68,9 +68,11 @@ class WallpaperViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let image = originalWallpaper {
+        if originalWallpaper != nil {
             let isWallpaperEdited = originalWallpaper != wallpaperToEdit
-            imageView.image = isWallpaperEdited ? wallpaperToEdit : originalWallpaper
+            let wallpaperImage = isWallpaperEdited ? wallpaperToEdit : originalWallpaper
+            imageView.image = wallpaperImage
+            guard let image = wallpaperImage else { return }
             wallpaperDelegate?.didChange(wallpaper: image, isWallpaperEdited: isWallpaperEdited)
         } else {
             imgurApi.downloadImage(from: link) { [weak self] result in
