@@ -70,6 +70,7 @@ class WallpaperViewController: UIViewController {
         
         if let image = originalWallpaper {
             let isWallpaperEdited = originalWallpaper != wallpaperToEdit
+            imageView.image = isWallpaperEdited ? wallpaperToEdit : originalWallpaper
             wallpaperDelegate?.didChange(wallpaper: image, isWallpaperEdited: isWallpaperEdited)
         } else {
             imgurApi.downloadImage(from: link) { [weak self] result in

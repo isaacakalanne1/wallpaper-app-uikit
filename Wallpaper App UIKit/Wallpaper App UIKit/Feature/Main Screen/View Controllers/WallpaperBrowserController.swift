@@ -123,10 +123,11 @@ extension WallpaperBrowserController: AnnouncementDelegate {
 }
 
 extension WallpaperBrowserController: UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        guard let pendingVC = pendingViewControllers.first,
-              let indexOfCurrentVC = listOfVCs.firstIndex(of: pendingVC) else { return }
-        currentIndex = indexOfCurrentVC
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let vc = viewControllers?.first,
+              let index = listOfVCs.firstIndex(of: vc) else { return }
+        currentIndex = index
     }
 }
 
