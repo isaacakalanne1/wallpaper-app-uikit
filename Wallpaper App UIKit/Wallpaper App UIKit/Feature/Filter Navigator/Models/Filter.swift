@@ -102,8 +102,8 @@ enum Filter: String, CaseIterable {
             return filter
         case .zoom:
             let filter = CompoundEye()
-            filter.inputWidth = CGFloat(32*sliderValue)
-            filter.inputBend = CGFloat(4*sliderValue)
+            filter.inputWidth = CGFloat(100*sliderValue)
+            filter.inputBend = CGFloat(10*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .lay:
