@@ -36,8 +36,7 @@ enum Filter: String, CaseIterable {
             return nil
         case ._super:
             let filter = TransverseChromaticAberration()
-            filter.inputBlur = CGFloat(20*sliderValue)
-            filter.inputFalloff = CGFloat(0.4*sliderValue)
+            filter.inputBlur = CGFloat(50*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .leet:
