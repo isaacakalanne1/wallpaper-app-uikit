@@ -43,11 +43,13 @@ class FilterButton: UIButton {
     let filter: Filter
     var isButtonSelected: Bool
     let delegate: FilterDelegate?
+    var originalWallpaper: UIImage?
     
     init(filter: Filter, image: UIImage? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
         self.filter = filter
         self.isButtonSelected = isSelected
         self.delegate = delegate
+        self.originalWallpaper = image
         
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -79,12 +81,18 @@ class FilterButton: UIButton {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func updateWallpaper(_ wallpaper: UIImage) {
-        self.filterImageView.image = wallpaper
-        DispatchQueue.global(qos: .userInitiated).async {
-            let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: 0.75)
+        
+        if filter == .clear {
+            self.filterImageView.image = originalWallpaper
+        } else {
+            self.filterImageView.image = wallpaper
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: 0.75)
 
-            DispatchQueue.main.async {
-                self.filterImageView.image = editedImage
+                DispatchQueue.main.async {
+                    self.filterImageView.image = editedImage
+                }
             }
         }
     }
