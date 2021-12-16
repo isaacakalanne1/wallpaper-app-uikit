@@ -108,8 +108,13 @@ extension WallpaperBrowserController: WallpaperDelegate {
 }
 
 extension WallpaperBrowserController: FilterDelegate {
+    
     func didSelectFilter(_ filter: Filter) {
         
+    }
+    
+    func finishedFilteringWallpaper() {
+        filterDelegate?.finishedFilteringWallpaper()
     }
     
     func applyFilter() {

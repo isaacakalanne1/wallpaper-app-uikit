@@ -140,6 +140,7 @@ class WallpaperViewController: UIViewController {
 
                 DispatchQueue.main.async {
                     if let image = editedImage {
+                        self.filterDelegate?.finishedFilteringWallpaper()
                         self.imageView.image = image
                     } else {
                         self.announcementDelegate?.displayAnnouncement("Couldn't apply filter")

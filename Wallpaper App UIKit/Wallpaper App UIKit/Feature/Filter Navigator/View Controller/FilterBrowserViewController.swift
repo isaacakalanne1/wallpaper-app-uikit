@@ -141,6 +141,10 @@ extension FilterBrowserViewController: FilterDelegate {
         }
     }
     
+    func finishedFilteringWallpaper() {
+        
+    }
+    
     func applyFilter() {
         
     }

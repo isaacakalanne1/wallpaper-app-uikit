@@ -9,6 +9,7 @@ import UIKit
 
 protocol FilterDelegate: AnyObject {
     func didSelectFilter(_ filter: Filter)
+    func finishedFilteringWallpaper()
     func applyFilter()
     func cancelFilter()
     func clearAllFilters()

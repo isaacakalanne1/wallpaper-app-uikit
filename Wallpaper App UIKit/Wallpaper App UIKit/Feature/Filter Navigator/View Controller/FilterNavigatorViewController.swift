@@ -62,6 +62,10 @@ extension FilterNavigatorViewController: FilterDelegate {
         filterDelegate?.didSelectFilter(filter)
     }
     
+    func finishedFilteringWallpaper() {
+        
+    }
+    
     func applyFilter() {
         
     }
