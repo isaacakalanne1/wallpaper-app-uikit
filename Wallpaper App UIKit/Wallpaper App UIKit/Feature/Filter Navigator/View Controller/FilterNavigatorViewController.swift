@@ -92,6 +92,7 @@ extension FilterNavigatorViewController: UIPageViewControllerDataSource {
         if indexOfCurrentVC == 0 {
             return nil
         } else {
+            guard listOfVCs.indices.contains(indexOfCurrentVC - 1) else { return nil }
             return listOfVCs[indexOfCurrentVC - 1]
         }
     }
@@ -103,6 +104,7 @@ extension FilterNavigatorViewController: UIPageViewControllerDataSource {
         if indexOfCurrentVC == listOfVCs.count - 1 {
             return nil
         } else {
+            guard listOfVCs.indices.contains(indexOfCurrentVC + 1) else { return nil }
             return listOfVCs[indexOfCurrentVC + 1]
         }
     }

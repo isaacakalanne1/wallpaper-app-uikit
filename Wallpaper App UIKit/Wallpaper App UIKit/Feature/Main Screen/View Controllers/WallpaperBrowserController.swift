@@ -70,27 +70,32 @@ class WallpaperBrowserController: UIPageViewController {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func previewFilter(_ filter: Filter, sliderValue: Float) {
-        guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        guard listOfVCs.indices.contains(currentIndex),
+              let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.previewFilter(filter, sliderValue: sliderValue)
     }
     
     func applyFilter(_ filter: Filter) {
-        guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        guard listOfVCs.indices.contains(currentIndex),
+              let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.applyFilter(filter)
     }
     
     func cancelPreviewedFilter() {
-        guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        guard listOfVCs.indices.contains(currentIndex),
+              let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.cancelFilter()
     }
     
     func clearAllFilters() {
-        guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        guard listOfVCs.indices.contains(currentIndex),
+              let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.clearAllFilters()
     }
     
     func saveWallpaperToPhotos() {
-        guard let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        guard listOfVCs.indices.contains(currentIndex),
+              let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.saveWallpaperToPhotos()
     }
     
