@@ -118,24 +118,36 @@ class WallpaperViewController: UIViewController {
         } else {
             
             DispatchQueue.global(qos: .userInitiated).async {
-                let context = CIContext(options: nil)
-                
-                guard let imputImage = self.wallpaperToEdit,
-                      let beginImage = CIImage(image: imputImage) else { return }
-                
-                let currentFilter = filter.createCIFilter(inputImage: beginImage,
-                                                          sliderValue: sliderValue)
-                
-                guard let output = currentFilter?.outputImage,
-                      let cgimg = context.createCGImage(output, from: output.extent) else { return }
-                
-                let processedImage = UIImage(cgImage: cgimg)
+                let editedImage = self.filterImage(self.wallpaperToEdit,
+                                                   with: filter,
+                                                   sliderValue: sliderValue)
 
                 DispatchQueue.main.async {
-                    self.imageView.image = processedImage
+                    if let image = editedImage {
+                        self.imageView.image = image
+                    } else {
+                        self.announcementDelegate?.displayAnnouncement("Couldn't apply filter")
+                    }
                 }
             }
         }
+    }
+    
+    func filterImage(_ image: UIImage?, with filter: Filter, sliderValue: Float) -> UIImage? {
+        let context = CIContext(options: nil)
+        
+        guard let imputImage = image,
+              let beginImage = CIImage(image: imputImage) else { return nil }
+        
+        let currentFilter = filter.createCIFilter(inputImage: beginImage,
+                                                  sliderValue: sliderValue)
+        
+        guard let output = currentFilter?.outputImage,
+              let cgimg = context.createCGImage(output, from: output.extent) else { return nil }
+        
+        let processedImage = UIImage(cgImage: cgimg)
+        
+        return processedImage
     }
     
     func saveWallpaperToPhotos() {
