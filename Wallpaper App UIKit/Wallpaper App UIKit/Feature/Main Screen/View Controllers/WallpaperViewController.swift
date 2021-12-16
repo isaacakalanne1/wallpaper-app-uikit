@@ -116,19 +116,25 @@ class WallpaperViewController: UIViewController {
         if filter == .clear {
             imageView.image = originalWallpaper
         } else {
-            let context = CIContext(options: nil)
             
-            guard let imputImage = wallpaperToEdit,
-                  let beginImage = CIImage(image: imputImage) else { return }
-            
-            let currentFilter = filter.createCIFilter(inputImage: beginImage,
-                                                      sliderValue: sliderValue)
-            
-            guard let output = currentFilter?.outputImage,
-                  let cgimg = context.createCGImage(output, from: output.extent) else { return }
-            
-            let processedImage = UIImage(cgImage: cgimg)
-            imageView.image = processedImage
+            DispatchQueue.global(qos: .userInitiated).async {
+                let context = CIContext(options: nil)
+                
+                guard let imputImage = self.wallpaperToEdit,
+                      let beginImage = CIImage(image: imputImage) else { return }
+                
+                let currentFilter = filter.createCIFilter(inputImage: beginImage,
+                                                          sliderValue: sliderValue)
+                
+                guard let output = currentFilter?.outputImage,
+                      let cgimg = context.createCGImage(output, from: output.extent) else { return }
+                
+                let processedImage = UIImage(cgImage: cgimg)
+
+                DispatchQueue.main.async {
+                    self.imageView.image = processedImage
+                }
+            }
         }
     }
     
