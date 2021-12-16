@@ -83,15 +83,21 @@ class FilterButton: UIButton {
     func updateWallpaper(_ wallpaper: UIImage) {
         
         if filter == .clear {
-            self.filterImageView.image = originalWallpaper
+            UIView.transition(with: filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
+                self.filterImageView.image = self.originalWallpaper
+            }
         } else {
-            self.filterImageView.image = wallpaper
+            UIView.transition(with: filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
+                self.filterImageView.image = wallpaper
+            }
             
             DispatchQueue.global(qos: .userInitiated).async {
                 let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: 0.75)
 
                 DispatchQueue.main.async {
-                    self.filterImageView.image = editedImage
+                    UIView.transition(with: self.filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
+                        self.filterImageView.image = editedImage
+                    }
                 }
             }
         }

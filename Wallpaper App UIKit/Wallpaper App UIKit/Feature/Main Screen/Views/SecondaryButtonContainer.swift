@@ -44,7 +44,7 @@ class SecondaryButtonContainer: UIView {
     
     let delegate: FilterDelegate?
     
-    let animationLength: TimeInterval = 0.15
+    let animationLength = Animation.length
     
     init(delegate: FilterDelegate?) {
         self.delegate = delegate
@@ -97,17 +97,17 @@ class SecondaryButtonContainer: UIView {
         
         announcementLabel.text = text
         
-        UIView.animate(withDuration: animationLength, animations: {
+        UIView.animate(withDuration: Animation.length, animations: {
             self.announcementLabel.alpha = 1.0
         }) { _ in
-            UIView.animate(withDuration: self.animationLength, delay: 1.0) {
+            UIView.animate(withDuration: Animation.length, delay: 1.0) {
                 self.announcementLabel.alpha = 0.0
             }
         }
     }
     
     func toggleButtons(_ status: ButtonStatus) {
-        UIView.animate(withDuration: animationLength) {
+        UIView.animate(withDuration: Animation.length) {
             self.primaryButton.alpha = status.animationAlpha
             self.secondaryButton.alpha = status.animationAlpha
         }
