@@ -12,6 +12,7 @@ class FilterBrowserViewController: UIViewController {
     let margin: CGFloat = 10
     let filters = Filter.allCases
     var currentWallpaper: UIImage?
+    var currentWallpaperReducedSize: UIImage?
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -28,7 +29,6 @@ class FilterBrowserViewController: UIViewController {
         return stackView
     }()
     
-    var wallpaper: UIImage?
     let delegate: FilterDelegate?
     
     init(delegate: FilterDelegate?) {
@@ -65,9 +65,18 @@ class FilterBrowserViewController: UIViewController {
     
     func updateWallpaper(_ wallpaper: UIImage) {
         currentWallpaper = wallpaper
-        stackView.arrangedSubviews.forEach { view in
-            if let button = view as? FilterButton {
-                button.updateWallpaper(wallpaper)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let newSize = CGSize(width: 200, height: 200)
+            self.currentWallpaperReducedSize = ImageEditor.resizeImage(image: wallpaper,
+                                                                       targetSize: newSize)
+
+            DispatchQueue.main.async {
+                self.stackView.arrangedSubviews.forEach { view in
+                    if let button = view as? FilterButton,
+                       let smallWallpaper = self.currentWallpaperReducedSize {
+                        button.updateWallpaper(smallWallpaper)
+                    }
+                }
             }
         }
     }
@@ -93,7 +102,10 @@ class FilterBrowserViewController: UIViewController {
     }
     
     func addClearFiltersButton() {
-        let button = FilterButton(filter: .clear, image: currentWallpaper, isSelected: false, delegate: self)
+        let button = FilterButton(filter: .clear,
+                                  image: currentWallpaperReducedSize,
+                                  isSelected: false,
+                                  delegate: self)
         stackView.insertArrangedSubview(button, at: 0)
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: 70),
