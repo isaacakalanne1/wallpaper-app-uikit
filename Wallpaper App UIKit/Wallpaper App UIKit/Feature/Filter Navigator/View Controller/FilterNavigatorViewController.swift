@@ -30,9 +30,9 @@ class FilterNavigatorViewController: UIPageViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func updateWallpaper(_ wallpaper: UIImage) {
+    func updateWallpaper(editedWallpaper: UIImage, originalWallpaper: UIImage) {
         listOfVCs.forEach { vc in
-            vc.updateWallpaper(wallpaper)
+            vc.updateWallpaper(editedWallpaper: editedWallpaper, originalWallpaper: originalWallpaper)
         }
     }
     

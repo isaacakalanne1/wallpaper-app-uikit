@@ -85,8 +85,9 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: WallpaperDelegate {
-    func didChange(wallpaper: UIImage, isWallpaperEdited: Bool) {
-        filterNavigatorVC.updateWallpaper(wallpaper)
+    func didChange(editedWallpaper: UIImage, originalWallpaper: UIImage, isWallpaperEdited: Bool) {
+        filterNavigatorVC.updateWallpaper(editedWallpaper: editedWallpaper,
+                                          originalWallpaper: originalWallpaper)
         filterNavigatorVC.updateButtonVisibility(isWallpaperEdited: isWallpaperEdited)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WallpaperDelegate: AnyObject {
-    func didChange(wallpaper: UIImage, isWallpaperEdited: Bool)
+    func didChange(editedWallpaper: UIImage, originalWallpaper: UIImage, isWallpaperEdited: Bool)
 }
 
 class WallpaperViewController: UIViewController {
@@ -70,16 +70,19 @@ class WallpaperViewController: UIViewController {
         
         if originalWallpaper != nil {
             let isWallpaperEdited = originalWallpaper != wallpaperToEdit
-            let wallpaperImage = isWallpaperEdited ? wallpaperToEdit : originalWallpaper
-            imageView.image = wallpaperImage
-            guard let image = wallpaperImage else { return }
-            wallpaperDelegate?.didChange(wallpaper: image, isWallpaperEdited: isWallpaperEdited)
+            guard let editedImage = wallpaperToEdit,
+                  let originalImage = originalWallpaper else { return }
+            wallpaperDelegate?.didChange(editedWallpaper: editedImage,
+                                         originalWallpaper: originalImage,
+                                         isWallpaperEdited: isWallpaperEdited)
         } else {
             imgurApi.downloadImage(from: link) { [weak self] result in
                 switch result {
                 case .success(let image):
                     DispatchQueue.main.async {
-                        self?.wallpaperDelegate?.didChange(wallpaper: image, isWallpaperEdited: false)
+                        self?.wallpaperDelegate?.didChange(editedWallpaper: image,
+                                                           originalWallpaper: image,
+                                                           isWallpaperEdited: false)
                         
                         self?.originalWallpaper = image
                         self?.wallpaperToEdit = image
@@ -105,8 +108,9 @@ class WallpaperViewController: UIViewController {
             clearAllFilters()
         } else {
             wallpaperToEdit = imageView.image
-            guard let wallpaper = wallpaperToEdit else { return }
-            wallpaperDelegate?.didChange(wallpaper: wallpaper, isWallpaperEdited: true)
+            guard let editedImage = wallpaperToEdit,
+                  let originalImage = originalWallpaper else { return }
+            wallpaperDelegate?.didChange(editedWallpaper: editedImage, originalWallpaper: originalImage, isWallpaperEdited: true)
         }
     }
     
@@ -118,7 +122,9 @@ class WallpaperViewController: UIViewController {
         wallpaperToEdit = originalWallpaper
         imageView.image = originalWallpaper
         guard let wallpaper = originalWallpaper else { return }
-        wallpaperDelegate?.didChange(wallpaper: wallpaper, isWallpaperEdited: false)
+        wallpaperDelegate?.didChange(editedWallpaper: wallpaper,
+                                     originalWallpaper: wallpaper,
+                                     isWallpaperEdited: false)
     }
     
     func previewFilter(_ filter: Filter, sliderValue: Float) {

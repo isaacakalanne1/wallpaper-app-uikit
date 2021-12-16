@@ -11,8 +11,11 @@ class FilterBrowserViewController: UIViewController {
     
     let margin: CGFloat = 10
     let filters = Filter.allCases
-    var currentWallpaper: UIImage?
-    var currentWallpaperReducedSize: UIImage?
+    var editedWallpaper: UIImage?
+    var editedWallpaperReducedSize: UIImage?
+    
+    var originalWallpaper: UIImage?
+    var originalWallpaperReducedSize: UIImage?
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -63,18 +66,21 @@ class FilterBrowserViewController: UIViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func updateWallpaper(_ wallpaper: UIImage) {
-        currentWallpaper = wallpaper
+    func updateWallpaper(editedWallpaper: UIImage, originalWallpaper: UIImage) {
+        self.editedWallpaper = editedWallpaper
+        self.originalWallpaper = originalWallpaper
         DispatchQueue.global(qos: .userInitiated).async {
             let newSize = CGSize(width: 200, height: 200)
-            self.currentWallpaperReducedSize = ImageEditor.resizeImage(image: wallpaper,
+            self.editedWallpaperReducedSize = ImageEditor.resizeImage(image: editedWallpaper,
                                                                        targetSize: newSize)
+            self.originalWallpaperReducedSize = ImageEditor.resizeImage(image: originalWallpaper,
+                                                                        targetSize: newSize)
 
             DispatchQueue.main.async {
                 self.stackView.arrangedSubviews.forEach { view in
                     if let button = view as? FilterButton,
-                       let smallWallpaper = self.currentWallpaperReducedSize {
-                        button.updateWallpaper(smallWallpaper)
+                       let wallpaper = button.filter == .clear ? self.originalWallpaperReducedSize : self.editedWallpaperReducedSize {
+                        button.updateWallpaper(wallpaper)
                     }
                 }
             }
@@ -103,7 +109,7 @@ class FilterBrowserViewController: UIViewController {
     
     func addClearFiltersButton() {
         let button = FilterButton(filter: .clear,
-                                  image: currentWallpaperReducedSize,
+                                  image: originalWallpaperReducedSize,
                                   isSelected: false,
                                   delegate: self)
         stackView.insertArrangedSubview(button, at: 0)
