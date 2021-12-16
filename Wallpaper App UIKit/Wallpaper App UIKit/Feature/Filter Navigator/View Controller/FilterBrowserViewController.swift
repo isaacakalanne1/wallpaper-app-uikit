@@ -10,7 +10,8 @@ import UIKit
 class FilterBrowserViewController: UIViewController {
     
     let margin: CGFloat = 10
-    var filters = Filter.allCases
+    let filters = Filter.allCases
+    var currentWallpaper: UIImage?
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -37,11 +38,13 @@ class FilterBrowserViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         filters.forEach { filter in
-            let button = FilterButton(filter: filter, delegate: self)
-            stackView.addArrangedSubview(button)
-            NSLayoutConstraint.activate([
-                button.widthAnchor.constraint(equalToConstant: 70),
-            ])
+            if filter != .clear {
+                let button = FilterButton(filter: filter, delegate: self)
+                stackView.addArrangedSubview(button)
+                NSLayoutConstraint.activate([
+                    button.widthAnchor.constraint(equalToConstant: 70),
+                ])
+            }
         }
         
         NSLayoutConstraint.activate([
@@ -61,6 +64,7 @@ class FilterBrowserViewController: UIViewController {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func updateWallpaper(_ wallpaper: UIImage) {
+        currentWallpaper = wallpaper
         stackView.arrangedSubviews.forEach { view in
             if let button = view as? FilterButton {
                 button.updateWallpaper(wallpaper)
@@ -72,6 +76,24 @@ class FilterBrowserViewController: UIViewController {
         stackView.arrangedSubviews.forEach { view in
             if let button = view as? FilterButton {
                 button.updateFormatting(isSelected: false)
+            }
+        }
+    }
+    
+    func addClearFiltersButton() {
+        let button = FilterButton(filter: .clear, image: currentWallpaper, isSelected: false, delegate: self)
+        stackView.insertArrangedSubview(button, at: 0)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 70),
+        ])
+    }
+    
+    func removeClearFiltersButton() {
+        stackView.arrangedSubviews.forEach { view in
+            if let button = view as? FilterButton,
+               button.filter == .clear {
+                button.removeFromSuperview()
+                stackView.removeArrangedSubview(button)
             }
         }
     }
@@ -95,5 +117,10 @@ extension FilterBrowserViewController: FilterDelegate {
     
     func cancelFilter() {
         
+    }
+    
+    func clearAllFilters() {
+        removeClearFiltersButton()
+        delegate?.clearAllFilters()
     }
 }

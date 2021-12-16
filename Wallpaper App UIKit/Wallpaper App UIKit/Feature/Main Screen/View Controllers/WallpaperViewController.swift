@@ -99,6 +99,13 @@ class WallpaperViewController: UIViewController {
         imageView.image = wallpaperToEdit
     }
     
+    func clearAllFilters() {
+        wallpaperToEdit = originalWallpaper
+        imageView.image = originalWallpaper
+        guard let wallpaper = originalWallpaper else { return }
+        wallpaperDelegate?.didChange(wallpaper: wallpaper)
+    }
+    
     func previewFilter(_ filter: Filter, sliderValue: Float) {
         let context = CIContext(options: nil)
         
@@ -108,7 +115,7 @@ class WallpaperViewController: UIViewController {
         let currentFilter = filter.createCIFilter(inputImage: beginImage,
                                                   sliderValue: sliderValue)
         
-        guard let output = currentFilter.outputImage,
+        guard let output = currentFilter?.outputImage,
               let cgimg = context.createCGImage(output, from: output.extent) else { return }
         
         let processedImage = UIImage(cgImage: cgimg)

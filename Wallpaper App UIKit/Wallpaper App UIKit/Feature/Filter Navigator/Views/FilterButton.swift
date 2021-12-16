@@ -11,6 +11,7 @@ protocol FilterDelegate: AnyObject {
     func didSelectFilter(_ filter: Filter)
     func applyFilter()
     func cancelFilter()
+    func clearAllFilters()
 }
 
 class FilterButton: UIButton {
@@ -91,7 +92,11 @@ class FilterButton: UIButton {
     }
     
     @objc func didTapButton(_ sender: FilterButton) {
-        delegate?.didSelectFilter(filter)
+        if sender.filter == .clear {
+            delegate?.clearAllFilters()
+        } else {
+            delegate?.didSelectFilter(filter)
+        }
     }
     
 }

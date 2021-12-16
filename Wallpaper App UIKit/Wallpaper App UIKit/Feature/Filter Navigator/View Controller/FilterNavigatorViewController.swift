@@ -22,9 +22,7 @@ class FilterNavigatorViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        listOfVCs = [FilterBrowserViewController(delegate: self),
-                     FilterBrowserViewController(delegate: self),
-                     FilterBrowserViewController(delegate: self)]
+        listOfVCs = [FilterBrowserViewController(delegate: self)]
         
         setViewControllers([listOfVCs[0]], direction: .forward, animated: true, completion: nil)
         
@@ -44,6 +42,18 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
+    func addClearFiltersButton() {
+        listOfVCs.forEach { vc in
+            vc.addClearFiltersButton()
+        }
+    }
+    
+    func removeClearFiltersButton() {
+        listOfVCs.forEach { vc in
+            vc.removeClearFiltersButton()
+        }
+    }
+    
 }
 
 extension FilterNavigatorViewController: FilterDelegate {
@@ -58,6 +68,10 @@ extension FilterNavigatorViewController: FilterDelegate {
     
     func cancelFilter() {
         
+    }
+    
+    func clearAllFilters() {
+        filterDelegate?.clearAllFilters()
     }
 }
 

@@ -98,8 +98,11 @@ extension MainViewController: FilterDelegate {
     
     func applyFilter() {
         guard let filter = currentFilter else { return }
-        wallpaperBrowserVC.applyFilter()
         secondaryButtonContainer.displayAnnouncement("Applied \(filter.title)")
+        filterNavigatorVC.addClearFiltersButton()
+        
+        wallpaperBrowserVC.applyFilter()
+        
         filterNavigatorVC.deselectButtons()
         secondaryButtonContainer.toggleButtons(.hide)
         currentFilter = nil
@@ -107,9 +110,14 @@ extension MainViewController: FilterDelegate {
     
     func cancelFilter() {
         wallpaperBrowserVC.cancelFilter()
+        
         filterNavigatorVC.deselectButtons()
         secondaryButtonContainer.toggleButtons(.hide)
         currentFilter = nil
+    }
+    
+    func clearAllFilters() {
+        wallpaperBrowserVC.clearAllFilters()
     }
 }
 
