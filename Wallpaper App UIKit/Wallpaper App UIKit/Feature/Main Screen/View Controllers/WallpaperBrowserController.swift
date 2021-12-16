@@ -30,7 +30,7 @@ class WallpaperBrowserController: UIPageViewController {
         self.wallpaperDelegate = wallpaperDelegate
         self.filterDelegate = filterDelegate
         self.announcementDelegate = announcementDelegate
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        super.init(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
         
         view.addSubview(spinner)
         

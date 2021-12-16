@@ -46,6 +46,7 @@ class WallpaperViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(spinner)
+        view.backgroundColor = Color.primary
         
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
