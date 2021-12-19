@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class MainViewController: UIViewController {
     
@@ -37,7 +38,9 @@ class MainViewController: UIViewController {
     lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self,
                                                              filterDelegate: self,
                                                              announcementDelegate: self)
-
+    
+    var rewardedAd: GADRewardedAd?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +85,23 @@ class MainViewController: UIViewController {
             mainButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
             mainButtonContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
+        
+        loadRewardedAd()
+    }
+    
+    func loadRewardedAd() {
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: "ca-app-pub-8123415297019784/9501821136",
+                           request: request, completionHandler: { (ad, error) in
+            if let error = error {
+                print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                return
+            } else {
+                print("Rewarded ad loaded")
+            }
+            self.rewardedAd = ad
+            self.rewardedAd?.fullScreenContentDelegate = self
+        })
     }
 
 }
@@ -157,6 +177,8 @@ extension MainViewController: AnnouncementDelegate {
         secondaryButtonContainer.displayAnnouncement(text)
     }
 }
+
+extension MainViewController: GADFullScreenContentDelegate { }
 
 extension UIViewController {
     
