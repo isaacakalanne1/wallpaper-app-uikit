@@ -6,6 +6,7 @@ target 'Wallpaper App UIKit' do
   use_frameworks!
 
   # Pods for Wallpaper App UIKit
+pod 'Google-Mobile-Ads-SDK'
 
   target 'Wallpaper App UIKitTests' do
     inherit! :search_paths

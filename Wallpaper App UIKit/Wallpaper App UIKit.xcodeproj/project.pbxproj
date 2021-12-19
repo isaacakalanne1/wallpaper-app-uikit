@@ -445,6 +445,7 @@
 				BBB761CD2756759500DF5B70 /* Sources */,
 				BBB761CE2756759500DF5B70 /* Frameworks */,
 				BBB761CF2756759500DF5B70 /* Resources */,
+				73BC85885CC8B028BBD3D343 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -482,6 +483,7 @@
 				BBB761ED2756759900DF5B70 /* Sources */,
 				BBB761EE2756759900DF5B70 /* Frameworks */,
 				BBB761EF2756759900DF5B70 /* Resources */,
+				5E8A8CD658B609ACB13C5E0B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -567,6 +569,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5E8A8CD658B609ACB13C5E0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests/Pods-Wallpaper App UIKit-Wallpaper App UIKitUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73BC85885CC8B028BBD3D343 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wallpaper App UIKit/Pods-Wallpaper App UIKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		85A250704B817AE8F0C3C671 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
