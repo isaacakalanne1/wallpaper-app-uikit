@@ -10,7 +10,7 @@ import CoreImage
 import UIKit
 
 enum Filter: String, CaseIterable {
-    case clear, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope, fast
+    case clear, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope
     
     var title: String {
         switch self {
@@ -45,7 +45,7 @@ enum Filter: String, CaseIterable {
         switch self {
         case .clear, ._super, .leet, .dope, .yoyo, .tight, .sure:
             return true
-        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope, .fast:
+        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
             return false
         }
     }
@@ -167,11 +167,6 @@ enum Filter: String, CaseIterable {
             let filter = SmoothThreshold()
             filter.inputEdgeO = CGFloat(0.25*sliderValue)
             filter.inputEdge1 = CGFloat(0.75*sliderValue)
-            filter.inputImage = inputImage
-            return filter
-        case .fast:
-            let filter = TechnicolorFilter()
-            filter.inputAmount = CGFloat(10*sliderValue)
             filter.inputImage = inputImage
             return filter
         }
