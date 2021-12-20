@@ -104,7 +104,7 @@ enum Filter: String, CaseIterable {
             return filter
         case .sure:
             let filter = TechnicolorFilter()
-            filter.inputAmount = CGFloat(5*sliderValue)
+            filter.inputAmount = CGFloat(10*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .wow:
