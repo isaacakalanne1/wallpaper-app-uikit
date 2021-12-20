@@ -166,6 +166,7 @@ extension MainViewController: FilterDelegate {
         wallpaperBrowserVC.cancelPreviewedFilter()
         
         filterNavigatorVC.deselectButtons()
+        tertiaryContainer.displayAnnouncement(nil)
         secondaryButtonContainer.toggleButtons(.hide)
         currentFilter = nil
     }
@@ -186,7 +187,6 @@ extension MainViewController: ButtonDelegate {
     }
     
     func secondaryButtonPressed() {
-        tertiaryContainer.displayAnnouncement(nil)
         cancelFilter()
     }
 }
