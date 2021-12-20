@@ -185,6 +185,7 @@ extension MainViewController: ButtonDelegate {
     }
     
     func secondaryButtonPressed() {
+        tertiaryContainer.displayAnnouncement(nil)
         cancelFilter()
     }
 }

@@ -142,15 +142,19 @@ class SecondaryButtonContainer: UIView {
     func toggleButtons(_ status: ButtonStatus) {
         self.buttonStatus = status
         
-        UIView.transition(with: primaryButton, duration: Animation.length, options: .transitionCrossDissolve) {
+        UIView.transition(with: primaryButton,
+                          duration: Animation.length,
+                          options: .transitionCrossDissolve) {
             self.primaryButton.setTitle(status.primaryTitle, for: .normal)
         }
         
-        UIView.transition(with: secondaryButton, duration: Animation.length, options: .transitionCrossDissolve) {
+        UIView.transition(with: secondaryButton,
+                          duration: Animation.length,
+                          options: .transitionCrossDissolve) {
             self.secondaryButton.setTitle(status.secondaryTitle, for: .normal)
         }
         
-        switch buttonStatus {
+        switch status {
         case .applyFilter:
             getPointsPrimaryButtonWidth.isActive = false
             applyFilterPrimaryButtonWidth.isActive = true
