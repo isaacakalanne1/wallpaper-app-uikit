@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
     lazy var slider = Slider(delegate: self, initialValue: sliderValue)
     
     var currentFilter: Filter?
-    var buttonStatus: SecondaryButtonContainer.ButtonStatus = .applyFilter
+    var buttonStatus: SecondaryButtonContainer.ButtonStatus = .hide
     
     let filterNavigatorView = UIView()
     lazy var mainButtonContainer = MainButtonContainer(downloadDelegate: self, announcementDelegate: self)
@@ -178,6 +178,8 @@ extension MainViewController: FilterDelegate {
 extension MainViewController: ButtonDelegate {
     func primaryButtonPressed() {
         if currentFilter?.isLockedByDefault == true {
+            let newViewController = VideoViewController()
+            self.navigationController?.pushViewController(newViewController, animated: true)
             print("Present VideoViewController")
         } else {
             applyFilter()

@@ -56,6 +56,7 @@
 		BB719079276B831C002193BD /* ImageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719078276B831C002193BD /* ImageEditor.swift */; };
 		BB71907B276B88E5002193BD /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907A276B88E5002193BD /* Animation.swift */; };
 		BB71907D276FEDE8002193BD /* TertiaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907C276FEDE8002193BD /* TertiaryContainer.swift */; };
+		BB7190812770990B002193BD /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190802770990B002193BD /* VideoViewController.swift */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
 		BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* MainViewController.swift */; };
@@ -143,6 +144,7 @@
 		BB719078276B831C002193BD /* ImageEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditor.swift; sourceTree = "<group>"; };
 		BB71907A276B88E5002193BD /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		BB71907C276FEDE8002193BD /* TertiaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryContainer.swift; sourceTree = "<group>"; };
+		BB7190802770990B002193BD /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		BB71907E277098F2002193BD /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				BB71907F277098FB002193BD /* View Controllers */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		BB71907F277098FB002193BD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB7190802770990B002193BD /* VideoViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		BBB761C82756759500DF5B70 = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +388,7 @@
 			children = (
 				BBB7620E2756846E00DF5B70 /* Filter Navigator */,
 				BBB76205275679CD00DF5B70 /* Main Screen */,
+				BB71907E277098F2002193BD /* Video */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -687,6 +706,7 @@
 				BB7190752769F27F002193BD /* FilterExtensions.swift in Sources */,
 				BB719079276B831C002193BD /* ImageEditor.swift in Sources */,
 				BB71906F2769F23F002193BD /* CustomFilters.swift in Sources */,
+				BB7190812770990B002193BD /* VideoViewController.swift in Sources */,
 				BB3958B42767D3870049E0E2 /* FilterButton.swift in Sources */,
 				BB7190622769F23F002193BD /* RGBChannelCompositing.swift in Sources */,
 				BBB76215275684C900DF5B70 /* FilterNavigatorViewController.swift in Sources */,

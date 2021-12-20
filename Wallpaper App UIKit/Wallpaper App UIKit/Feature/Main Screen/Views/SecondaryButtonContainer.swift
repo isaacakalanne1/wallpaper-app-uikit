@@ -19,11 +19,11 @@ protocol ButtonDelegate: AnyObject {
 class SecondaryButtonContainer: UIView {
     
     enum ButtonStatus {
-        case applyFilter, getPoints, hide
+        case applyFilter, getPoints, earn1Point, hide
         
         var animationAlpha: CGFloat {
             switch self {
-            case .applyFilter, .getPoints:
+            case .applyFilter, .getPoints, .earn1Point:
                 return 1.0
             case .hide:
                 return 0.0
@@ -36,6 +36,8 @@ class SecondaryButtonContainer: UIView {
                 return "Apply"
             case .getPoints:
                 return "Get Points Free"
+            case .earn1Point:
+                return "Earn 1 point"
             case .hide:
                 return nil
             }
@@ -46,6 +48,8 @@ class SecondaryButtonContainer: UIView {
             case .applyFilter,
                     .getPoints:
                 return "Cancel"
+            case .earn1Point:
+                return "Back"
             case .hide:
                 return nil
             }
@@ -114,6 +118,8 @@ class SecondaryButtonContainer: UIView {
         ])
         
         applyFilterPrimaryButtonWidth.isActive = true
+        
+        toggleButtons(status)
     }
     
     @objc func primaryButtonPressed() {
@@ -158,7 +164,7 @@ class SecondaryButtonContainer: UIView {
         case .applyFilter:
             getPointsPrimaryButtonWidth.isActive = false
             applyFilterPrimaryButtonWidth.isActive = true
-        case .getPoints:
+        case .getPoints, .earn1Point:
             applyFilterPrimaryButtonWidth.isActive = false
             getPointsPrimaryButtonWidth.isActive = true
         case .hide:
