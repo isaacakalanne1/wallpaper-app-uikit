@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     var buttonStatus: SecondaryButtonContainer.ButtonStatus = .hide
     
     let filterNavigatorView = UIView()
-    lazy var mainButtonContainer = MainButtonContainer(downloadDelegate: self, announcementDelegate: self)
+    let downloadButton = Button(style: .primary, title: "Download")
     
     lazy var filterNavigatorVC = FilterNavigatorViewController(filterDelegate: self)
     lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self,
@@ -63,12 +63,14 @@ class MainViewController: UIViewController {
         
         tertiaryContainer.isHidden = true
         
+        downloadButton.addTarget(self, action: #selector(savePhotoToWallpapers), for: .touchUpInside)
+        
         stackView.addArrangedSubview(wallpaperBrowserView)
         stackView.addArrangedSubview(tertiaryContainer)
         stackView.addArrangedSubview(secondaryButtonContainer)
         stackView.addArrangedSubview(slider)
         stackView.addArrangedSubview(filterNavigatorView)
-        stackView.addArrangedSubview(mainButtonContainer)
+        stackView.addArrangedSubview(downloadButton)
         
         view.addSubview(stackView)
         
@@ -97,9 +99,9 @@ class MainViewController: UIViewController {
             filterNavigatorView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             filterNavigatorView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
-            mainButtonContainer.heightAnchor.constraint(equalToConstant: 60),
-            mainButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
-            mainButtonContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
+            downloadButton.heightAnchor.constraint(equalToConstant: 60),
+            downloadButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: margin),
+            downloadButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
         
         loadRewardedAd()
@@ -203,6 +205,10 @@ extension MainViewController: FilterDelegate {
             tertiaryContainer.displayPermanentAnnouncement("You have \(points) points")
         }
     }
+    
+    @objc func savePhotoToWallpapers() {
+        wallpaperBrowserVC.saveWallpaperToPhotos()
+    }
 }
 
 extension MainViewController: ButtonDelegate {
@@ -253,12 +259,6 @@ extension MainViewController: SliderDelegate {
         wallpaperBrowserVC.previewFilter(filter, sliderValue: value)
         secondaryButtonContainer.toggleButtons(.applyFilter)
         secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: filter == .clear)
-    }
-}
-
-extension MainViewController: DownloadDelegate {
-    func saveWallpaperToPhotos() {
-        wallpaperBrowserVC.saveWallpaperToPhotos()
     }
 }
 
