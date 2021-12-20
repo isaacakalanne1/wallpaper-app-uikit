@@ -146,32 +146,34 @@ extension MainViewController: WallpaperDelegate {
     func didChange(editedWallpaper: UIImage, originalWallpaper: UIImage, isWallpaperEdited: Bool) {
         filterNavigatorVC.updateWallpaper(editedWallpaper: editedWallpaper,
                                           originalWallpaper: originalWallpaper)
-        filterNavigatorVC.updateClearButtonVisibility(isWallpaperEdited: isWallpaperEdited)
+        filterNavigatorVC.updateResetButtonVisibility(isWallpaperEdited: isWallpaperEdited)
     }
 }
 
 extension MainViewController: FilterDelegate {
     
-    func didSelectFilter(_ filter: Filter?) {
+    func didSelectFilter(_ filter: Filter) {
         currentFilter = filter
         
         sliderValue = initialSliderValue
         slider.value = sliderValue
         
-        if filter?.isUnlocked == true {
+        if filter.isUnlocked {
             buttonStatus = .applyFilter
             tertiaryContainer.displayPermanentAnnouncement(nil)
         } else {
             displayUnlockAnnouncement()
         }
         
-        filterNavigatorVC.updateClearButtonSelection(isSelected: false)
-        wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
+        filterNavigatorVC.updateResetButtonSelection(isSelected: false)
+        if filter != .reset {
+            wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
+            secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: false)
+        }
         secondaryButtonContainer.toggleButtons(buttonStatus)
-        secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: false)
     }
     
-    func didSelectClearButton() {
+    func didSelectResetButton() {
         wallpaperBrowserVC.previewClearFilters()
         secondaryButtonContainer.toggleButtons(buttonStatus)
     }
@@ -188,7 +190,7 @@ extension MainViewController: FilterDelegate {
         wallpaperBrowserVC.applyFilter(filter)
         
         filterNavigatorVC.deselectButtons()
-        filterNavigatorVC.updateClearButtonVisibility(isWallpaperEdited: true)
+        filterNavigatorVC.updateResetButtonVisibility(isWallpaperEdited: true)
         secondaryButtonContainer.toggleButtons(.hide)
         currentFilter = nil
     }
@@ -204,8 +206,9 @@ extension MainViewController: FilterDelegate {
     
     func clearAllFilters() {
         filterNavigatorVC.deselectButtons()
-        filterNavigatorVC.updateClearButtonVisibility(isWallpaperEdited: false)
+        filterNavigatorVC.updateResetButtonVisibility(isWallpaperEdited: false)
         wallpaperBrowserVC.clearAllFilters()
+        secondaryButtonContainer.toggleButtons(.hide)
         currentFilter = nil
     }
     
@@ -253,10 +256,10 @@ extension MainViewController: ButtonDelegate {
                 }
             }
         case .applyFilter:
-            if let _ = currentFilter {
-                applyFilter()
-            } else {
+            if currentFilter == .reset {
                 clearAllFilters()
+            } else {
+                applyFilter()
             }
         default:
             break

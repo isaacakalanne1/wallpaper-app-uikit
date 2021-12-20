@@ -123,13 +123,11 @@ class WallpaperViewController: UIViewController {
                                      isWallpaperEdited: false)
     }
     
-    func previewFilter(_ filter: Filter?, sliderValue: Float) {
-        
-        guard let filt = filter else { return }
+    func previewFilter(_ filter: Filter, sliderValue: Float) {
         
         DispatchQueue.global(qos: .userInitiated).async {
             let editedImage = ImageEditor.filterImage(self.wallpaperToEdit,
-                                                      with: filt,
+                                                      with: filter,
                                                       sliderValue: sliderValue)
 
             DispatchQueue.main.async {

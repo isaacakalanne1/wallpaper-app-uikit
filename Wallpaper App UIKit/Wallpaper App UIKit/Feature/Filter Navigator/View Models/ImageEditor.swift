@@ -19,7 +19,7 @@ struct ImageEditor {
         let currentFilter = filter.createCIFilter(inputImage: beginImage,
                                                   sliderValue: sliderValue)
         
-        guard let output = currentFilter.outputImage,
+        guard let output = currentFilter?.outputImage,
               let cgimg = context.createCGImage(output, from: output.extent) else { return nil }
         
         let processedImage = UIImage(cgImage: cgimg)

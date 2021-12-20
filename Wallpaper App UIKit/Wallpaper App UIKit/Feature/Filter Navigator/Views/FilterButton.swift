@@ -8,8 +8,8 @@
 import UIKit
 
 protocol FilterDelegate: AnyObject {
-    func didSelectFilter(_ filter: Filter?)
-    func didSelectClearButton()
+    func didSelectFilter(_ filter: Filter)
+    func didSelectResetButton()
     func finishedFilteringWallpaper()
     func applyFilter()
     func cancelFilter()
@@ -64,11 +64,11 @@ class FilterButton: UIButton {
     }()
     
     let margin: CGFloat = 5
-    let filter: Filter?
+    let filter: Filter
     var isButtonSelected: Bool
     let delegate: FilterDelegate?
     
-    init(filter: Filter?, image: UIImage? = nil, title: String? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
+    init(filter: Filter, image: UIImage? = nil, title: String? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
         self.filter = filter
         self.isButtonSelected = isSelected
         self.delegate = delegate
@@ -83,7 +83,7 @@ class FilterButton: UIButton {
         if let text = title {
             filterTitleLabel.text = text
         } else {
-            filterTitleLabel.text = filter?.title
+            filterTitleLabel.text = filter.title
         }
         
         updateFormatting(isSelected: isSelected)
@@ -121,10 +121,8 @@ class FilterButton: UIButton {
     
     func updateWallpaper(_ wallpaper: UIImage) {
         
-        guard let filt = self.filter else { return }
-        
         DispatchQueue.global(qos: .userInitiated).async {
-            let editedImage = ImageEditor.filterImage(wallpaper, with: filt, sliderValue: filt.filterButtonPreviewSliderValue)
+            let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: self.filter.filterButtonPreviewSliderValue)
 
             DispatchQueue.main.async {
                 UIView.transition(with: self.filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
@@ -146,7 +144,7 @@ class FilterButton: UIButton {
     func updateFormatting(isSelected: Bool) {
         isButtonSelected = isSelected
         
-        if filter?.isUnlocked == false {
+        if !filter.isUnlocked {
             lockIconView.isHidden = false
             lockView.backgroundColor = .black.withAlphaComponent(0.5)
         } else {

@@ -76,7 +76,7 @@ class WallpaperBrowserController: UIPageViewController {
         vc.previewClearFilters()
     }
     
-    func previewFilter(_ filter: Filter?, sliderValue: Float) {
+    func previewFilter(_ filter: Filter, sliderValue: Float) {
         guard listOfVCs.indices.contains(currentIndex),
               let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.previewFilter(filter, sliderValue: sliderValue)
@@ -116,11 +116,11 @@ extension WallpaperBrowserController: WallpaperDelegate {
 
 extension WallpaperBrowserController: FilterDelegate {
     
-    func didSelectFilter(_ filter: Filter?) {
+    func didSelectFilter(_ filter: Filter) {
         
     }
     
-    func didSelectClearButton() {
+    func didSelectResetButton() {
         
     }
     

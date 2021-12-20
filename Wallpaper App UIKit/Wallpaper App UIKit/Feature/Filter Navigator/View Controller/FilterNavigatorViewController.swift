@@ -42,15 +42,15 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
-    func updateClearButtonSelection(isSelected: Bool) {
+    func updateResetButtonSelection(isSelected: Bool) {
         listOfVCs.forEach { vc in
-            vc.updateClearButtonSelection(isSelected: isSelected)
+            vc.updateResetButtonSelection(isSelected: isSelected)
         }
     }
     
-    func updateClearButtonVisibility(isWallpaperEdited: Bool) {
+    func updateResetButtonVisibility(isWallpaperEdited: Bool) {
         listOfVCs.forEach { vc in
-            vc.updateClearButtonVisibility(isHidden: !isWallpaperEdited)
+            vc.updateResetButtonVisibility(isHidden: !isWallpaperEdited)
         }
     }
     
@@ -64,12 +64,12 @@ class FilterNavigatorViewController: UIPageViewController {
 
 extension FilterNavigatorViewController: FilterDelegate {
     
-    func didSelectFilter(_ filter: Filter?) {
+    func didSelectFilter(_ filter: Filter) {
         filterDelegate?.didSelectFilter(filter)
     }
     
-    func didSelectClearButton() {
-        filterDelegate?.didSelectClearButton()
+    func didSelectResetButton() {
+        filterDelegate?.didSelectResetButton()
     }
     
     func finishedFilteringWallpaper() {

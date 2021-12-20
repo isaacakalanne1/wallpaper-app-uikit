@@ -10,7 +10,7 @@ import CoreImage
 import UIKit
 
 enum Filter: String, CaseIterable {
-    case _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope
+    case reset, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope
     
     var title: String {
         switch self {
@@ -41,7 +41,7 @@ enum Filter: String, CaseIterable {
     
     var isUnlockedByDefault: Bool {
         switch self {
-        case ._super, .leet, .dope, .yoyo, .tight, .sure:
+        case .reset, ._super, .leet, .dope, .yoyo, .tight, .sure:
             return true
         case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
             return false
@@ -60,8 +60,10 @@ enum Filter: String, CaseIterable {
         return 4
     }
     
-    func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter {
+    func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
         switch self {
+        case .reset:
+            return nil
         case ._super:
             let filter = TransverseChromaticAberration()
             filter.inputBlur = CGFloat(50*sliderValue)
