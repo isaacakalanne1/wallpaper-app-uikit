@@ -17,6 +17,12 @@ class FilterBrowserViewController: UIViewController {
     var originalWallpaper: UIImage?
     var originalWallpaperReducedSize: UIImage?
     
+    lazy var clearButton = FilterButton(filter: nil,
+                                        image: originalWallpaperReducedSize,
+                                        title: "Reset",
+                                        isSelected: false,
+                                        delegate: self)
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +38,9 @@ class FilterBrowserViewController: UIViewController {
         return stackView
     }()
     
+    lazy var clearButtonShowWidth = clearButton.widthAnchor.constraint(equalToConstant: 70)
+    lazy var clearButtonHideWidth = clearButton.widthAnchor.constraint(equalToConstant: 0)
+    
     let delegate: FilterDelegate?
     var currentFilter: Filter?
     
@@ -40,20 +49,24 @@ class FilterBrowserViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.addSubview(scrollView)
+        view.addSubview(clearButton)
         scrollView.addSubview(stackView)
         
         filters.forEach { filter in
-            if filter != .clear {
-                let button = FilterButton(filter: filter, delegate: self)
-                stackView.addArrangedSubview(button)
-                NSLayoutConstraint.activate([
-                    button.widthAnchor.constraint(equalToConstant: 70),
-                ])
-            }
+            let button = FilterButton(filter: filter, delegate: self)
+            stackView.addArrangedSubview(button)
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 70),
+            ])
         }
         
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            clearButton.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            clearButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            clearButton.topAnchor.constraint(equalTo: view.topAnchor),
+            clearButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            scrollView.leadingAnchor.constraint(equalTo: clearButton.trailingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -64,6 +77,15 @@ class FilterBrowserViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
+        
+        updateClearButtonVisibility(isHidden: true)
+        
+        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func clearButtonTapped() {
+        clearButton.updateFormatting(isSelected: true)
+        delegate?.didSelectClearButton()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -80,6 +102,9 @@ class FilterBrowserViewController: UIViewController {
     func updateWallpaper(editedWallpaper: UIImage, originalWallpaper: UIImage) {
         self.editedWallpaper = editedWallpaper
         self.originalWallpaper = originalWallpaper
+        
+        updateClearButtonVisibility(isHidden: editedWallpaper == originalWallpaper)
+        
         DispatchQueue.global(qos: .userInitiated).async {
             let newSize = CGSize(width: 200, height: 200)
             self.editedWallpaperReducedSize = ImageEditor.resizeImage(image: editedWallpaper,
@@ -88,9 +113,11 @@ class FilterBrowserViewController: UIViewController {
                                                                         targetSize: newSize)
 
             DispatchQueue.main.async {
+                self.clearButton.filterImageView.image = self.originalWallpaperReducedSize
+                
                 self.stackView.arrangedSubviews.forEach { view in
                     if let button = view as? FilterButton,
-                       let wallpaper = button.filter == .clear ? self.originalWallpaperReducedSize : self.editedWallpaperReducedSize {
+                       let wallpaper = self.editedWallpaperReducedSize {
                         button.updateWallpaper(wallpaper)
                     }
                 }
@@ -98,44 +125,22 @@ class FilterBrowserViewController: UIViewController {
         }
     }
     
+    func updateClearButtonSelection(isSelected: Bool) {
+        clearButton.updateFormatting(isSelected: isSelected)
+    }
+    
+    func updateClearButtonVisibility(isHidden: Bool) {
+        clearButton.isHidden = isHidden
+        clearButtonShowWidth.isActive = !isHidden
+        clearButtonHideWidth.isActive = isHidden
+    }
+    
     func deselectButtons() {
         currentFilter = nil
+        clearButton.updateFormatting(isSelected: false)
         stackView.arrangedSubviews.forEach { view in
             if let button = view as? FilterButton {
                 button.updateFormatting(isSelected: false)
-            }
-        }
-    }
-    
-    func updateClearFiltersButtonVisibility(isWallpaperEdited: Bool) {
-        let containsClearButton = stackView.arrangedSubviews.contains(where: { ($0 as? FilterButton)?.filter == .clear})
-        
-        if isWallpaperEdited {
-            if !containsClearButton {
-                addClearFiltersButton()
-            }
-        } else {
-            removeClearFiltersButton()
-        }
-    }
-    
-    func addClearFiltersButton() {
-        let button = FilterButton(filter: .clear,
-                                  image: originalWallpaperReducedSize,
-                                  isSelected: false,
-                                  delegate: self)
-        stackView.insertArrangedSubview(button, at: 0)
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: 70),
-        ])
-    }
-    
-    func removeClearFiltersButton() {
-        stackView.arrangedSubviews.forEach { view in
-            if let button = view as? FilterButton,
-               button.filter == .clear {
-                button.removeFromSuperview()
-                stackView.removeArrangedSubview(button)
             }
         }
     }
@@ -143,7 +148,7 @@ class FilterBrowserViewController: UIViewController {
 
 extension FilterBrowserViewController: FilterDelegate {
     
-    func didSelectFilter(_ filter: Filter) {
+    func didSelectFilter(_ filter: Filter?) {
         if currentFilter != filter {
             currentFilter = filter
             delegate?.didSelectFilter(filter)
@@ -156,12 +161,16 @@ extension FilterBrowserViewController: FilterDelegate {
         }
     }
     
+    func didSelectClearButton() {
+        delegate?.didSelectClearButton()
+    }
+    
     func finishedFilteringWallpaper() {
         
     }
     
     func applyFilter() {
-        
+        delegate?.applyFilter()
     }
     
     func cancelFilter() {
@@ -169,7 +178,7 @@ extension FilterBrowserViewController: FilterDelegate {
     }
     
     func clearAllFilters() {
-        removeClearFiltersButton()
+        updateClearButtonVisibility(isHidden: true)
         delegate?.clearAllFilters()
     }
 }

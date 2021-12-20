@@ -104,14 +104,10 @@ class WallpaperViewController: UIViewController {
     }
     
     func applyFilter(_ filter: Filter) {
-        if filter == .clear {
-            clearAllFilters()
-        } else {
-            wallpaperToEdit = imageView.image
-            guard let editedImage = wallpaperToEdit,
-                  let originalImage = originalWallpaper else { return }
-            wallpaperDelegate?.didChange(editedWallpaper: editedImage, originalWallpaper: originalImage, isWallpaperEdited: true)
-        }
+        wallpaperToEdit = imageView.image
+        guard let editedImage = wallpaperToEdit,
+              let originalImage = originalWallpaper else { return }
+        wallpaperDelegate?.didChange(editedWallpaper: editedImage, originalWallpaper: originalImage, isWallpaperEdited: true)
     }
     
     func cancelFilter() {
@@ -127,27 +123,28 @@ class WallpaperViewController: UIViewController {
                                      isWallpaperEdited: false)
     }
     
-    func previewFilter(_ filter: Filter, sliderValue: Float) {
+    func previewFilter(_ filter: Filter?, sliderValue: Float) {
         
-        if filter == .clear {
-            imageView.image = originalWallpaper
-        } else {
-            
-            DispatchQueue.global(qos: .userInitiated).async {
-                let editedImage = ImageEditor.filterImage(self.wallpaperToEdit,
-                                                          with: filter,
-                                                          sliderValue: sliderValue)
+        guard let filt = filter else { return }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let editedImage = ImageEditor.filterImage(self.wallpaperToEdit,
+                                                      with: filt,
+                                                      sliderValue: sliderValue)
 
-                DispatchQueue.main.async {
-                    self.filterDelegate?.finishedFilteringWallpaper()
-                    if let image = editedImage {
-                        self.imageView.image = image
-                    } else {
-                        self.announcementDelegate?.displayAnnouncement("Couldn't apply filter")
-                    }
+            DispatchQueue.main.async {
+                self.filterDelegate?.finishedFilteringWallpaper()
+                if let image = editedImage {
+                    self.imageView.image = image
+                } else {
+                    self.announcementDelegate?.displayAnnouncement("Couldn't apply filter")
                 }
             }
         }
+    }
+    
+    func previewClearFilters() {
+        imageView.image = originalWallpaper
     }
     
     func saveWallpaperToPhotos() {

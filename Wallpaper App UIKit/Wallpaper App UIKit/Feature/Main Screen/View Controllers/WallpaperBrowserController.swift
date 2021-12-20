@@ -70,7 +70,13 @@ class WallpaperBrowserController: UIPageViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func previewFilter(_ filter: Filter, sliderValue: Float) {
+    func previewClearFilters() {
+        guard listOfVCs.indices.contains(currentIndex),
+              let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
+        vc.previewClearFilters()
+    }
+    
+    func previewFilter(_ filter: Filter?, sliderValue: Float) {
         guard listOfVCs.indices.contains(currentIndex),
               let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
         vc.previewFilter(filter, sliderValue: sliderValue)
@@ -110,7 +116,11 @@ extension WallpaperBrowserController: WallpaperDelegate {
 
 extension WallpaperBrowserController: FilterDelegate {
     
-    func didSelectFilter(_ filter: Filter) {
+    func didSelectFilter(_ filter: Filter?) {
+        
+    }
+    
+    func didSelectClearButton() {
         
     }
     

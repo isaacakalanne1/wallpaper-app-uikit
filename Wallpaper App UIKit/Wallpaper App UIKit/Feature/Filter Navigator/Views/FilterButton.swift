@@ -8,7 +8,8 @@
 import UIKit
 
 protocol FilterDelegate: AnyObject {
-    func didSelectFilter(_ filter: Filter)
+    func didSelectFilter(_ filter: Filter?)
+    func didSelectClearButton()
     func finishedFilteringWallpaper()
     func applyFilter()
     func cancelFilter()
@@ -63,11 +64,11 @@ class FilterButton: UIButton {
     }()
     
     let margin: CGFloat = 5
-    let filter: Filter
+    let filter: Filter?
     var isButtonSelected: Bool
     let delegate: FilterDelegate?
     
-    init(filter: Filter, image: UIImage? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
+    init(filter: Filter?, image: UIImage? = nil, title: String? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
         self.filter = filter
         self.isButtonSelected = isSelected
         self.delegate = delegate
@@ -79,7 +80,11 @@ class FilterButton: UIButton {
             updateWallpaper(img)
         }
         
-        filterTitleLabel.text = filter.title
+        if let text = title {
+            filterTitleLabel.text = text
+        } else {
+            filterTitleLabel.text = filter?.title
+        }
         
         updateFormatting(isSelected: isSelected)
         
@@ -116,19 +121,14 @@ class FilterButton: UIButton {
     
     func updateWallpaper(_ wallpaper: UIImage) {
         
-        if filter == .clear {
-            UIView.transition(with: filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
-                self.filterImageView.image = wallpaper
-            }
-        } else {
-            
-            DispatchQueue.global(qos: .userInitiated).async {
-                let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: self.filter.filterButtonPreviewSliderValue)
+        guard let filt = self.filter else { return }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let editedImage = ImageEditor.filterImage(wallpaper, with: filt, sliderValue: filt.filterButtonPreviewSliderValue)
 
-                DispatchQueue.main.async {
-                    UIView.transition(with: self.filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
-                        self.filterImageView.image = editedImage
-                    }
+            DispatchQueue.main.async {
+                UIView.transition(with: self.filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {
+                    self.filterImageView.image = editedImage
                 }
             }
         }
@@ -146,12 +146,12 @@ class FilterButton: UIButton {
     func updateFormatting(isSelected: Bool) {
         isButtonSelected = isSelected
         
-        if filter.isUnlocked {
-            lockIconView.isHidden = true
-            lockView.backgroundColor = .clear
-        } else {
+        if filter?.isUnlocked == false {
             lockIconView.isHidden = false
             lockView.backgroundColor = .black.withAlphaComponent(0.5)
+        } else {
+            lockIconView.isHidden = true
+            lockView.backgroundColor = .clear
         }
         
         if isSelected {
