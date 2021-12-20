@@ -29,7 +29,9 @@ class VideoViewController: UIViewController {
         return label
     }()
     
-    lazy var buttonContainer = SecondaryButtonContainer(delegate: self, status: .earn1Point)
+    let buttonStatus = SecondaryButtonContainer.ButtonStatus.earn1Point
+    
+    lazy var buttonContainer = SecondaryButtonContainer(delegate: self, status: buttonStatus)
     
     let viewHeight: CGFloat = 45
     let margin: CGFloat = 10
@@ -40,17 +42,21 @@ class VideoViewController: UIViewController {
         return user.points
     }
     
+    let delegate: ButtonDelegate?
+    
+    init(delegate: ButtonDelegate?) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = Color.primary
         
-        switch points {
-        case 1:
-            titleLabel.text = "You have 1 point"
-        default:
-            titleLabel.text = "You have \(points) points"
-        }
+        updateLabelText()
         
         subtitleLabel.text = "Watch a video to earn 1 point"
         
@@ -76,18 +82,30 @@ class VideoViewController: UIViewController {
         ])
     }
     
+    func updateLabelText() {
+        switch points {
+        case 1:
+            titleLabel.text = "You have 1 point"
+        default:
+            titleLabel.text = "You have \(points) points"
+        }
+    }
+    
 }
 
 extension VideoViewController: ButtonDelegate {
-    func primaryButtonPressed() {
+    func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
+        user.savePoints(1)
+        updateLabelText()
         print("Watch video")
     }
     
-    func secondaryButtonPressed() {
+    func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
         if let vc = navigationController?.children.first(where: { $0 is MainViewController }) {
             navigationController?.popToViewController(vc, animated: true)
         } else {
             navigationController?.popViewController(animated: true)
         }
+        delegate?.secondaryButtonPressed(status: buttonStatus)
     }
 }

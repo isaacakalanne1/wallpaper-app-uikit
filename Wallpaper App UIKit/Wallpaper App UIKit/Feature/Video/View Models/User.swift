@@ -13,14 +13,14 @@ struct User {
         return UserDefaults.standard.integer(forKey: "Points")
     }
     
-    func spendPoints(_ p: Int) -> Result<Int, Error> {
+    func spendPoints(_ p: Int, _ completion: @escaping (Result<Int, Error>) -> Void) {
         var currentPoints = points
-        if currentPoints > p {
+        if currentPoints >= p {
             currentPoints -= p
             UserDefaults.standard.set(currentPoints, forKey: "Points")
-            return .success(currentPoints)
+            completion(.success(currentPoints))
         } else {
-            return .failure("")
+            completion(.failure(""))
         }
     }
     

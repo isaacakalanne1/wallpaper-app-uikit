@@ -54,6 +54,12 @@ class FilterNavigatorViewController: UIPageViewController {
         }
     }
     
+    func unlock(filter: Filter?) {
+        listOfVCs.forEach { vc in
+            vc.unlock(filter: filter)
+        }
+    }
+    
 }
 
 extension FilterNavigatorViewController: FilterDelegate {

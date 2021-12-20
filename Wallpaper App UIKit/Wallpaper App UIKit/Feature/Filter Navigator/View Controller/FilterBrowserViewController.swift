@@ -68,6 +68,15 @@ class FilterBrowserViewController: UIViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    func unlock(filter: Filter?) {
+        stackView.arrangedSubviews.forEach { view in
+            if let button = view as? FilterButton,
+               button.filter == filter {
+                button.unlockFilter()
+            }
+        }
+    }
+    
     func updateWallpaper(editedWallpaper: UIImage, originalWallpaper: UIImage) {
         self.editedWallpaper = editedWallpaper
         self.originalWallpaper = originalWallpaper

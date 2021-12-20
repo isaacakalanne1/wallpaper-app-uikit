@@ -138,23 +138,11 @@ extension MainViewController: FilterDelegate {
             slider.value = sliderValue
         }
         
-        if filter.isLockedByDefault {
-            
-            let pointsNeededToUnlock = filter.costToUnlock - points
-            switch pointsNeededToUnlock {
-            case 1:
-                buttonStatus = .getPoints
-                tertiaryContainer.displayAnnouncement("You need 1 more point to unlock")
-            case 2...:
-                buttonStatus = .getPoints
-                tertiaryContainer.displayAnnouncement("You need \(pointsNeededToUnlock) more points to unlock")
-            default:
-                buttonStatus = .unlockFilter
-                tertiaryContainer.displayAnnouncement("You have \(points) points")
-            }
-        } else {
+        if filter.isUnlocked {
             buttonStatus = .applyFilter
-            tertiaryContainer.displayAnnouncement(nil)
+            tertiaryContainer.displayPermanentAnnouncement(nil)
+        } else {
+            displayUnlockAnnouncement()
         }
         
         wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
@@ -181,7 +169,7 @@ extension MainViewController: FilterDelegate {
         wallpaperBrowserVC.cancelPreviewedFilter()
         
         filterNavigatorVC.deselectButtons()
-        tertiaryContainer.displayAnnouncement(nil)
+        tertiaryContainer.displayPermanentAnnouncement(nil)
         secondaryButtonContainer.toggleButtons(.hide)
         currentFilter = nil
     }
@@ -189,20 +177,61 @@ extension MainViewController: FilterDelegate {
     func clearAllFilters() {
         wallpaperBrowserVC.clearAllFilters()
     }
+    
+    func displayUnlockAnnouncement() {
+        guard let filter = currentFilter else { return }
+        let pointsNeededToUnlock = filter.costToUnlock - points
+        switch pointsNeededToUnlock {
+        case 1:
+            buttonStatus = .getPoints
+            tertiaryContainer.displayPermanentAnnouncement("You need 1 more point to unlock")
+        case 2...:
+            buttonStatus = .getPoints
+            tertiaryContainer.displayPermanentAnnouncement("You need \(pointsNeededToUnlock) more points to unlock")
+        default:
+            buttonStatus = .unlockFilter
+            tertiaryContainer.displayPermanentAnnouncement("You have \(points) points")
+        }
+    }
 }
 
 extension MainViewController: ButtonDelegate {
-    func primaryButtonPressed() {
-        if currentFilter?.isLockedByDefault == true {
-            let newViewController = VideoViewController()
+    func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
+        switch status {
+        case .getPoints:
+            let newViewController = VideoViewController(delegate: self)
             self.navigationController?.pushViewController(newViewController, animated: true)
-        } else {
+        case .unlockFilter:
+            if let key = currentFilter?.isUnlockedKey,
+               let cost = currentFilter?.costToUnlock {
+                user.spendPoints(cost) { [weak self] res in
+                    switch res {
+                    case .success:
+                        UserDefaults.standard.set(true, forKey: key)
+                        self?.filterNavigatorVC.unlock(filter: self?.currentFilter)
+                        self?.secondaryButtonContainer.toggleButtons(.applyFilter)
+                        self?.tertiaryContainer.displayPermanentAnnouncement(nil)
+                        self?.secondaryButtonContainer.displayAnnouncement("Unlocked filter")
+                    case .failure:
+                        self?.tertiaryContainer.displayAnnouncement("Failed to unlock filter")
+                    }
+                }
+            }
+        case .applyFilter:
             applyFilter()
+        default:
+            break
         }
     }
     
-    func secondaryButtonPressed() {
-        cancelFilter()
+    func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
+        switch status {
+        case .earn1Point:
+            displayUnlockAnnouncement()
+            secondaryButtonContainer.toggleButtons(buttonStatus)
+        default:
+            cancelFilter()
+        }
     }
 }
 

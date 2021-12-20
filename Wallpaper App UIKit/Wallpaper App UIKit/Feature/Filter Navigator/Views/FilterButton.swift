@@ -134,23 +134,24 @@ class FilterButton: UIButton {
         }
     }
     
-    func isLocked(_ isLocked: Bool) {
-        if isLocked {
-            lockView.backgroundColor = .black.withAlphaComponent(0.5)
-        } else {
-            lockView.backgroundColor = .clear
+    func unlockFilter() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            UIView.transition(with: self, duration: 3*Animation.length, options: .transitionFlipFromTop) {
+                self.lockIconView.isHidden = true
+                self.lockView.backgroundColor = .clear
+            }
         }
     }
     
     func updateFormatting(isSelected: Bool) {
         isButtonSelected = isSelected
         
-        if filter.isLockedByDefault {
-            lockIconView.isHidden = false
-            lockView.backgroundColor = .black.withAlphaComponent(0.5)
-        } else {
+        if filter.isUnlocked {
             lockIconView.isHidden = true
             lockView.backgroundColor = .clear
+        } else {
+            lockIconView.isHidden = false
+            lockView.backgroundColor = .black.withAlphaComponent(0.5)
         }
         
         if isSelected {

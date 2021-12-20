@@ -12,8 +12,8 @@ protocol AnnouncementDelegate: AnyObject {
 }
 
 protocol ButtonDelegate: AnyObject {
-    func primaryButtonPressed()
-    func secondaryButtonPressed()
+    func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus)
+    func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus)
 }
 
 class SecondaryButtonContainer: UIView {
@@ -62,6 +62,7 @@ class SecondaryButtonContainer: UIView {
     private let margin: CGFloat = 5
     private let viewWidth: CGFloat = 100
     private let viewWidthLarge: CGFloat = 160
+    private let viewWidthLargest: CGFloat = 180
     
     let announcementLabel: UILabel = {
         let label = UILabel()
@@ -76,6 +77,7 @@ class SecondaryButtonContainer: UIView {
     lazy var primaryButton = Button(style: .primary, title: buttonStatus.primaryTitle)
     lazy var applyFilterPrimaryButtonWidth = primaryButton.widthAnchor.constraint(equalToConstant: viewWidth)
     lazy var getPointsPrimaryButtonWidth = primaryButton.widthAnchor.constraint(equalToConstant: viewWidthLarge)
+    lazy var unlockFilterPrimaryButtonWidth = primaryButton.widthAnchor.constraint(equalToConstant: viewWidthLargest)
     lazy var secondaryButton = Button(style: .secondary, title: buttonStatus.secondaryTitle)
     
     let delegate: ButtonDelegate?
@@ -126,11 +128,11 @@ class SecondaryButtonContainer: UIView {
     }
     
     @objc func primaryButtonPressed() {
-        delegate?.primaryButtonPressed()
+        delegate?.primaryButtonPressed(status: buttonStatus)
     }
     
     @objc func secondaryButtonPressed() {
-        delegate?.secondaryButtonPressed()
+        delegate?.secondaryButtonPressed(status: buttonStatus)
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -166,10 +168,16 @@ class SecondaryButtonContainer: UIView {
         switch status {
         case .applyFilter:
             getPointsPrimaryButtonWidth.isActive = false
+            unlockFilterPrimaryButtonWidth.isActive = false
             applyFilterPrimaryButtonWidth.isActive = true
-        case .getPoints, .earn1Point, .unlockFilter:
+        case .getPoints, .earn1Point:
+            unlockFilterPrimaryButtonWidth.isActive = false
             applyFilterPrimaryButtonWidth.isActive = false
             getPointsPrimaryButtonWidth.isActive = true
+        case .unlockFilter:
+            unlockFilterPrimaryButtonWidth.isActive = true
+            applyFilterPrimaryButtonWidth.isActive = false
+            getPointsPrimaryButtonWidth.isActive = false
         case .hide:
             break
         }

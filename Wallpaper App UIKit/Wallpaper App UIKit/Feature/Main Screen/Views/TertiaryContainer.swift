@@ -38,7 +38,25 @@ class TertiaryContainer: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func displayAnnouncement(_ announcementText: String?) {
+    func displayAnnouncement(_ text: String) {
+        let prevText = announcementLabel.text
+        
+        UIView.transition(with: announcementLabel, duration: Animation.length, options: .transitionCrossDissolve) {
+            
+            self.announcementLabel.text = text
+            
+        } completion: { _ in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                UIView.transition(with: self.announcementLabel, duration: Animation.length, options: .transitionCrossDissolve) {
+                    self.announcementLabel.text = prevText
+                }
+            }
+            
+        }
+    }
+    
+    func displayPermanentAnnouncement(_ announcementText: String?) {
         
         if let text = announcementText {
             announcementLabel.text = text
