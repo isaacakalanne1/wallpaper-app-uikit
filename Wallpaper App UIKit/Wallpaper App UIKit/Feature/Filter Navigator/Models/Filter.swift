@@ -39,6 +39,15 @@ enum Filter: String, CaseIterable {
         }
     }
     
+    var isLockedByDefault: Bool {
+        switch self {
+        case .wow, .fry, .moon, .good, .zoom, .lay, .whoosh:
+            return true
+        case .clear, ._super, .leet, .dope, .yoyo, .tight, .live, .epic, .sure:
+            return false
+        }
+    }
+    
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
         switch self {
         case .clear:

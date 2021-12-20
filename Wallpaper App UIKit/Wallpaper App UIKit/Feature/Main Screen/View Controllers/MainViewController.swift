@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
     }()
     
     let wallpaperBrowserView = UIView()
+    lazy var tertiaryContainer = TertiaryContainer()
     lazy var secondaryButtonContainer = SecondaryButtonContainer(delegate: self)
     
     let initialSliderValue: Float = 0.75
@@ -52,7 +53,10 @@ class MainViewController: UIViewController {
         insert(filterNavigatorVC, into: filterNavigatorView)
         insert(wallpaperBrowserVC, into: wallpaperBrowserView)
         
+        tertiaryContainer.isHidden = true
+        
         stackView.addArrangedSubview(wallpaperBrowserView)
+        stackView.addArrangedSubview(tertiaryContainer)
         stackView.addArrangedSubview(secondaryButtonContainer)
         stackView.addArrangedSubview(slider)
         stackView.addArrangedSubview(filterNavigatorView)
@@ -68,6 +72,10 @@ class MainViewController: UIViewController {
             
             wallpaperBrowserView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             wallpaperBrowserView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            
+            tertiaryContainer.heightAnchor.constraint(equalToConstant: 45),
+            tertiaryContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            tertiaryContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
             secondaryButtonContainer.heightAnchor.constraint(equalToConstant: 45),
             secondaryButtonContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
@@ -121,6 +129,11 @@ extension MainViewController: FilterDelegate {
         if filter != .clear {
             sliderValue = initialSliderValue
             slider.value = sliderValue
+        }
+        if filter.isLockedByDefault {
+            tertiaryContainer.displayAnnouncement("You need 4 more points to unlock")
+        } else {
+            tertiaryContainer.displayAnnouncement(nil)
         }
         wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
         secondaryButtonContainer.toggleButtons(.show)
