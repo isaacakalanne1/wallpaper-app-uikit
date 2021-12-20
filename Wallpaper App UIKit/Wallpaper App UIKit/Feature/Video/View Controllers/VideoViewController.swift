@@ -61,8 +61,6 @@ class VideoViewController: UIViewController {
         
         view.backgroundColor = Color.primary
         
-        updateLabelText()
-        
         subtitleLabel.text = "Watch a video to earn 1 point"
         
         view.addSubview(titleLabel)
@@ -85,6 +83,11 @@ class VideoViewController: UIViewController {
             buttonContainer.heightAnchor.constraint(equalToConstant: viewHeight),
             buttonContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateLabelText()
     }
     
     func updateLabelText() {

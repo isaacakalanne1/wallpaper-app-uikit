@@ -59,7 +59,7 @@ enum Filter: String, CaseIterable {
     }
     
     var costToUnlock: Int {
-        return 5
+        return 4
     }
     
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
