@@ -10,7 +10,7 @@ import CoreImage
 import UIKit
 
 enum Filter: String, CaseIterable {
-    case clear, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh
+    case clear, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope, fast
     
     var title: String {
         switch self {
@@ -45,7 +45,7 @@ enum Filter: String, CaseIterable {
         switch self {
         case .clear, ._super, .leet, .dope, .yoyo, .tight, .sure:
             return true
-        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh:
+        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope, .fast:
             return false
         }
     }
@@ -149,6 +149,29 @@ enum Filter: String, CaseIterable {
             filter.inputHorizontalAmount = CGFloat(20*sliderValue)
             filter.inputVerticalWavelength = CGFloat(10*sliderValue)
             filter.inputVerticalAmount = CGFloat(20*sliderValue)
+            filter.inputImage = inputImage
+            return filter
+        case .storm:
+            let filter = DifferenceOfGaussians()
+            filter.inputSigma0 = CGFloat(0.75*sliderValue)
+            filter.inputSigma1 = CGFloat(3.25*sliderValue)
+            filter.inputImage = inputImage
+            return filter
+        case .hay:
+            let filter = MercurializeFilter()
+            filter.inputEdgeThickness = CGFloat(5*sliderValue)
+            filter.inputScale = CGFloat(10*sliderValue)
+            filter.inputImage = inputImage
+            return filter
+        case .rope:
+            let filter = SmoothThreshold()
+            filter.inputEdgeO = CGFloat(0.25*sliderValue)
+            filter.inputEdge1 = CGFloat(0.75*sliderValue)
+            filter.inputImage = inputImage
+            return filter
+        case .fast:
+            let filter = TechnicolorFilter()
+            filter.inputAmount = CGFloat(1*sliderValue)
             filter.inputImage = inputImage
             return filter
         }

@@ -267,7 +267,7 @@ extension MainViewController: SliderDelegate {
         guard let filter = currentFilter else { return }
         
         wallpaperBrowserVC.previewFilter(filter, sliderValue: value)
-        secondaryButtonContainer.toggleButtons(.applyFilter)
+        secondaryButtonContainer.toggleButtons(buttonStatus)
         secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: filter == .clear)
     }
 }
