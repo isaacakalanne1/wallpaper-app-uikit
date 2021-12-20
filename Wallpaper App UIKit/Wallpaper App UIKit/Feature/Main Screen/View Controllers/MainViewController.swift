@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
                                                              filterDelegate: self,
                                                              announcementDelegate: self)
     
-    lazy var videoVC = VideoViewController(delegate: self)
+    lazy var videoVC = VideoViewController(delegate: self, adDelegate: self)
     
     var rewardedAd: GADRewardedAd?
     let user = User()
@@ -106,7 +106,7 @@ class MainViewController: UIViewController {
             downloadButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
         
-        loadRewardedAd()
+        loadNewAd()
     }
     
     func resetFilterUnlocks() {
@@ -116,22 +116,30 @@ class MainViewController: UIViewController {
             }
         }
     }
+
+}
+extension MainViewController: AdDelegate {
     
-    func loadRewardedAd() {
+    func loadNewAd() {
         let request = GADRequest()
         GADRewardedAd.load(withAdUnitID: "ca-app-pub-3940256099942544/1712485313",
-                           request: request, completionHandler: { (ad, error) in
+                           request: request, completionHandler: { [weak self] (ad, error) in
             if let error = error {
                 print("Rewarded ad failed to load with error: \(error.localizedDescription)")
                 return
             } else {
                 print("Rewarded ad loaded")
             }
-            self.rewardedAd = ad
-            self.rewardedAd?.fullScreenContentDelegate = self
+            self?.rewardedAd = ad
+            self?.rewardedAd?.fullScreenContentDelegate = self
+            self?.videoVC.updateVideo(ad)
         })
     }
+    
+}
 
+protocol AdDelegate: AnyObject {
+    func loadNewAd()
 }
 
 extension MainViewController: WallpaperDelegate {
@@ -217,7 +225,7 @@ extension MainViewController: ButtonDelegate {
     func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
         switch status {
         case .getPoints:
-            videoVC.rewardedAd = rewardedAd
+            videoVC.updateVideo(rewardedAd)
             self.navigationController?.pushViewController(videoVC, animated: true)
         case .unlockFilter:
             if let key = currentFilter?.isUnlockedKey,

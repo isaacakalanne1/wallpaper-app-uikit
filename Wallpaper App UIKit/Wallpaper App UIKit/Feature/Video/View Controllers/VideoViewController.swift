@@ -44,11 +44,13 @@ class VideoViewController: UIViewController {
     }
     
     let delegate: ButtonDelegate?
+    let adDelegate: AdDelegate?
     
-    var rewardedAd: GADRewardedAd?
+    private var rewardedAd: GADRewardedAd?
     
-    init(delegate: ButtonDelegate?) {
+    init(delegate: ButtonDelegate?, adDelegate: AdDelegate?) {
         self.delegate = delegate
+        self.adDelegate = adDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -110,12 +112,19 @@ class VideoViewController: UIViewController {
         }
     }
     
+    func updateVideo(_ ad: GADRewardedAd?) {
+        self.rewardedAd = ad
+        buttonContainer.updatePrimaryButtonInteraction(canInteract: true)
+    }
+    
     func presentVideo() {
         if let ad = rewardedAd {
             ad.present(fromRootViewController: self,
                        userDidEarnRewardHandler: {
                 let reward = ad.adReward
                 self.savePointToUser()
+                self.buttonContainer.updatePrimaryButtonInteraction(canInteract: false)
+                self.adDelegate?.loadNewAd()
             })
         } else {
             displayTemporaryTitle("Failed to load video")
