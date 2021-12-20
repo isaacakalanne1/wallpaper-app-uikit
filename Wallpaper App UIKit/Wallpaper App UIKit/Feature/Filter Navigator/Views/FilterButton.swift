@@ -39,7 +39,6 @@ class FilterButton: UIButton {
         
         imageView.layer.borderWidth = Button.borderWidth
         imageView.layer.cornerRadius = Button.cornerRadius
-        imageView.backgroundColor = .black.withAlphaComponent(0.5)
         
         return imageView
     }()
@@ -83,8 +82,6 @@ class FilterButton: UIButton {
         filterTitleLabel.text = filter.title
         
         updateFormatting(isSelected: isSelected)
-        
-        lockView.isHidden = !filter.isLockedByDefault
         
         addSubview(filterImageView)
         lockView.addSubview(lockIconView)
@@ -137,23 +134,31 @@ class FilterButton: UIButton {
         }
     }
     
-    func updateFormatting(isSelected: Bool) {
-        isButtonSelected = isSelected
-        updateBorder(isSelected: isSelected)
-        
-        if isSelected {
-            filterTitleLabel.textColor = Color.accent
+    func isLocked(_ isLocked: Bool) {
+        if isLocked {
+            lockView.backgroundColor = .black.withAlphaComponent(0.5)
         } else {
-            filterTitleLabel.textColor = .systemGray
+            lockView.backgroundColor = .clear
         }
     }
     
-    func updateBorder(isSelected: Bool) {
-        let borderColor = isSelected ? Button.borderColor.cgColor : UIColor.clear.cgColor
+    func updateFormatting(isSelected: Bool) {
+        isButtonSelected = isSelected
+        
         if filter.isLockedByDefault {
-            lockView.layer.borderColor = borderColor
+            lockIconView.isHidden = false
+            lockView.backgroundColor = .black.withAlphaComponent(0.5)
         } else {
-            filterImageView.layer.borderColor = borderColor
+            lockIconView.isHidden = true
+            lockView.backgroundColor = .clear
+        }
+        
+        if isSelected {
+            filterTitleLabel.textColor = Color.accent
+            lockView.layer.borderColor = Button.borderColor.cgColor
+        } else {
+            filterTitleLabel.textColor = .systemGray
+            lockView.layer.borderColor = UIColor.clear.cgColor
         }
     }
     
