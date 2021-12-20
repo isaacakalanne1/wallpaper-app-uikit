@@ -180,7 +180,6 @@ extension MainViewController: ButtonDelegate {
         if currentFilter?.isLockedByDefault == true {
             let newViewController = VideoViewController()
             self.navigationController?.pushViewController(newViewController, animated: true)
-            print("Present VideoViewController")
         } else {
             applyFilter()
         }

@@ -138,6 +138,8 @@ extension WallpaperBrowserController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard let vc = viewControllers?.first,
               let index = listOfVCs.firstIndex(of: vc) else { return }
+        let previousVC = previousViewControllers.first as? WallpaperViewController
+        previousVC?.resetEdit()
         currentIndex = index
     }
 }

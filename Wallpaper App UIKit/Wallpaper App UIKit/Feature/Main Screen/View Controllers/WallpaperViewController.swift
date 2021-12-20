@@ -98,8 +98,7 @@ class WallpaperViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    func resetEdit() {
         filterDelegate?.cancelFilter()
         imageView.image = wallpaperToEdit
     }
