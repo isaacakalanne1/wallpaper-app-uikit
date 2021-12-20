@@ -19,7 +19,8 @@ protocol ButtonDelegate: AnyObject {
 class SecondaryButtonContainer: UIView {
     
     enum ButtonStatus {
-        case applyFilter, getPoints, earn1Point, unlockFilter, hide
+        case applyFilter, getPoints, earn1Point, hide
+        case unlockFilter(filter: Filter)
         
         var animationAlpha: CGFloat {
             switch self {
@@ -38,8 +39,8 @@ class SecondaryButtonContainer: UIView {
                 return "Get Points Free"
             case .earn1Point:
                 return "Watch video"
-            case .unlockFilter:
-                return "Unlock for \(User().points) points"
+            case .unlockFilter(let filter):
+                return "Unlock for \(filter.costToUnlock) points"
             case .hide:
                 return nil
             }

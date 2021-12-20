@@ -41,11 +41,19 @@ enum Filter: String, CaseIterable {
     
     var isUnlockedKey: String { return "\(title)IsUnlocked"}
     
-    var isUnlocked: Bool {
+    var isUnlockedByDefault: Bool {
         switch self {
         case .clear, ._super, .leet, .dope, .yoyo, .tight, .sure:
             return true
         case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh:
+            return false
+        }
+    }
+    
+    var isUnlocked: Bool {
+        if isUnlockedByDefault {
+            return true
+        } else {
             return UserDefaults.standard.bool(forKey: isUnlockedKey)
         }
     }

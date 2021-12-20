@@ -51,6 +51,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resetFilterUnlocks()
+        
         view.backgroundColor = Color.primary
         
         wallpaperBrowserView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,6 +103,14 @@ class MainViewController: UIViewController {
         ])
         
         loadRewardedAd()
+    }
+    
+    func resetFilterUnlocks() {
+        Filter.allCases.forEach { filter in
+            if !filter.isUnlockedByDefault {
+                UserDefaults.standard.set(false, forKey: filter.isUnlockedKey)
+            }
+        }
     }
     
     func loadRewardedAd() {
@@ -189,7 +199,7 @@ extension MainViewController: FilterDelegate {
             buttonStatus = .getPoints
             tertiaryContainer.displayPermanentAnnouncement("You need \(pointsNeededToUnlock) more points to unlock")
         default:
-            buttonStatus = .unlockFilter
+            buttonStatus = .unlockFilter(filter: filter)
             tertiaryContainer.displayPermanentAnnouncement("You have \(points) points")
         }
     }
