@@ -152,8 +152,8 @@ class SecondaryButtonContainer: UIView {
         
         switch buttonStatus {
         case .applyFilter:
-            applyFilterPrimaryButtonWidth.isActive = true
             getPointsPrimaryButtonWidth.isActive = false
+            applyFilterPrimaryButtonWidth.isActive = true
         case .getPoints:
             applyFilterPrimaryButtonWidth.isActive = false
             getPointsPrimaryButtonWidth.isActive = true
