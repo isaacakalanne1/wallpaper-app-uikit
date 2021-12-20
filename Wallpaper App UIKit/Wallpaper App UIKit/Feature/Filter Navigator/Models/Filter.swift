@@ -48,6 +48,10 @@ enum Filter: String, CaseIterable {
         }
     }
     
+    var costToUnlock: Int {
+        return 4
+    }
+    
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
         switch self {
         case .clear:
