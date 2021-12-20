@@ -31,14 +31,17 @@ class FilterButton: UIButton {
         return imageView
     }()
     
-    lazy var lockView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = Button.borderWidth
-        view.layer.cornerRadius = Button.cornerRadius
-        view.clipsToBounds = true
-        view.backgroundColor = .black.withAlphaComponent(0.5)
-        return view
+    lazy var lockView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        imageView.layer.borderWidth = Button.borderWidth
+        imageView.layer.cornerRadius = Button.cornerRadius
+        imageView.backgroundColor = .black.withAlphaComponent(0.5)
+        
+        return imageView
     }()
     
     lazy var lockIconView: UIImageView = {
@@ -98,11 +101,11 @@ class FilterButton: UIButton {
             lockView.trailingAnchor.constraint(equalTo: filterImageView.trailingAnchor),
             lockView.topAnchor.constraint(equalTo: filterImageView.topAnchor),
             lockView.bottomAnchor.constraint(equalTo: filterImageView.bottomAnchor),
-            
+
             lockIconView.widthAnchor.constraint(equalToConstant: 20),
             lockIconView.heightAnchor.constraint(equalToConstant: 20),
-            lockIconView.bottomAnchor.constraint(equalTo: lockView.bottomAnchor, constant: -2),
-            lockIconView.trailingAnchor.constraint(equalTo: lockView.trailingAnchor, constant: -2),
+            lockIconView.bottomAnchor.constraint(equalTo: lockView.bottomAnchor, constant: -3),
+            lockIconView.trailingAnchor.constraint(equalTo: lockView.trailingAnchor, constant: -3),
             
             filterTitleLabel.topAnchor.constraint(equalTo: filterImageView.bottomAnchor, constant: 2),
             filterTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -136,12 +139,21 @@ class FilterButton: UIButton {
     
     func updateFormatting(isSelected: Bool) {
         isButtonSelected = isSelected
+        updateBorder(isSelected: isSelected)
+        
         if isSelected {
             filterTitleLabel.textColor = Color.accent
-            filterImageView.layer.borderColor = Button.borderColor.cgColor
         } else {
             filterTitleLabel.textColor = .systemGray
-            filterImageView.layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+    
+    func updateBorder(isSelected: Bool) {
+        let borderColor = isSelected ? Button.borderColor.cgColor : UIColor.clear.cgColor
+        if filter.isLockedByDefault {
+            lockView.layer.borderColor = borderColor
+        } else {
+            filterImageView.layer.borderColor = borderColor
         }
     }
     
