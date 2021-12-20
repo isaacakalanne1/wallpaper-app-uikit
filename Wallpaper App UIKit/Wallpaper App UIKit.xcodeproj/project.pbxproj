@@ -57,6 +57,7 @@
 		BB71907D276FEDE8002193BD /* TertiaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907C276FEDE8002193BD /* TertiaryContainer.swift */; };
 		BB7190812770990B002193BD /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190802770990B002193BD /* VideoViewController.swift */; };
 		BB7190842770A32F002193BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190832770A32F002193BD /* User.swift */; };
+		BB87D76227710A7E00B87A95 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87D76127710A7E00B87A95 /* AppData.swift */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
 		BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* MainViewController.swift */; };
@@ -145,6 +146,7 @@
 		BB71907C276FEDE8002193BD /* TertiaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryContainer.swift; sourceTree = "<group>"; };
 		BB7190802770990B002193BD /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		BB7190832770A32F002193BD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BB87D76127710A7E00B87A95 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			children = (
 				BBB7620A27567B3600DF5B70 /* Color.swift */,
 				BB71907A276B88E5002193BD /* Animation.swift */,
+				BB87D76127710A7E00B87A95 /* AppData.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				BB7190662769F23F002193BD /* CarnivalMirror.swift in Sources */,
 				BB39589F275E2CBB0049E0E2 /* ImgurAlbumData.swift in Sources */,
 				BB7190672769F23F002193BD /* FilmicEffects.swift in Sources */,
+				BB87D76227710A7E00B87A95 /* AppData.swift in Sources */,
 				BB3958A92767C8B20049E0E2 /* FilterBrowserViewController.swift in Sources */,
 				BB71907D276FEDE8002193BD /* TertiaryContainer.swift in Sources */,
 				BB71905F2769F23F002193BD /* ThirdPartyFilters.swift in Sources */,

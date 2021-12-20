@@ -44,7 +44,7 @@ class WallpaperBrowserController: UIPageViewController {
         
         // SAO wallpapers : zOcv3
         // Anime wallpapers : T6bjgLb
-        imgurApi.downloadData(forHash: "oxYFZ") { [weak self] result in
+        imgurApi.downloadData(forHash: AppData.albumHash) { [weak self] result in
             switch result {
             case .success(let data):
                 
