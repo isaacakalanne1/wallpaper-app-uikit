@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class VideoViewController: UIViewController {
     
@@ -43,6 +44,8 @@ class VideoViewController: UIViewController {
     }
     
     let delegate: ButtonDelegate?
+    
+    var rewardedAd: GADRewardedAd?
     
     init(delegate: ButtonDelegate?) {
         self.delegate = delegate
@@ -91,13 +94,44 @@ class VideoViewController: UIViewController {
         }
     }
     
+    func displayTemporaryTitle(_ text: String) {
+        let prevText = titleLabel.text
+        
+        UIView.transition(with: titleLabel, duration: Animation.length, options: .transitionCrossDissolve) {
+            self.titleLabel.text = text
+        } completion: { _ in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                UIView.transition(with: self.titleLabel, duration: Animation.length, options: .transitionCrossDissolve) {
+                    self.titleLabel.text = prevText
+                }
+            }
+            
+        }
+    }
+    
+    func presentVideo() {
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: self,
+                       userDidEarnRewardHandler: {
+                let reward = ad.adReward
+                self.savePointToUser()
+            })
+        } else {
+            displayTemporaryTitle("Failed to load video")
+        }
+    }
+    
+    func savePointToUser() {
+        user.savePoints(1)
+        updateLabelText()
+    }
+    
 }
 
 extension VideoViewController: ButtonDelegate {
     func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
-        user.savePoints(1)
-        updateLabelText()
-        print("Watch video")
+        presentVideo()
     }
     
     func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {

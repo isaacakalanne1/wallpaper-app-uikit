@@ -42,6 +42,8 @@ class MainViewController: UIViewController {
                                                              filterDelegate: self,
                                                              announcementDelegate: self)
     
+    lazy var videoVC = VideoViewController(delegate: self)
+    
     var rewardedAd: GADRewardedAd?
     let user = User()
     var points: Int {
@@ -117,7 +119,7 @@ class MainViewController: UIViewController {
     
     func loadRewardedAd() {
         let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: "ca-app-pub-8123415297019784/9501821136",
+        GADRewardedAd.load(withAdUnitID: "ca-app-pub-3940256099942544/1712485313",
                            request: request, completionHandler: { (ad, error) in
             if let error = error {
                 print("Rewarded ad failed to load with error: \(error.localizedDescription)")
@@ -215,8 +217,8 @@ extension MainViewController: ButtonDelegate {
     func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
         switch status {
         case .getPoints:
-            let newViewController = VideoViewController(delegate: self)
-            self.navigationController?.pushViewController(newViewController, animated: true)
+            videoVC.rewardedAd = rewardedAd
+            self.navigationController?.pushViewController(videoVC, animated: true)
         case .unlockFilter:
             if let key = currentFilter?.isUnlockedKey,
                let cost = currentFilter?.costToUnlock {
