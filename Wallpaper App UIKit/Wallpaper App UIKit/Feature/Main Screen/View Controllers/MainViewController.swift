@@ -149,7 +149,7 @@ extension MainViewController: FilterDelegate {
                 buttonStatus = .getPoints
                 tertiaryContainer.displayAnnouncement("You need \(pointsNeededToUnlock) more points to unlock")
             default:
-                buttonStatus = .applyFilter
+                buttonStatus = .unlockFilter
                 tertiaryContainer.displayAnnouncement("You have \(points) points")
             }
         } else {
