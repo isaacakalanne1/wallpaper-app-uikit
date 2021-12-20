@@ -153,14 +153,14 @@ enum Filter: String, CaseIterable {
             return filter
         case .storm:
             let filter = DifferenceOfGaussians()
-            filter.inputSigma0 = CGFloat(0.75*sliderValue)
-            filter.inputSigma1 = CGFloat(3.25*sliderValue)
+            filter.inputSigma0 = CGFloat(1.5*sliderValue)
+            filter.inputSigma1 = CGFloat(6.5*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .hay:
             let filter = MercurializeFilter()
-            filter.inputEdgeThickness = CGFloat(5*sliderValue)
-            filter.inputScale = CGFloat(10*sliderValue)
+            filter.inputEdgeThickness = CGFloat(2.5*sliderValue)
+            filter.inputScale = CGFloat(5*sliderValue)
             filter.inputImage = inputImage
             return filter
         case .rope:
@@ -171,7 +171,7 @@ enum Filter: String, CaseIterable {
             return filter
         case .fast:
             let filter = TechnicolorFilter()
-            filter.inputAmount = CGFloat(1*sliderValue)
+            filter.inputAmount = CGFloat(10*sliderValue)
             filter.inputImage = inputImage
             return filter
         }
