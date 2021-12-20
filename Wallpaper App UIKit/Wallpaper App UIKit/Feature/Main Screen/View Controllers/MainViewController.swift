@@ -43,6 +43,10 @@ class MainViewController: UIViewController {
                                                              announcementDelegate: self)
     
     var rewardedAd: GADRewardedAd?
+    let user = User()
+    var points: Int {
+        return user.points
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,8 +139,19 @@ extension MainViewController: FilterDelegate {
         }
         
         if filter.isLockedByDefault {
-            buttonStatus = .getPoints
-            tertiaryContainer.displayAnnouncement("You need 4 more points to unlock")
+            
+            let pointsNeededToUnlock = filter.costToUnlock - points
+            switch pointsNeededToUnlock {
+            case 1:
+                buttonStatus = .getPoints
+                tertiaryContainer.displayAnnouncement("You need 1 more point to unlock")
+            case 2...:
+                buttonStatus = .getPoints
+                tertiaryContainer.displayAnnouncement("You need \(pointsNeededToUnlock) more points to unlock")
+            default:
+                buttonStatus = .applyFilter
+                tertiaryContainer.displayAnnouncement("You have \(points) points")
+            }
         } else {
             buttonStatus = .applyFilter
             tertiaryContainer.displayAnnouncement(nil)

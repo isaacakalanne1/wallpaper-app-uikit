@@ -34,12 +34,24 @@ class VideoViewController: UIViewController {
     let viewHeight: CGFloat = 45
     let margin: CGFloat = 10
     
+    let user = User()
+    
+    var points: Int {
+        return user.points
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = Color.primary
         
-        titleLabel.text = "You have 9 points"
+        switch points {
+        case 1:
+            titleLabel.text = "You have 1 point"
+        default:
+            titleLabel.text = "You have \(points) points"
+        }
+        
         subtitleLabel.text = "Watch a video to earn 1 point"
         
         view.addSubview(titleLabel)
