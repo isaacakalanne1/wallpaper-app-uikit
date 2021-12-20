@@ -26,11 +26,31 @@ class FilterButton: UIButton {
         imageView.clipsToBounds = true
         
         imageView.layer.borderWidth = Button.borderWidth
-        
         imageView.layer.cornerRadius = Button.cornerRadius
         
         return imageView
     }()
+    
+    lazy var lockView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = Button.borderWidth
+        view.layer.cornerRadius = Button.cornerRadius
+        view.clipsToBounds = true
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        return view
+    }()
+    
+    lazy var lockIconView: UIImageView = {
+        let imageView = UIImageView()
+        let image = UIImage(systemName: "lock.fill")!
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = Color.accent
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     lazy var filterTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,11 +76,16 @@ class FilterButton: UIButton {
         if let img = image {
             updateWallpaper(img)
         }
+        
         filterTitleLabel.text = filter.title
         
         updateFormatting(isSelected: isSelected)
         
+        lockView.isHidden = !filter.isLockedByDefault
+        
         addSubview(filterImageView)
+        lockView.addSubview(lockIconView)
+        addSubview(lockView)
         addSubview(filterTitleLabel)
         
         NSLayoutConstraint.activate([
@@ -68,6 +93,16 @@ class FilterButton: UIButton {
             filterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             filterImageView.widthAnchor.constraint(equalToConstant: 57),
             filterImageView.heightAnchor.constraint(equalToConstant: 57),
+            
+            lockView.leadingAnchor.constraint(equalTo: filterImageView.leadingAnchor),
+            lockView.trailingAnchor.constraint(equalTo: filterImageView.trailingAnchor),
+            lockView.topAnchor.constraint(equalTo: filterImageView.topAnchor),
+            lockView.bottomAnchor.constraint(equalTo: filterImageView.bottomAnchor),
+            
+            lockIconView.widthAnchor.constraint(equalToConstant: 20),
+            lockIconView.heightAnchor.constraint(equalToConstant: 20),
+            lockIconView.bottomAnchor.constraint(equalTo: lockView.bottomAnchor, constant: -2),
+            lockIconView.trailingAnchor.constraint(equalTo: lockView.trailingAnchor, constant: -2),
             
             filterTitleLabel.topAnchor.constraint(equalTo: filterImageView.bottomAnchor, constant: 2),
             filterTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),

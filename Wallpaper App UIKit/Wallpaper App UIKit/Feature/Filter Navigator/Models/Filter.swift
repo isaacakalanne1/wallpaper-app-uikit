@@ -10,7 +10,7 @@ import CoreImage
 import UIKit
 
 enum Filter: String, CaseIterable {
-    case clear, _super, leet, dope, yoyo, tight, live, epic, sure, wow, fry, moon, good, zoom, lay, whoosh
+    case clear, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh
     
     var title: String {
         switch self {
@@ -41,9 +41,9 @@ enum Filter: String, CaseIterable {
     
     var isLockedByDefault: Bool {
         switch self {
-        case .wow, .fry, .moon, .good, .zoom, .lay, .whoosh:
+        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh:
             return true
-        case .clear, ._super, .leet, .dope, .yoyo, .tight, .live, .epic, .sure:
+        case .clear, ._super, .leet, .dope, .yoyo, .tight, .sure:
             return false
         }
     }
