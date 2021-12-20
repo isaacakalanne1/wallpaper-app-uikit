@@ -63,7 +63,7 @@ class WallpaperBrowserController: UIPageViewController {
                     }
                 }
             case .failure(let error):
-                print("Failed! Error is \(error)")
+                print("Imgur Album Data download failed! Error is \(error)")
             }
         }
     }
