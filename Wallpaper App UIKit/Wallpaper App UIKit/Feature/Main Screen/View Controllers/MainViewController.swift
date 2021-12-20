@@ -155,8 +155,10 @@ extension MainViewController: FilterDelegate {
     func didSelectFilter(_ filter: Filter) {
         currentFilter = filter
         
-        sliderValue = initialSliderValue
-        slider.value = sliderValue
+        if filter != .reset {
+            sliderValue = initialSliderValue
+            slider.value = sliderValue
+        }
         
         if filter.isUnlocked {
             buttonStatus = .applyFilter
