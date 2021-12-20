@@ -37,7 +37,7 @@ class SecondaryButtonContainer: UIView {
             case .getPoints:
                 return "Get Points Free"
             case .earn1Point:
-                return "Earn 1 point"
+                return "Watch video"
             case .unlockFilter:
                 return "Unlock for \(User().points) points"
             case .hide:
