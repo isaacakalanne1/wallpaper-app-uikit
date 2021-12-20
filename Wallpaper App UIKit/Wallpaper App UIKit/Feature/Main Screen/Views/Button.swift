@@ -9,7 +9,7 @@ import UIKit
 
 class Button: UIButton {
     
-    convenience init(style: Button.Style, title: String) {
+    convenience init(style: Button.Style, title: String?) {
         self.init(style: style)
         
         setTitle(title, for: .normal)

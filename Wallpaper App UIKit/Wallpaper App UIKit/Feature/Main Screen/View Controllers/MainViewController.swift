@@ -23,7 +23,8 @@ class MainViewController: UIViewController {
     
     let wallpaperBrowserView = UIView()
     lazy var tertiaryContainer = TertiaryContainer()
-    lazy var secondaryButtonContainer = SecondaryButtonContainer(delegate: self)
+    lazy var secondaryButtonContainer = SecondaryButtonContainer(delegate: self,
+                                                                 status: buttonStatus)
     
     let initialSliderValue: Float = 0.75
     lazy var sliderValue: Float = initialSliderValue
@@ -31,6 +32,7 @@ class MainViewController: UIViewController {
     lazy var slider = Slider(delegate: self, initialValue: sliderValue)
     
     var currentFilter: Filter?
+    var buttonStatus: SecondaryButtonContainer.ButtonStatus = .applyFilter
     
     let filterNavigatorView = UIView()
     lazy var mainButtonContainer = MainButtonContainer(downloadDelegate: self, announcementDelegate: self)
@@ -126,17 +128,22 @@ extension MainViewController: FilterDelegate {
     
     func didSelectFilter(_ filter: Filter) {
         currentFilter = filter
+        
         if filter != .clear {
             sliderValue = initialSliderValue
             slider.value = sliderValue
         }
+        
         if filter.isLockedByDefault {
+            buttonStatus = .getPoints
             tertiaryContainer.displayAnnouncement("You need 4 more points to unlock")
         } else {
+            buttonStatus = .applyFilter
             tertiaryContainer.displayAnnouncement(nil)
         }
+        
         wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
-        secondaryButtonContainer.toggleButtons(.show)
+        secondaryButtonContainer.toggleButtons(buttonStatus)
         secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: filter == .clear)
     }
     
@@ -168,13 +175,27 @@ extension MainViewController: FilterDelegate {
     }
 }
 
+extension MainViewController: ButtonDelegate {
+    func primaryButtonPressed() {
+        if currentFilter?.isLockedByDefault == true {
+            print("Present VideoViewController")
+        } else {
+            applyFilter()
+        }
+    }
+    
+    func secondaryButtonPressed() {
+        cancelFilter()
+    }
+}
+
 extension MainViewController: SliderDelegate {
     func didChangeValue(_ value: Float) {
         sliderValue = value
         guard let filter = currentFilter else { return }
         
         wallpaperBrowserVC.previewFilter(filter, sliderValue: value)
-        secondaryButtonContainer.toggleButtons(.show)
+        secondaryButtonContainer.toggleButtons(.applyFilter)
         secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: filter == .clear)
     }
 }

@@ -11,23 +11,50 @@ protocol AnnouncementDelegate: AnyObject {
     func displayAnnouncement(_ text: String)
 }
 
+protocol ButtonDelegate: AnyObject {
+    func primaryButtonPressed()
+    func secondaryButtonPressed()
+}
+
 class SecondaryButtonContainer: UIView {
     
     enum ButtonStatus {
-        case show, hide
+        case applyFilter, getPoints, hide
         
         var animationAlpha: CGFloat {
             switch self {
-            case .show:
+            case .applyFilter, .getPoints:
                 return 1.0
             case .hide:
                 return 0.0
+            }
+        }
+        
+        var primaryTitle: String? {
+            switch self {
+            case .applyFilter:
+                return "Apply"
+            case .getPoints:
+                return "Get Points Free"
+            case .hide:
+                return nil
+            }
+        }
+        
+        var secondaryTitle: String? {
+            switch self {
+            case .applyFilter,
+                    .getPoints:
+                return "Cancel"
+            case .hide:
+                return nil
             }
         }
     }
     
     private let margin: CGFloat = 5
     private let viewWidth: CGFloat = 100
+    private let viewWidthLarge: CGFloat = 160
     
     let announcementLabel: UILabel = {
         let label = UILabel()
@@ -39,15 +66,20 @@ class SecondaryButtonContainer: UIView {
         return label
     }()
     
-    let primaryButton = Button(style: .primary, title: "Apply")
-    let secondaryButton = Button(style: .secondary, title: "Cancel")
+    lazy var primaryButton = Button(style: .primary, title: buttonStatus.primaryTitle)
+    lazy var applyFilterPrimaryButtonWidth = primaryButton.widthAnchor.constraint(equalToConstant: viewWidth)
+    lazy var getPointsPrimaryButtonWidth = primaryButton.widthAnchor.constraint(equalToConstant: viewWidthLarge)
+    lazy var secondaryButton = Button(style: .secondary, title: buttonStatus.secondaryTitle)
     
-    let delegate: FilterDelegate?
+    let delegate: ButtonDelegate?
     
     let animationLength = Animation.length
     
-    init(delegate: FilterDelegate?) {
+    var buttonStatus: ButtonStatus
+    
+    init(delegate: ButtonDelegate?, status: ButtonStatus) {
         self.delegate = delegate
+        self.buttonStatus = status
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +101,6 @@ class SecondaryButtonContainer: UIView {
             primaryButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: margin),
             primaryButton.topAnchor.constraint(equalTo: topAnchor, constant: margin),
             primaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin),
-            primaryButton.widthAnchor.constraint(equalToConstant: viewWidth),
             
             secondaryButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -margin),
             secondaryButton.topAnchor.constraint(equalTo: topAnchor, constant: margin),
@@ -81,14 +112,16 @@ class SecondaryButtonContainer: UIView {
             announcementLabel.topAnchor.constraint(equalTo: topAnchor),
             announcementLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+        
+        applyFilterPrimaryButtonWidth.isActive = true
     }
     
     @objc func primaryButtonPressed() {
-        delegate?.applyFilter()
+        delegate?.primaryButtonPressed()
     }
     
     @objc func secondaryButtonPressed() {
-        delegate?.cancelFilter()
+        delegate?.secondaryButtonPressed()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -107,6 +140,27 @@ class SecondaryButtonContainer: UIView {
     }
     
     func toggleButtons(_ status: ButtonStatus) {
+        self.buttonStatus = status
+        
+        UIView.transition(with: primaryButton, duration: Animation.length, options: .transitionCrossDissolve) {
+            self.primaryButton.setTitle(status.primaryTitle, for: .normal)
+        }
+        
+        UIView.transition(with: secondaryButton, duration: Animation.length, options: .transitionCrossDissolve) {
+            self.secondaryButton.setTitle(status.secondaryTitle, for: .normal)
+        }
+        
+        switch buttonStatus {
+        case .applyFilter:
+            applyFilterPrimaryButtonWidth.isActive = true
+            getPointsPrimaryButtonWidth.isActive = false
+        case .getPoints:
+            applyFilterPrimaryButtonWidth.isActive = false
+            getPointsPrimaryButtonWidth.isActive = true
+        case .hide:
+            break
+        }
+        
         UIView.animate(withDuration: Animation.length) {
             self.primaryButton.alpha = status.animationAlpha
             self.secondaryButton.alpha = status.animationAlpha
