@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resetFilterUnlocks()
+//        resetFilterUnlocks()
         
         view.backgroundColor = Color.primary
         
