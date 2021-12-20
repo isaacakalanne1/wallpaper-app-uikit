@@ -8,8 +8,10 @@
 import UIKit
 
 struct ImageEditor {
+    
+    static let context = CIContext(options: nil)
+    
     static func filterImage(_ image: UIImage?, with filter: Filter, sliderValue: Float) -> UIImage? {
-        let context = CIContext(options: nil)
         
         guard let imputImage = image,
               let beginImage = CIImage(image: imputImage) else { return nil }
