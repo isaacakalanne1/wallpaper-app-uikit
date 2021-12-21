@@ -67,6 +67,7 @@ class FilterButton: UIButton {
     let filter: Filter
     var isButtonSelected: Bool
     let delegate: FilterDelegate?
+    let imageEditor = ImageEditor()
     
     init(filter: Filter, image: UIImage? = nil, title: String? = nil, isSelected: Bool = false, delegate: FilterDelegate?) {
         self.filter = filter
@@ -122,7 +123,7 @@ class FilterButton: UIButton {
     func updateWallpaper(_ wallpaper: UIImage) {
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let editedImage = ImageEditor.filterImage(wallpaper, with: self.filter, sliderValue: self.filter.filterButtonPreviewSliderValue)
+            let editedImage = self.imageEditor.filterImage(wallpaper, with: self.filter, sliderValue: self.filter.filterButtonPreviewSliderValue)
 
             DispatchQueue.main.async {
                 UIView.transition(with: self.filterImageView, duration: Animation.length, options: .transitionCrossDissolve) {

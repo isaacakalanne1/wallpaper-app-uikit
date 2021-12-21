@@ -36,6 +36,7 @@ class WallpaperViewController: UIViewController {
     let wallpaperDelegate: WallpaperDelegate?
     let filterDelegate: FilterDelegate?
     let announcementDelegate: AnnouncementDelegate?
+    let imageEditor = ImageEditor()
     
     init(link: String, wallpaperDelegate: WallpaperDelegate?, filterDelegate: FilterDelegate?, announcementDelegate: AnnouncementDelegate?) {
         self.link = link
@@ -126,7 +127,7 @@ class WallpaperViewController: UIViewController {
     func previewFilter(_ filter: Filter, sliderValue: Float) {
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let editedImage = ImageEditor.filterImage(self.wallpaperToEdit,
+            let editedImage = self.imageEditor.filterImage(self.wallpaperToEdit,
                                                       with: filter,
                                                       sliderValue: sliderValue)
 

@@ -11,7 +11,7 @@ struct ImageEditor {
     
     static let context = CIContext(options: nil)
     
-    static func filterImage(_ image: UIImage?, with filter: Filter, sliderValue: Float) -> UIImage? {
+    func filterImage(_ image: UIImage?, with filter: Filter, sliderValue: Float) -> UIImage? {
         
         guard let imputImage = image,
               let beginImage = CIImage(image: imputImage) else { return nil }
@@ -20,7 +20,7 @@ struct ImageEditor {
                                                   sliderValue: sliderValue)
         
         guard let output = currentFilter?.outputImage,
-              let cgimg = context.createCGImage(output, from: output.extent) else { return nil }
+              let cgimg = ImageEditor.context.createCGImage(output, from: output.extent) else { return nil }
         
         let processedImage = UIImage(cgImage: cgimg)
         
