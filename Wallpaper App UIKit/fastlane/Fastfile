@@ -4,7 +4,7 @@ platform :ios do
   desc "Checkout branch and merge main"
   lane :update_branches_and_submit do
     checkout_and_merge
-    build_app
+    build
     upload
   end
 
@@ -14,7 +14,7 @@ platform :ios do
     deliver
   end
 
-  lane :build_app do
+  lane :build do
     enable_automatic_code_signing
     increment_build_number
     gym
