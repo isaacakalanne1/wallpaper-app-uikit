@@ -9,7 +9,7 @@ platform :ios do
   end
 
   lane :checkout_and_merge do
-    git_switch_branch(branch: "wallpaper/nature”)
+    git_switch_branch(branch: "wallpaper/anime”)
     sh(git merge main)
   end
 
