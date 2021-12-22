@@ -10,8 +10,11 @@ platform :ios do
 
   lane :checkout_and_merge do
     git_switch_branch(branch: "wallpaper/anime”)
-    sh(git merge $main)
+    merge_from_main
   end
+
+  lane :merge_from_main do
+    sh(git merge $main)
 
   lane :build do
     enable_automatic_code_signing
