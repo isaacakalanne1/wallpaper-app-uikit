@@ -2,12 +2,25 @@ default_platform(:ios)
 
 platform :ios do
   desc "Checkout branch and merge main"
-  lane :merge_and_build do
+  lane :update_branches_and_submit do
+    checkout_and_merge
+    build_app
+    upload
+  end
+
+  lane :checkout_and_merge do
     git_switch_branch(branch: "wallpaper/nature”)
     sh(git merge main)
+    deliver
+  end
 
+  lane :build_app do
     enable_automatic_code_signing
     increment_build_number
     gym
+  end
+
+  lane :upload do
+    deliver
   end
 end
