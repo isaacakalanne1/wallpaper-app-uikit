@@ -57,6 +57,7 @@ class TertiaryContainer: UIView {
     }
     
     func displayPermanentAnnouncement(_ announcementText: String?) {
+        
         if let text = announcementText {
             announcementLabel.text = text
             isHidden = false
