@@ -15,6 +15,7 @@ platform :ios do
 
   lane :merge_from_main do
     sh(git merge $main)
+  end
 
   lane :build do
     enable_automatic_code_signing
