@@ -63,7 +63,6 @@ class TertiaryContainer: UIView {
         } else {
             isHidden = true
             announcementLabel.text = ""
-
         }
     }
 }
