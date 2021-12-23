@@ -245,16 +245,17 @@ extension MainViewController: ButtonDelegate {
             if let key = currentFilter?.isUnlockedKey,
                let cost = currentFilter?.costToUnlock {
                 user.spendPoints(cost) { [weak self] res in
+                    guard let self = self else { return }
                     switch res {
                     case .success:
                         UserDefaults.standard.set(true, forKey: key)
-                        buttonStatus = .applyFilter
-                        self?.filterNavigatorVC.unlock(filter: self?.currentFilter)
-                        self?.secondaryButtonContainer.toggleButtons(buttonStatus)
-                        self?.tertiaryContainer.displayPermanentAnnouncement(nil)
-                        self?.secondaryButtonContainer.displayAnnouncement("Unlocked filter")
+                        self.buttonStatus = .applyFilter
+                        self.filterNavigatorVC.unlock(filter: self.currentFilter)
+                        self.secondaryButtonContainer.toggleButtons(self.buttonStatus)
+                        self.tertiaryContainer.displayPermanentAnnouncement(nil)
+                        self.secondaryButtonContainer.displayAnnouncement("Unlocked filter")
                     case .failure:
-                        self?.tertiaryContainer.displayAnnouncement("Failed to unlock filter")
+                        self.tertiaryContainer.displayAnnouncement("Failed to unlock filter")
                     }
                 }
             }
