@@ -540,13 +540,16 @@
 				TargetAttributes = {
 					BBB761D02756759500DF5B70 = {
 						CreatedOnToolsVersion = 13.1;
+						ProvisioningStyle = Automatic;
 					};
 					BBB761E62756759900DF5B70 = {
 						CreatedOnToolsVersion = 13.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = BBB761D02756759500DF5B70;
 					};
 					BBB761F02756759900DF5B70 = {
 						CreatedOnToolsVersion = 13.1;
+						ProvisioningStyle = Automatic;
 						TestTargetID = BBB761D02756759500DF5B70;
 					};
 				};
