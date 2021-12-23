@@ -248,8 +248,9 @@ extension MainViewController: ButtonDelegate {
                     switch res {
                     case .success:
                         UserDefaults.standard.set(true, forKey: key)
+                        buttonStatus = .applyFilter
                         self?.filterNavigatorVC.unlock(filter: self?.currentFilter)
-                        self?.secondaryButtonContainer.toggleButtons(.applyFilter)
+                        self?.secondaryButtonContainer.toggleButtons(buttonStatus)
                         self?.tertiaryContainer.displayPermanentAnnouncement(nil)
                         self?.secondaryButtonContainer.displayAnnouncement("Unlocked filter")
                     case .failure:
