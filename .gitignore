@@ -26,9 +26,9 @@ DerivedData/
 *.hmap
 
 ## App packaging
-*.ipa
-*.dSYM.zip
-*.dSYM
+## *.ipa
+## *.dSYM.zip
+## *.dSYM
 
 ## Playgrounds
 timeline.xctimeline
