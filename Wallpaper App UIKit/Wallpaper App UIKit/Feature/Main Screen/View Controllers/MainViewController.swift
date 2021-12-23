@@ -242,7 +242,6 @@ extension MainViewController: ButtonDelegate {
             videoVC.updateVideo(rewardedAd)
             self.navigationController?.pushViewController(videoVC, animated: true)
         case .unlockFilter:
-            
             if let key = currentFilter?.isUnlockedKey,
                let cost = currentFilter?.costToUnlock {
                 user.spendPoints(cost) { [weak self] res in
