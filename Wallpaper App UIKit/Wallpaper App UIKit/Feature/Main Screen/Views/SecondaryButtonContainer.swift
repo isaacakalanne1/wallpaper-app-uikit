@@ -152,6 +152,7 @@ class SecondaryButtonContainer: UIView {
     }
     
     func toggleButtons(_ status: ButtonStatus) {
+        
         self.buttonStatus = status
         
         UIView.transition(with: primaryButton,
