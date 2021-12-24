@@ -101,6 +101,9 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-appicon (0.16.0)
+      json
+      mini_magick (>= 4.9.4, < 5.0.0)
     fastlane-plugin-git_switch_branch (0.2.1)
     gh_inspector (1.1.3)
     google-apis-androidpublisher_v3 (0.14.0)
@@ -210,6 +213,7 @@ PLATFORMS
 
 DEPENDENCIES
   fastlane
+  fastlane-plugin-appicon
   fastlane-plugin-git_switch_branch
 
 BUNDLED WITH
