@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This is for downloading wallpapers to your phone.</string>
+	<string>$(AD_APP_ID)</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>This is for downloading wallpapers to your phone.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
