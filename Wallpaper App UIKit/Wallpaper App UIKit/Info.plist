@@ -5,7 +5,7 @@
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This is for downloading wallpapers to your phone</string>
+	<string>This is for downloading wallpapers to your phone.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
