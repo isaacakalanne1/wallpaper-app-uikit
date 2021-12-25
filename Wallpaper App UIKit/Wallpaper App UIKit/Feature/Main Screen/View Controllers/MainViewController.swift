@@ -127,6 +127,7 @@ class MainViewController: UIViewController {
     }
     
     private func loadForm() {
+        
         UMPConsentForm.load(
             completionHandler: { [weak self] form, loadError in
                 guard let self = self else { return }
