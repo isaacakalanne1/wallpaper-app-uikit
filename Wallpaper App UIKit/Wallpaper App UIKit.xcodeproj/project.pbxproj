@@ -58,6 +58,7 @@
 		BB7190812770990B002193BD /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190802770990B002193BD /* VideoViewController.swift */; };
 		BB7190842770A32F002193BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190832770A32F002193BD /* User.swift */; };
 		BB87D76227710A7E00B87A95 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87D76127710A7E00B87A95 /* AppData.swift */; };
+		BB87D76A27774DB600B87A95 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
 		BBB761D72756759500DF5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D62756759500DF5B70 /* SceneDelegate.swift */; };
 		BBB761D92756759500DF5B70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D82756759500DF5B70 /* MainViewController.swift */; };
@@ -147,6 +148,7 @@
 		BB7190802770990B002193BD /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		BB7190832770A32F002193BD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB87D76127710A7E00B87A95 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBB761D42756759500DF5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB761D62756759500DF5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A7C200FE86DFE4D64D42740 /* Pods_Wallpaper_App_UIKit.framework in Frameworks */,
+				BB87D76A27774DB600B87A95 /* AppTrackingTransparency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +214,7 @@
 		A946F0FC5EDF2E3076514D91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */,
 				AD05A70964310E0DE5EC6C4A /* Pods_Wallpaper_App_UIKit.framework */,
 				D94A2412CF23BCAFE9D13530 /* Pods_Wallpaper_App_UIKit_Wallpaper_App_UIKitUITests.framework */,
 				09FBC250F40DDA7406F44C32 /* Pods_Wallpaper_App_UIKitTests.framework */,
