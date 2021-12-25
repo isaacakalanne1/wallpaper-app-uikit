@@ -83,6 +83,8 @@ class VideoViewController: UIViewController {
             buttonContainer.heightAnchor.constraint(equalToConstant: viewHeight),
             buttonContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
         ])
+        
+        buttonContainer.updatePrimaryButtonInteraction(canInteract: rewardedAd != nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,21 +119,16 @@ class VideoViewController: UIViewController {
     
     func updateVideo(_ ad: GADRewardedAd?) {
         self.rewardedAd = ad
-        buttonContainer.updatePrimaryButtonInteraction(canInteract: true)
+        buttonContainer.updatePrimaryButtonInteraction(canInteract: ad != nil)
     }
     
     func presentVideo() {
-        if let ad = rewardedAd {
-            ad.present(fromRootViewController: self,
-                       userDidEarnRewardHandler: {
-                let reward = ad.adReward
-                self.savePointToUser()
-                self.buttonContainer.updatePrimaryButtonInteraction(canInteract: false)
-                self.adDelegate?.loadNewAd()
-            })
-        } else {
-            displayTemporaryTitle("Failed to load video")
-        }
+        rewardedAd?.present(fromRootViewController: self,
+                   userDidEarnRewardHandler: {
+            self.savePointToUser()
+            self.buttonContainer.updatePrimaryButtonInteraction(canInteract: false)
+            self.adDelegate?.loadNewAd()
+        })
     }
     
     func savePointToUser() {
