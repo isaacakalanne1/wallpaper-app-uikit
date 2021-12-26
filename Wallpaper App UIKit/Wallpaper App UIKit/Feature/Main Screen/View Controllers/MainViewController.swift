@@ -117,7 +117,9 @@ class MainViewController: UIViewController {
                 return
               } else {
                   let formStatus = UMPConsentInformation.sharedInstance.formStatus
-                  if UMPConsentInformation.sharedInstance.consentStatus == .obtained {
+                  let consentStatus = UMPConsentInformation.sharedInstance.consentStatus
+                  
+                  if consentStatus == .obtained {
                       self?.loadNewAd()
                   } else if formStatus == UMPFormStatus.available {
                       self?.loadForm()
