@@ -14,7 +14,7 @@ submission_information({
     add_id_info_limits_tracking: true
 })
 
-# app_rating_config_path("./fastlane/metadata/app_store_rating_config.json")
+app_rating_config_path("./fastlane/metadata/app_store_rating_config.json")
 
 ipa("./fastlane/builds/Wallpaper App UIKit.ipa”)
 # 5
