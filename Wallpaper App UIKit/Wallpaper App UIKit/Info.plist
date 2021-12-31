@@ -4,8 +4,6 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>$(AD_APP_ID)</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>This is used to download images to your phone's local storage.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -174,7 +172,5 @@
 			</array>
 		</dict>
 	</dict>
-    <key>NSUserTrackingUsageDescription</key>
-    <string>This identifier will be used to deliver personalized ads to you.</string>
 </dict>
 </plist>

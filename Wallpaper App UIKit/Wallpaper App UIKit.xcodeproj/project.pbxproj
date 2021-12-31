@@ -943,6 +943,8 @@
 				DEVELOPMENT_TEAM = NGW7S9DH6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wallpaper App UIKit/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is used to download images to your phone's local storage.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -973,6 +975,8 @@
 				DEVELOPMENT_TEAM = NGW7S9DH6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wallpaper App UIKit/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is used to download images to your phone's local storage.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
