@@ -9,5 +9,5 @@ import Foundation
 
 struct AppData {
     static let albumHash = "B43CwCZ"
-    static let videoAdId = "ca-app-pub-3940256099942544/1712485313"
+    static let videoAdId = "ca-app-pub-1852329945819279/9580854897"
 }
