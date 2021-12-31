@@ -943,7 +943,7 @@
 				DEVELOPMENT_TEAM = NGW7S9DH6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wallpaper App UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Wallpaper App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clash WPs";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is used to download images to your phone's local storage.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -956,7 +956,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smileydudelimitedapps.wallpapers-clash-of-clans";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -976,7 +976,7 @@
 				DEVELOPMENT_TEAM = NGW7S9DH6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wallpaper App UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Wallpaper App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clash WPs";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is used to download images to your phone's local storage.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -989,7 +989,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smileydudelimitedapps.wallpapers-clash-of-clans";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
