@@ -8,6 +8,6 @@
 import Foundation
 
 struct AppData {
-    static let albumHash = "oxYFZ"
-    static let videoAdId = "ca-app-pub-3940256099942544/1712485313"
+    static let albumHash = "4HIZLyu"
+    static let videoAdId = "ca-app-pub-1852329945819279/4868250545"
 }
