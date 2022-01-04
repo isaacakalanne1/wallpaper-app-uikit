@@ -109,6 +109,7 @@ class MainViewController: UIViewController {
         
         loadNewAd()
         
+        
 //        let parameters = UMPRequestParameters()
 //        parameters.tagForUnderAgeOfConsent = false
 //
@@ -120,7 +121,7 @@ class MainViewController: UIViewController {
 //              } else {
 //                  let formStatus = UMPConsentInformation.sharedInstance.formStatus
 //                  let consentStatus = UMPConsentInformation.sharedInstance.consentStatus
-//                  
+//
 //                  if consentStatus == .obtained {
 //                      self?.loadNewAd()
 //                  } else if formStatus == UMPFormStatus.available {
