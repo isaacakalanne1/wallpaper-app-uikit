@@ -935,7 +935,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8462374D6FF990FB55E032F2 /* Pods-Wallpaper App UIKit.debug.xcconfig */;
 			buildSettings = {
-				AD_APP_ID = "ca-app-pub-3940256099942544~1458002511";
+				AD_APP_ID = "ca-app-pub-1852329945819279~5438262039";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -968,7 +968,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D475C261338A96EF23F491B /* Pods-Wallpaper App UIKit.release.xcconfig */;
 			buildSettings = {
-				AD_APP_ID = "ca-app-pub-3940256099942544~1458002511";
+				AD_APP_ID = "ca-app-pub-1852329945819279~5438262039";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
