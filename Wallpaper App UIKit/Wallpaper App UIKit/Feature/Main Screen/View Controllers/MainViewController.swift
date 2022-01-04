@@ -107,25 +107,28 @@ class MainViewController: UIViewController {
             downloadButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
         
-        let parameters = UMPRequestParameters()
-        parameters.tagForUnderAgeOfConsent = false
-
-        UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(
-            with: parameters,
-            completionHandler: { [weak self] error in
-              if error != nil {
-                return
-              } else {
-                  let formStatus = UMPConsentInformation.sharedInstance.formStatus
-                  let consentStatus = UMPConsentInformation.sharedInstance.consentStatus
-                  
-                  if consentStatus == .obtained {
-                      self?.loadNewAd()
-                  } else if formStatus == UMPFormStatus.available {
-                      self?.loadForm()
-                  }
-              }
-            })
+        loadNewAd()
+        
+        
+//        let parameters = UMPRequestParameters()
+//        parameters.tagForUnderAgeOfConsent = false
+//
+//        UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(
+//            with: parameters,
+//            completionHandler: { [weak self] error in
+//              if error != nil {
+//                return
+//              } else {
+//                  let formStatus = UMPConsentInformation.sharedInstance.formStatus
+//                  let consentStatus = UMPConsentInformation.sharedInstance.consentStatus
+//
+//                  if consentStatus == .obtained {
+//                      self?.loadNewAd()
+//                  } else if formStatus == UMPFormStatus.available {
+//                      self?.loadForm()
+//                  }
+//              }
+//            })
     }
     
     private func loadForm() {
