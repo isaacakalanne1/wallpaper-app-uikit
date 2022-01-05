@@ -20,7 +20,17 @@ class VideoViewController: UIViewController {
         return label
     }()
     
-    lazy var subtitleLabel: UILabel = {
+    lazy var subtitleLabel1: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.textAlignment = .center
+        label.textColor = Color.accent
+        label.backgroundColor = Color.secondary
+        return label
+    }()
+    
+    lazy var subtitleLabel2: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .medium)
@@ -61,22 +71,29 @@ class VideoViewController: UIViewController {
         
         view.backgroundColor = Color.primary
         
-        subtitleLabel.text = "Watch a video to earn 1 point"
+        subtitleLabel1.text = "Watch a video to earn 1 point"
+        subtitleLabel2.text = "Use points to unlock filters"
         
         view.addSubview(titleLabel)
-        view.addSubview(subtitleLabel)
+        view.addSubview(subtitleLabel1)
+        view.addSubview(subtitleLabel2)
         view.addSubview(buttonContainer)
         
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -3*viewHeight),
             titleLabel.heightAnchor.constraint(equalToConstant: viewHeight),
             
-            subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: margin),
-            subtitleLabel.heightAnchor.constraint(equalToConstant: viewHeight),
+            subtitleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            subtitleLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            subtitleLabel1.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: (2*margin) + viewHeight),
+            subtitleLabel1.heightAnchor.constraint(equalToConstant: viewHeight),
+            
+            subtitleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            subtitleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            subtitleLabel2.topAnchor.constraint(equalTo: subtitleLabel1.bottomAnchor, constant: margin),
+            subtitleLabel2.heightAnchor.constraint(equalToConstant: viewHeight),
             
             buttonContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
