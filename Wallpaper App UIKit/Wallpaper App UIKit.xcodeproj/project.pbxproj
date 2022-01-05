@@ -954,7 +954,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10..1;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -987,7 +987,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10..1;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1012,7 +1012,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 10..1;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1037,7 +1037,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 10..1;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1060,7 +1060,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 10..1;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKitUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1083,7 +1083,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 10..1;
+				MARKETING_VERSION = 11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.believeandsucceed.Wallpaper-App-UIKitUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
