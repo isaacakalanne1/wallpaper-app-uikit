@@ -4,3 +4,4 @@
 
 gem 'fastlane-plugin-git_switch_branch'
 gem 'fastlane-plugin-appicon'
+gem 'fastlane-plugin-versioning'
