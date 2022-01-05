@@ -109,7 +109,6 @@ class MainViewController: UIViewController {
         
         loadNewAd()
         
-        
 //        let parameters = UMPRequestParameters()
 //        parameters.tagForUnderAgeOfConsent = false
 //
