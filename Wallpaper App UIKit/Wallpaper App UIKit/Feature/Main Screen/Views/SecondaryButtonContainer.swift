@@ -13,6 +13,7 @@ protocol AnnouncementDelegate: AnyObject {
 
 protocol ButtonDelegate: AnyObject {
     func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus)
+    func primaryButtonPressedWhileDisabled(status: SecondaryButtonContainer.ButtonStatus)
     func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus)
 }
 
@@ -87,6 +88,8 @@ class SecondaryButtonContainer: UIView {
     
     var buttonStatus: ButtonStatus
     
+    var isPrimaryButtonEnabled = true
+    
     init(delegate: ButtonDelegate?, status: ButtonStatus) {
         self.delegate = delegate
         self.buttonStatus = status
@@ -129,7 +132,11 @@ class SecondaryButtonContainer: UIView {
     }
     
     @objc func primaryButtonPressed() {
-        delegate?.primaryButtonPressed(status: buttonStatus)
+        if isPrimaryButtonEnabled {
+            delegate?.primaryButtonPressed(status: buttonStatus)
+        } else {
+            delegate?.primaryButtonPressedWhileDisabled(status: buttonStatus)
+        }
     }
     
     @objc func secondaryButtonPressed() {
@@ -190,7 +197,7 @@ class SecondaryButtonContainer: UIView {
     }
     
     func updatePrimaryButtonInteraction(canInteract: Bool) {
-        primaryButton.isUserInteractionEnabled = canInteract
+        isPrimaryButtonEnabled = canInteract
         self.primaryButton.alpha = canInteract ? 1.0 : 0.5
     }
     
