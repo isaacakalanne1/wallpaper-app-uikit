@@ -111,45 +111,6 @@ class MainViewController: UIViewController {
         
         loadNewAd()
         
-//        let parameters = UMPRequestParameters()
-//        parameters.tagForUnderAgeOfConsent = false
-//
-//        UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(
-//            with: parameters,
-//            completionHandler: { [weak self] error in
-//              if error != nil {
-//                return
-//              } else {
-//                  let formStatus = UMPConsentInformation.sharedInstance.formStatus
-//                  let consentStatus = UMPConsentInformation.sharedInstance.consentStatus
-//
-//                  if consentStatus == .obtained {
-//                      self?.loadNewAd()
-//                  } else if formStatus == UMPFormStatus.available {
-//                      self?.loadForm()
-//                  }
-//              }
-//            })
-        
-    }
-    
-    private func loadForm() {
-        
-        UMPConsentForm.load(
-            completionHandler: { [weak self] form, loadError in
-                guard let self = self else { return }
-                if loadError != nil {
-                    return
-                } else {
-                    form?.present(
-                        from: self,
-                        completionHandler: { dismissError in
-                            if UMPConsentInformation.sharedInstance.consentStatus == UMPConsentStatus.obtained {
-                                self.loadNewAd()
-                            }
-                        })
-                }
-            })
     }
     
     func resetFilterUnlocks() {
