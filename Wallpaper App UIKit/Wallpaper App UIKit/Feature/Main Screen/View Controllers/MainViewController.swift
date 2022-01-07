@@ -107,6 +107,8 @@ class MainViewController: UIViewController {
             downloadButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
         
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["585eac36c00fe89d987306be21285fc3"]
+        
         loadNewAd()
         
 //        let parameters = UMPRequestParameters()
