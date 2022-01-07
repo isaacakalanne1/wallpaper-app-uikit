@@ -159,9 +159,9 @@ enum AdStatus {
     var announcementText: String? {
         switch self {
         case .noAdToShow:
-            return "Video ads should be available in the next few days."
+            return "Videos should be ready in a few days"
         case .loading:
-            return "Loading video ad"
+            return "Loading video"
         case .loaded:
             return nil
         }
