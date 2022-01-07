@@ -51,6 +51,8 @@ class MainViewController: UIViewController {
         return user.points
     }
     
+    var adStatus: AdStatus = .loading
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,47 +109,10 @@ class MainViewController: UIViewController {
             downloadButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
         
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["585eac36c00fe89d987306be21285fc3"]
+        
         loadNewAd()
         
-//        let parameters = UMPRequestParameters()
-//        parameters.tagForUnderAgeOfConsent = false
-//
-//        UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(
-//            with: parameters,
-//            completionHandler: { [weak self] error in
-//              if error != nil {
-//                return
-//              } else {
-//                  let formStatus = UMPConsentInformation.sharedInstance.formStatus
-//                  let consentStatus = UMPConsentInformation.sharedInstance.consentStatus
-//
-//                  if consentStatus == .obtained {
-//                      self?.loadNewAd()
-//                  } else if formStatus == UMPFormStatus.available {
-//                      self?.loadForm()
-//                  }
-//              }
-//            })
-        
-    }
-    
-    private func loadForm() {
-        
-        UMPConsentForm.load(
-            completionHandler: { [weak self] form, loadError in
-                guard let self = self else { return }
-                if loadError != nil {
-                    return
-                } else {
-                    form?.present(
-                        from: self,
-                        completionHandler: { dismissError in
-                            if UMPConsentInformation.sharedInstance.consentStatus == UMPConsentStatus.obtained {
-                                self.loadNewAd()
-                            }
-                        })
-                }
-            })
     }
     
     func resetFilterUnlocks() {
@@ -157,16 +122,23 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    func updateAdStatus(_ status: AdStatus) {
+        self.adStatus = status
+        videoVC.updateAdStatus(status)
+    }
 
 }
 extension MainViewController: AdDelegate {
     
     func loadNewAd() {
         let request = GADRequest()
+        videoVC.updateAdStatus(.loading)
         GADRewardedAd.load(withAdUnitID: AppData.videoAdId,
                            request: request, completionHandler: { [weak self] (ad, error) in
             if let error = error {
                 print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                self?.videoVC.updateAdStatus(.noAdToShow)
                 return
             } else {
                 print("Rewarded ad loaded")
@@ -174,9 +146,26 @@ extension MainViewController: AdDelegate {
             self?.rewardedAd = ad
             self?.rewardedAd?.fullScreenContentDelegate = self
             self?.videoVC.updateVideo(ad)
+            self?.videoVC.updateAdStatus(.loaded)
         })
     }
     
+}
+
+enum AdStatus {
+    
+    case noAdToShow, loading, loaded
+    
+    var announcementText: String? {
+        switch self {
+        case .noAdToShow:
+            return "Video ads should be available in the next few days."
+        case .loading:
+            return "Loading video ad"
+        case .loaded:
+            return nil
+        }
+    }
 }
 
 protocol AdDelegate: AnyObject {
@@ -309,6 +298,10 @@ extension MainViewController: ButtonDelegate {
         default:
             break
         }
+    }
+    
+    func primaryButtonPressedWhileDisabled(status: SecondaryButtonContainer.ButtonStatus) {
+        
     }
     
     func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {

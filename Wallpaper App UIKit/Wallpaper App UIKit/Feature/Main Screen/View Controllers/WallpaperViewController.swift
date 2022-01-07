@@ -67,8 +67,8 @@ class WallpaperViewController: UIViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if originalWallpaper != nil {
             let isWallpaperEdited = originalWallpaper != wallpaperToEdit
