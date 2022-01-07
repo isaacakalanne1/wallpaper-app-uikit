@@ -11,33 +11,19 @@ import GoogleMobileAds
 class VideoViewController: UIViewController {
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.textAlignment = .center
-        label.textColor = Color.accent
-        label.backgroundColor = Color.secondary
-        return label
+        createLabel()
     }()
     
     lazy var subtitleLabel1: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.textAlignment = .center
-        label.textColor = Color.accent
-        label.backgroundColor = Color.secondary
-        return label
+        createLabel()
     }()
     
     lazy var subtitleLabel2: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.textAlignment = .center
-        label.textColor = Color.accent
-        label.backgroundColor = Color.secondary
-        return label
+        createLabel()
+    }()
+    
+    lazy var announcementLabel: UILabel = {
+        createLabel()
     }()
     
     let buttonStatus = SecondaryButtonContainer.ButtonStatus.earn1Point
@@ -52,6 +38,8 @@ class VideoViewController: UIViewController {
     var points: Int {
         return user.points
     }
+    
+    var adStatus: AdStatus = .loading
     
     let delegate: ButtonDelegate?
     let adDelegate: AdDelegate?
@@ -77,6 +65,7 @@ class VideoViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel1)
         view.addSubview(subtitleLabel2)
+        view.addSubview(announcementLabel)
         view.addSubview(buttonContainer)
         
         NSLayoutConstraint.activate([
@@ -98,10 +87,25 @@ class VideoViewController: UIViewController {
             buttonContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             buttonContainer.heightAnchor.constraint(equalToConstant: viewHeight),
-            buttonContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
+            buttonContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            
+            announcementLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            announcementLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            announcementLabel.bottomAnchor.constraint(equalTo: buttonContainer.topAnchor, constant: -margin),
+            announcementLabel.heightAnchor.constraint(equalToConstant: viewHeight),
         ])
         
         buttonContainer.updatePrimaryButtonInteraction(canInteract: rewardedAd != nil)
+    }
+    
+    func createLabel() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.textAlignment = .center
+        label.textColor = Color.accent
+        label.backgroundColor = Color.secondary
+        return label
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,6 +138,30 @@ class VideoViewController: UIViewController {
         }
     }
     
+    func updateAdStatus(_ status: AdStatus) {
+        self.adStatus = status
+        
+        if let text = status.announcementText {
+            displayAnnouncement(text)
+        } else {
+            UIView.animate(withDuration: Animation.length, delay: 1.0) {
+                self.announcementLabel.alpha = 0.0
+            }
+        }
+    }
+    
+    func displayAnnouncement(_ text: String) {
+        announcementLabel.text = text
+        
+        UIView.animate(withDuration: Animation.length, animations: {
+            self.announcementLabel.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: Animation.length, delay: 1.0) {
+                self.announcementLabel.alpha = 0.0
+            }
+        }
+    }
+    
     func updateVideo(_ ad: GADRewardedAd?) {
         self.rewardedAd = ad
         buttonContainer.updatePrimaryButtonInteraction(canInteract: ad != nil)
@@ -158,6 +186,12 @@ class VideoViewController: UIViewController {
 extension VideoViewController: ButtonDelegate {
     func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
         presentVideo()
+    }
+    
+    func primaryButtonPressedWhileDisabled(status: SecondaryButtonContainer.ButtonStatus) {
+        if let text = adStatus.announcementText {
+            displayAnnouncement(text)
+        }
     }
     
     func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
