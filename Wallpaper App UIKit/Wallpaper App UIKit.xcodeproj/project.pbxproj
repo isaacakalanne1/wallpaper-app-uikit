@@ -935,8 +935,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8462374D6FF990FB55E032F2 /* Pods-Wallpaper App UIKit.debug.xcconfig */;
 			buildSettings = {
-				AD_APP_ID = "ca-app-pub-3940256099942544~1458002511";
-				APP_BUNDLE_ID = "com.believeandsucceed.Wallpaper-App-UIKit";
+				AD_APP_ID = "ca-app-pub-1852329945819279~7654938249";
+				APP_BUNDLE_ID = "com.smileydudelimitedapps.wallpapers-valorant";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -944,7 +944,7 @@
 				DEVELOPMENT_TEAM = NGW7S9DH6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wallpaper App UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Wallpaper App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Valorant WPs";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is used to download images to your phone's local storage.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -969,8 +969,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D475C261338A96EF23F491B /* Pods-Wallpaper App UIKit.release.xcconfig */;
 			buildSettings = {
-				AD_APP_ID = "ca-app-pub-3940256099942544~1458002511";
-				APP_BUNDLE_ID = "com.believeandsucceed.Wallpaper-App-UIKit";
+				AD_APP_ID = "ca-app-pub-1852329945819279~7654938249";
+				APP_BUNDLE_ID = "com.smileydudelimitedapps.wallpapers-valorant";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -978,7 +978,7 @@
 				DEVELOPMENT_TEAM = NGW7S9DH6U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wallpaper App UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Wallpaper App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Valorant WPs";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This is used to download images to your phone's local storage.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
