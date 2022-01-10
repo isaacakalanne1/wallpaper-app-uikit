@@ -10,7 +10,7 @@ import CoreImage
 import UIKit
 
 enum Filter: String, CaseIterable {
-    case reset, _super, leet, dope, yoyo, tight, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope
+    case reset, _super, dope, tight, leet, yoyo, sure, wow, fry, moon, good, live, epic, zoom, lay, whoosh, storm, hay, rope
     
     var title: String {
         switch self {
@@ -41,9 +41,9 @@ enum Filter: String, CaseIterable {
     
     var isUnlockedByDefault: Bool {
         switch self {
-        case .reset, ._super, .leet, .dope, .yoyo, .tight, .sure:
+        case .reset, ._super, .dope, .tight:
             return true
-        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
+        case .leet, .yoyo, .sure, .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
             return false
         }
     }
@@ -57,7 +57,7 @@ enum Filter: String, CaseIterable {
     }
     
     var costToUnlock: Int {
-        return 4
+        return 3
     }
     
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
