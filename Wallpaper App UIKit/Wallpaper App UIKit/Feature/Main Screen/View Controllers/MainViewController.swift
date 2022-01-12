@@ -45,6 +45,7 @@ class MainViewController: UIViewController {
     var adStatus: AdStatus = .loading
     
     var rewardedAd: GADRewardedAd?
+    var didWatchFullVideo = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,14 +203,9 @@ extension MainViewController: FilterDelegate {
     @objc private func presentVideo() {
         switch adStatus {
         case .loaded:
-            if let ad = rewardedAd {
-                ad.present(fromRootViewController: self,
-                           userDidEarnRewardHandler: {
-                    self.wallpaperBrowserVC.saveWallpaperToPhotos(didWatchAd: true)
-                    self.loadNewAd()
-                })
+            rewardedAd?.present(fromRootViewController: self) {
+                self.didWatchFullVideo = true
             }
-            loadNewAd()
         case .loading:
             if let text = adStatus.announcementText {
                 self.displayAnnouncement(text, secondAnnouncement: nil)
@@ -217,6 +213,14 @@ extension MainViewController: FilterDelegate {
         case .noAdToShow:
             self.wallpaperBrowserVC.saveWallpaperToPhotos(didWatchAd: false)
         }
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        if didWatchFullVideo {
+            self.wallpaperBrowserVC.saveWallpaperToPhotos(didWatchAd: true)
+            didWatchFullVideo = false
+        }
+        loadNewAd()
     }
 }
 
