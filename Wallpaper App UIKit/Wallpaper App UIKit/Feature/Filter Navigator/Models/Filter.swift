@@ -41,9 +41,9 @@ enum Filter: String, CaseIterable {
     
     var isUnlockedByDefault: Bool {
         switch self {
-        case .reset, ._super, .dope, .tight:
+        case .reset, ._super, .dope, .tight, .leet, .yoyo, .sure:
             return true
-        case .leet, .yoyo, .sure, .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
+        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
             return false
         }
     }
