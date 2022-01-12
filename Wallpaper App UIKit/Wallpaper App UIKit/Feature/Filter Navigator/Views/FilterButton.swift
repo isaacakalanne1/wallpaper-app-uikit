@@ -145,13 +145,8 @@ class FilterButton: UIButton {
     func updateFormatting(isSelected: Bool) {
         isButtonSelected = isSelected
         
-        if !filter.isUnlocked {
-            lockIconView.isHidden = false
-            lockView.backgroundColor = .black.withAlphaComponent(0.5)
-        } else {
-            lockIconView.isHidden = true
-            lockView.backgroundColor = .clear
-        }
+        lockIconView.isHidden = true
+        lockView.backgroundColor = .clear
         
         if isSelected {
             filterTitleLabel.textColor = Color.accent
