@@ -37,29 +37,6 @@ enum Filter: String, CaseIterable {
         }
     }
     
-    var isUnlockedKey: String { return "\(title)IsUnlocked"}
-    
-    var isUnlockedByDefault: Bool {
-        switch self {
-        case .reset, ._super, .dope, .tight, .leet, .yoyo, .sure:
-            return true
-        case .wow, .fry, .moon, .good, .live, .epic, .zoom, .lay, .whoosh, .storm, .hay, .rope:
-            return false
-        }
-    }
-    
-    var isUnlocked: Bool {
-        if isUnlockedByDefault {
-            return true
-        } else {
-            return UserDefaults.standard.bool(forKey: isUnlockedKey)
-        }
-    }
-    
-    var costToUnlock: Int {
-        return 3
-    }
-    
     func createCIFilter(inputImage: CIImage, sliderValue: Float) -> CIFilter? {
         switch self {
         case .reset:
