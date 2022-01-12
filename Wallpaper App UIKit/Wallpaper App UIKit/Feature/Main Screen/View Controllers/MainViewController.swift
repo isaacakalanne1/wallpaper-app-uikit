@@ -7,7 +7,6 @@
 
 import UIKit
 import GoogleMobileAds
-import UserMessagingPlatform
 
 class MainViewController: UIViewController {
     
@@ -50,8 +49,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        resetFilterUnlocks()
         
         view.backgroundColor = Color.primary
         
@@ -107,9 +104,6 @@ class MainViewController: UIViewController {
         loadNewAd()
         
     }
-
-}
-extension MainViewController: AdDelegate {
     
     func loadNewAd() {
         let request = GADRequest()
@@ -128,7 +122,7 @@ extension MainViewController: AdDelegate {
             self?.rewardedAd?.fullScreenContentDelegate = self
         })
     }
-    
+
 }
 
 enum AdStatus {
@@ -145,10 +139,6 @@ enum AdStatus {
             return nil
         }
     }
-}
-
-protocol AdDelegate: AnyObject {
-    func loadNewAd()
 }
 
 extension MainViewController: WallpaperDelegate {
