@@ -1,4 +1,4 @@
-# app_identifier("[[APP_IDENTIFIER]]") # The bundle identifier of your app
+# app_identifier("com.smileydudelimitedapps.wallpapers-pop-art") # The bundle identifier of your app
 apple_id("isaacakalanne@gmail.com") # Your Apple email address
 
 
