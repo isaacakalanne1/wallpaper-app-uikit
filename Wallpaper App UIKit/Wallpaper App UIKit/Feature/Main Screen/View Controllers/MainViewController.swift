@@ -36,22 +36,17 @@ class MainViewController: UIViewController {
     var buttonStatus: SecondaryButtonContainer.ButtonStatus = .hide
     
     let filterNavigatorView = UIView()
-    let downloadButton = Button(style: .primary, title: "Download")
+    let downloadButton = Button(style: .primary, title: "Watch video to Download")
     
     lazy var filterNavigatorVC = FilterNavigatorViewController(filterDelegate: self)
     lazy var wallpaperBrowserVC = WallpaperBrowserController(wallpaperDelegate: self,
                                                              filterDelegate: self,
                                                              announcementDelegate: self)
     
-    lazy var videoVC = VideoViewController(delegate: self, adDelegate: self)
-    
-    var rewardedAd: GADRewardedAd?
-    let user = User()
-    var points: Int {
-        return user.points
-    }
     
     var adStatus: AdStatus = .loading
+    
+    var rewardedAd: GADRewardedAd?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +63,7 @@ class MainViewController: UIViewController {
         
         tertiaryContainer.isHidden = true
         
-        downloadButton.addTarget(self, action: #selector(savePhotoToWallpapers), for: .touchUpInside)
+        downloadButton.addTarget(self, action: #selector(presentVideo), for: .touchUpInside)
         
         stackView.addArrangedSubview(wallpaperBrowserView)
         stackView.addArrangedSubview(tertiaryContainer)
@@ -109,23 +104,8 @@ class MainViewController: UIViewController {
             downloadButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -margin),
         ])
         
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["585eac36c00fe89d987306be21285fc3"]
-        
         loadNewAd()
         
-    }
-    
-    func resetFilterUnlocks() {
-        Filter.allCases.forEach { filter in
-            if !filter.isUnlockedByDefault {
-                UserDefaults.standard.set(false, forKey: filter.isUnlockedKey)
-            }
-        }
-    }
-    
-    func updateAdStatus(_ status: AdStatus) {
-        self.adStatus = status
-        videoVC.updateAdStatus(status)
     }
 
 }
@@ -133,20 +113,19 @@ extension MainViewController: AdDelegate {
     
     func loadNewAd() {
         let request = GADRequest()
-        videoVC.updateAdStatus(.loading)
+        adStatus = .loading
         GADRewardedAd.load(withAdUnitID: AppData.videoAdId,
                            request: request, completionHandler: { [weak self] (ad, error) in
             if let error = error {
                 print("Rewarded ad failed to load with error: \(error.localizedDescription)")
-                self?.videoVC.updateAdStatus(.noAdToShow)
+                self?.adStatus = .noAdToShow
                 return
             } else {
+                self?.adStatus = .loaded
                 print("Rewarded ad loaded")
             }
             self?.rewardedAd = ad
             self?.rewardedAd?.fullScreenContentDelegate = self
-            self?.videoVC.updateVideo(ad)
-            self?.videoVC.updateAdStatus(.loaded)
         })
     }
     
@@ -190,12 +169,7 @@ extension MainViewController: FilterDelegate {
             slider.value = sliderValue
         }
         
-        if filter.isUnlocked {
-            buttonStatus = .applyFilter
-            tertiaryContainer.displayPermanentAnnouncement(nil)
-        } else {
-            displayUnlockAnnouncement()
-        }
+        buttonStatus = .applyFilter
         
         filterNavigatorVC.updateResetButtonSelection(isSelected: false)
         if filter != .reset {
@@ -244,51 +218,30 @@ extension MainViewController: FilterDelegate {
         currentFilter = nil
     }
     
-    func displayUnlockAnnouncement() {
-        guard let filter = currentFilter else { return }
-        let pointsNeededToUnlock = filter.costToUnlock - points
-        switch pointsNeededToUnlock {
-        case 1:
-            buttonStatus = .getPoints
-            tertiaryContainer.displayPermanentAnnouncement("You need 1 more point to unlock")
-        case 2...:
-            buttonStatus = .getPoints
-            tertiaryContainer.displayPermanentAnnouncement("You need \(pointsNeededToUnlock) more points to unlock")
-        default:
-            buttonStatus = .unlockFilter(filter: filter)
-            tertiaryContainer.displayPermanentAnnouncement("You have \(points) points")
+    @objc private func presentVideo() {
+        switch adStatus {
+        case .loaded:
+            if let ad = rewardedAd {
+                ad.present(fromRootViewController: self,
+                           userDidEarnRewardHandler: {
+                    self.wallpaperBrowserVC.saveWallpaperToPhotos(didWatchAd: true)
+                    self.loadNewAd()
+                })
+            }
+            loadNewAd()
+        case .loading:
+            if let text = adStatus.announcementText {
+                self.displayAnnouncement(text, secondAnnouncement: nil)
+            }
+        case .noAdToShow:
+            self.wallpaperBrowserVC.saveWallpaperToPhotos(didWatchAd: false)
         }
-    }
-    
-    @objc func savePhotoToWallpapers() {
-        wallpaperBrowserVC.saveWallpaperToPhotos()
     }
 }
 
 extension MainViewController: ButtonDelegate {
     func primaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
         switch status {
-        case .getPoints:
-            videoVC.updateVideo(rewardedAd)
-            self.navigationController?.pushViewController(videoVC, animated: true)
-        case .unlockFilter:
-            if let key = currentFilter?.isUnlockedKey,
-               let cost = currentFilter?.costToUnlock {
-                user.spendPoints(cost) { [weak self] res in
-                    guard let self = self else { return }
-                    switch res {
-                    case .success:
-                        UserDefaults.standard.set(true, forKey: key)
-                        self.buttonStatus = .applyFilter
-                        self.filterNavigatorVC.unlock(filter: self.currentFilter)
-                        self.secondaryButtonContainer.toggleButtons(self.buttonStatus)
-                        self.tertiaryContainer.displayPermanentAnnouncement(nil)
-                        self.secondaryButtonContainer.displayAnnouncement("Unlocked filter")
-                    case .failure:
-                        self.tertiaryContainer.displayAnnouncement("Failed to unlock filter")
-                    }
-                }
-            }
         case .applyFilter:
             if currentFilter == .reset {
                 clearAllFilters()
@@ -306,9 +259,6 @@ extension MainViewController: ButtonDelegate {
     
     func secondaryButtonPressed(status: SecondaryButtonContainer.ButtonStatus) {
         switch status {
-        case .earn1Point:
-            displayUnlockAnnouncement()
-            secondaryButtonContainer.toggleButtons(buttonStatus)
         default:
             cancelFilter()
         }
@@ -327,8 +277,14 @@ extension MainViewController: SliderDelegate {
 }
 
 extension MainViewController: AnnouncementDelegate {
-    func displayAnnouncement(_ text: String) {
-        secondaryButtonContainer.displayAnnouncement(text)
+    func displayAnnouncement(_ text: String, secondAnnouncement: String?) {
+        if let secondText = secondAnnouncement {
+            secondaryButtonContainer.displayAnnouncement(text) {
+                self.secondaryButtonContainer.displayAnnouncement(secondText)
+            }
+        } else {
+            secondaryButtonContainer.displayAnnouncement(text)
+        }
     }
 }
 

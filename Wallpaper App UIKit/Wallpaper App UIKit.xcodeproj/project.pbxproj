@@ -55,8 +55,6 @@
 		BB719079276B831C002193BD /* ImageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719078276B831C002193BD /* ImageEditor.swift */; };
 		BB71907B276B88E5002193BD /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907A276B88E5002193BD /* Animation.swift */; };
 		BB71907D276FEDE8002193BD /* TertiaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907C276FEDE8002193BD /* TertiaryContainer.swift */; };
-		BB7190812770990B002193BD /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190802770990B002193BD /* VideoViewController.swift */; };
-		BB7190842770A32F002193BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7190832770A32F002193BD /* User.swift */; };
 		BB87D76227710A7E00B87A95 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87D76127710A7E00B87A95 /* AppData.swift */; };
 		BB87D76A27774DB600B87A95 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
@@ -145,8 +143,6 @@
 		BB719078276B831C002193BD /* ImageEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditor.swift; sourceTree = "<group>"; };
 		BB71907A276B88E5002193BD /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		BB71907C276FEDE8002193BD /* TertiaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryContainer.swift; sourceTree = "<group>"; };
-		BB7190802770990B002193BD /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		BB7190832770A32F002193BD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB87D76127710A7E00B87A95 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,31 +315,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BB71907E277098F2002193BD /* Video */ = {
-			isa = PBXGroup;
-			children = (
-				BB7190822770A327002193BD /* View Models */,
-				BB71907F277098FB002193BD /* View Controllers */,
-			);
-			path = Video;
-			sourceTree = "<group>";
-		};
-		BB71907F277098FB002193BD /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BB7190802770990B002193BD /* VideoViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		BB7190822770A327002193BD /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				BB7190832770A32F002193BD /* User.swift */,
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
 		BBB761C82756759500DF5B70 = {
 			isa = PBXGroup;
 			children = (
@@ -403,7 +374,6 @@
 			children = (
 				BBB7620E2756846E00DF5B70 /* Filter Navigator */,
 				BBB76205275679CD00DF5B70 /* Main Screen */,
-				BB71907E277098F2002193BD /* Video */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -716,7 +686,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB7190842770A32F002193BD /* User.swift in Sources */,
 				BB7190582769F23F002193BD /* Bokeh.swift in Sources */,
 				BB3958A3275E54E10049E0E2 /* SecondaryButtonContainer.swift in Sources */,
 				BBB7620D27567E9200DF5B70 /* Button.swift in Sources */,
@@ -725,7 +694,6 @@
 				BB7190752769F27F002193BD /* FilterExtensions.swift in Sources */,
 				BB719079276B831C002193BD /* ImageEditor.swift in Sources */,
 				BB71906F2769F23F002193BD /* CustomFilters.swift in Sources */,
-				BB7190812770990B002193BD /* VideoViewController.swift in Sources */,
 				BB3958B42767D3870049E0E2 /* FilterButton.swift in Sources */,
 				BB7190622769F23F002193BD /* RGBChannelCompositing.swift in Sources */,
 				BBB76215275684C900DF5B70 /* FilterNavigatorViewController.swift in Sources */,

@@ -12,7 +12,7 @@ class TertiaryContainer: UIView {
     let announcementLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont.italicSystemFont(ofSize: 18)
         label.textAlignment = .center
         label.textColor = Color.accent
         label.backgroundColor = Color.secondary
