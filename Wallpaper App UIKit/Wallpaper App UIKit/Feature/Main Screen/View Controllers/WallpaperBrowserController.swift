@@ -100,10 +100,10 @@ class WallpaperBrowserController: UIPageViewController {
         vc.clearAllFilters()
     }
     
-    func saveWallpaperToPhotos() {
+    func saveWallpaperToPhotos(didWatchAd: Bool) {
         guard listOfVCs.indices.contains(currentIndex),
               let vc = listOfVCs[currentIndex] as? WallpaperViewController else { return }
-        vc.saveWallpaperToPhotos()
+        vc.saveWallpaperToPhotos(didWatchAd: didWatchAd)
     }
     
 }
@@ -138,8 +138,8 @@ extension WallpaperBrowserController: FilterDelegate {
 }
 
 extension WallpaperBrowserController: AnnouncementDelegate {
-    func displayAnnouncement(_ text: String) {
-        announcementDelegate?.displayAnnouncement(text)
+    func displayAnnouncement(_ text: String, secondAnnouncement: String?) {
+        announcementDelegate?.displayAnnouncement(text, secondAnnouncement: secondAnnouncement)
     }
 }
 
