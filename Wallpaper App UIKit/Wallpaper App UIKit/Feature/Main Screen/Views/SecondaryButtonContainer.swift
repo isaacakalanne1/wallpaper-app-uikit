@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AnnouncementDelegate: AnyObject {
-    func displayAnnouncement(_ text: String)
+    func displayAnnouncement(_ text: String, secondAnnouncement: String?)
 }
 
 protocol ButtonDelegate: AnyObject {
@@ -20,12 +20,11 @@ protocol ButtonDelegate: AnyObject {
 class SecondaryButtonContainer: UIView {
     
     enum ButtonStatus {
-        case applyFilter, getPoints, earn1Point, hide
-        case unlockFilter(filter: Filter)
+        case applyFilter, hide
         
         var animationAlpha: CGFloat {
             switch self {
-            case .applyFilter, .getPoints, .earn1Point, .unlockFilter:
+            case .applyFilter:
                 return 1.0
             case .hide:
                 return 0.0
@@ -36,12 +35,6 @@ class SecondaryButtonContainer: UIView {
             switch self {
             case .applyFilter:
                 return "Apply"
-            case .getPoints:
-                return "Get Points Free"
-            case .earn1Point:
-                return "Watch video"
-            case .unlockFilter(let filter):
-                return "Unlock for \(filter.costToUnlock) points"
             case .hide:
                 return nil
             }
@@ -49,12 +42,8 @@ class SecondaryButtonContainer: UIView {
         
         var secondaryTitle: String? {
             switch self {
-            case .applyFilter,
-                    .getPoints,
-                    .unlockFilter:
+            case .applyFilter:
                 return "Cancel"
-            case .earn1Point:
-                return "Back"
             case .hide:
                 return nil
             }
@@ -145,15 +134,17 @@ class SecondaryButtonContainer: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    func displayAnnouncement(_ text: String) {
+    func displayAnnouncement(_ text: String, _ completion: (() -> Void)? = nil) {
         
         announcementLabel.text = text
         
         UIView.animate(withDuration: Animation.length, animations: {
             self.announcementLabel.alpha = 1.0
         }) { _ in
-            UIView.animate(withDuration: Animation.length, delay: 1.0) {
+            UIView.animate(withDuration: Animation.length, delay: 1.0, animations: {
                 self.announcementLabel.alpha = 0.0
+            }) { _ in
+                completion?()
             }
         }
     }
@@ -178,14 +169,6 @@ class SecondaryButtonContainer: UIView {
             getPointsPrimaryButtonWidth.isActive = false
             unlockFilterPrimaryButtonWidth.isActive = false
             applyFilterPrimaryButtonWidth.isActive = true
-        case .getPoints, .earn1Point:
-            unlockFilterPrimaryButtonWidth.isActive = false
-            applyFilterPrimaryButtonWidth.isActive = false
-            getPointsPrimaryButtonWidth.isActive = true
-        case .unlockFilter:
-            unlockFilterPrimaryButtonWidth.isActive = true
-            applyFilterPrimaryButtonWidth.isActive = false
-            getPointsPrimaryButtonWidth.isActive = false
         case .hide:
             break
         }
