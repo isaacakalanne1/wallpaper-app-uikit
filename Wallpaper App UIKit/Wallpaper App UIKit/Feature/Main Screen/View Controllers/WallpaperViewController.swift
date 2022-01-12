@@ -136,7 +136,8 @@ class WallpaperViewController: UIViewController {
                 if let image = editedImage {
                     self.imageView.image = image
                 } else {
-                    self.announcementDelegate?.displayAnnouncement("Couldn't apply filter")
+                    self.announcementDelegate?.displayAnnouncement("Couldn't apply filter",
+                                                                   secondAnnouncement: nil)
                 }
             }
         }
@@ -146,16 +147,16 @@ class WallpaperViewController: UIViewController {
         imageView.image = originalWallpaper
     }
     
-    func saveWallpaperToPhotos() {
+    func saveWallpaperToPhotos(didWatchAd: Bool) {
         guard let image = wallpaperToEdit else { return }
         let imageSaver = ImageSaver(delegate: self)
-        imageSaver.saveWallpaperToPhotos(image: image)
+        imageSaver.saveWallpaperToPhotos(image: image, didWatchAd: didWatchAd)
     }
     
 }
 
 extension WallpaperViewController: AnnouncementDelegate {
-    func displayAnnouncement(_ text: String) {
-        announcementDelegate?.displayAnnouncement(text)
+    func displayAnnouncement(_ text: String, secondAnnouncement: String?) {
+        announcementDelegate?.displayAnnouncement(text, secondAnnouncement: secondAnnouncement)
     }
 }
