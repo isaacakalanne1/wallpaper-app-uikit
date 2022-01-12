@@ -54,7 +54,6 @@
 		BB719077276B3CA6002193BD /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719076276B3CA6002193BD /* ImageSaver.swift */; };
 		BB719079276B831C002193BD /* ImageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719078276B831C002193BD /* ImageEditor.swift */; };
 		BB71907B276B88E5002193BD /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907A276B88E5002193BD /* Animation.swift */; };
-		BB71907D276FEDE8002193BD /* TertiaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB71907C276FEDE8002193BD /* TertiaryContainer.swift */; };
 		BB87D76227710A7E00B87A95 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87D76127710A7E00B87A95 /* AppData.swift */; };
 		BB87D76A27774DB600B87A95 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */; };
 		BBB761D52756759500DF5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB761D42756759500DF5B70 /* AppDelegate.swift */; };
@@ -142,7 +141,6 @@
 		BB719076276B3CA6002193BD /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		BB719078276B831C002193BD /* ImageEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditor.swift; sourceTree = "<group>"; };
 		BB71907A276B88E5002193BD /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		BB71907C276FEDE8002193BD /* TertiaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryContainer.swift; sourceTree = "<group>"; };
 		BB87D76127710A7E00B87A95 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		BB87D76927774DB500B87A95 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		BBB761D12756759500DF5B70 /* Wallpaper App UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wallpaper App UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,7 +402,6 @@
 			children = (
 				BBB7620C27567E9200DF5B70 /* Button.swift */,
 				BB3958A2275E54E10049E0E2 /* SecondaryButtonContainer.swift */,
-				BB71907C276FEDE8002193BD /* TertiaryContainer.swift */,
 				BBB762162756890300DF5B70 /* Slider.swift */,
 			);
 			path = Views;
@@ -725,7 +722,6 @@
 				BB7190672769F23F002193BD /* FilmicEffects.swift in Sources */,
 				BB87D76227710A7E00B87A95 /* AppData.swift in Sources */,
 				BB3958A92767C8B20049E0E2 /* FilterBrowserViewController.swift in Sources */,
-				BB71907D276FEDE8002193BD /* TertiaryContainer.swift in Sources */,
 				BB71905F2769F23F002193BD /* ThirdPartyFilters.swift in Sources */,
 				BB39589A275E2B7E0049E0E2 /* ImgurAPI.swift in Sources */,
 				BB71905E2769F23F002193BD /* MercurializeFilter.swift in Sources */,
