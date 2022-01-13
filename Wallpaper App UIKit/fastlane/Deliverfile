@@ -18,6 +18,6 @@ app_rating_config_path("./fastlane/metadata/app_store_rating_config.json")
 
 ipa("./fastlane/builds/Wallpaper App UIKit.ipa”)
 # 5
-submit_for_review(false)
+submit_for_review(true)
 # 6
 automatic_release(true)
