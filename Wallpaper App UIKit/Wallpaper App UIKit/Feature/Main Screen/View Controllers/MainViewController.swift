@@ -159,6 +159,7 @@ extension MainViewController: FilterDelegate {
             wallpaperBrowserVC.previewFilter(filter, sliderValue: sliderValue)
             secondaryButtonContainer.updatePrimaryButtonInteraction(canInteract: false)
         }
+        
         secondaryButtonContainer.toggleButtons(buttonStatus)
     }
     
